@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -42,19 +44,24 @@ public class AppUserJdbcTemplateRepositoryTest {
         assertNull(result);
     }
 
-//    @Test
-//    void shouldCreateUser() {
-//        AppUser appUserToAdd = createAppUser();
-//    }
+    @Test
+    void shouldCreateUser() {
+        AppUser appUser = new AppUser(0, "userTest", "pw123", true, List.of("USER"));
 
-//    @Test
-//    void update() {
-//        AppUser appUserToUpdate = new AppUser();
-//        appUserToUpdate.se;
-//    }
+        repository.create(appUser);
+        AppUser result = repository.findByUsername("userTest");
+        assertEquals("userTest", result.getUsername());
+    }
 
-//    private AppUser createAppUser() {
-//        AppUser user = new AppUser();
-//        user.setUsername
-//    }
+    @Test
+    void shouldUpdateUser() {
+        AppUser appUser = new AppUser(0, "userTest", "pw123", true, List.of("USER"));
+
+        repository.create(appUser);
+        AppUser updateUser = repository.findByUsername("userTest");
+        updateUser.
+
+        assertEquals("userTest", result.getUsername());
+    }
+
 }
