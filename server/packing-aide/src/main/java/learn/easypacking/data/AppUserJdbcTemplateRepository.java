@@ -1,7 +1,11 @@
 package learn.easypacking.data;
 
 import learn.easypacking.data.mappers.AppUserMapper;
+import learn.easypacking.data.mappers.ContainerMapper;
+import learn.easypacking.data.mappers.EventMapper;
 import learn.easypacking.models.AppUser;
+import learn.easypacking.models.Container;
+import learn.easypacking.models.Event;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class AppUserJdbcTemplateRepository implements AppUserRepository {
@@ -99,5 +104,28 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 + "inner join app_user au on ur.app_user_id = au.app_user_id "
                 + "where au.username = ?";
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
+    }
+
+    @Override
+    @Transactional
+    public boolean delete(int appUserId) {
+
+        jdbcTemplate.update("delete from item where app_user_id = ?", appUserId);
+        jdbcTemplate.update("delete from app_user_role where app_user_id = ?", appUserId);
+        List<Event> events = jdbcTemplate.query("Select * from event where app_user_id = ?;", new EventMapper(), appUserId).stream()
+                .collect(Collectors.toList());
+
+        for(int i = 0; i<events.size(); i++) {
+            List<Container> containers = jdbcTemplate.query("Select * from container where event_id = ?;",
+                    new ContainerMapper(), events.get(i).getEventId()).stream().collect(Collectors.toList());
+
+            for(int j = 0; j < containers.size(); j++){
+                jdbcTemplate.update("delete from item where container_id = ?;", containers.get(j).getContainerId());
+            }
+            jdbcTemplate.update("delete from todo where event_id = ?", events.get(i).getEventId());
+            jdbcTemplate.update("delete from container where event_id = ?;", events.get(i).getEventId());
+            jdbcTemplate.update("delete from `event` where event_id = ?;", events.get(i).getEventId());
+        }
+        return jdbcTemplate.update("delete from app_user where app_user_id = ?;", appUserId) > 0;
     }
 }

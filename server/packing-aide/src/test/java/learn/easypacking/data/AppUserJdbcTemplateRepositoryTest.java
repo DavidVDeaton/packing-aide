@@ -51,17 +51,34 @@ public class AppUserJdbcTemplateRepositoryTest {
         repository.create(appUser);
         AppUser result = repository.findByUsername("userTest");
         assertEquals("userTest", result.getUsername());
+        assertEquals("pw123", result.getPassword());
     }
 
     @Test
     void shouldUpdateUser() {
-        AppUser appUser = new AppUser(0, "userTest", "pw123", true, List.of("USER"));
+        AppUser userToUpdate = repository.findByUsername("john@smith.com");
+        userToUpdate.setUsername("updatedTest");
+        userToUpdate.setPassword("update123");
+        userToUpdate.setEnabled(false);
 
-        repository.create(appUser);
-        AppUser updateUser = repository.findByUsername("userTest");
-        updateUser.
+        repository.update(userToUpdate);
 
-        assertEquals("userTest", result.getUsername());
+        AppUser updateVerify = repository.findByUsername("updatedTest");
+
+        assertNull(repository.findByUsername("john@smith.com"));
+        assertNotNull(repository.findByUsername("updatedTest"));
+        assertEquals(false, updateVerify.isEnabled());
+    }
+
+    @Test
+    void shouldDelete() {
+        assertTrue(repository.delete(1));
+        assertFalse(repository.delete(1));
+    }
+
+    @Test
+    void shouldNotDeleteIfDoesNotExists(){
+        assertFalse(repository.delete(5));
     }
 
 }

@@ -13,4 +13,7 @@ public interface AppUserRepository {
 
     @Transactional
     void update(AppUser user);
+
+    @Transactional
+    boolean delete(int appUserId);
 }
