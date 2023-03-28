@@ -37,7 +37,7 @@ public class AppUserService implements UserDetailsService {
         return repository.findByUsername(username);
     }
 
-    public Result<AppUser> create(String username, String password) {
+    public Result<AppUser> createUser(String username, String password) {
         Result<AppUser> result = validate(username, password);
         if (!result.isSuccess()) {
             return result;
@@ -57,27 +57,26 @@ public class AppUserService implements UserDetailsService {
         return result;
     }
 
-//    public Result<AppUser> updatePassword(AppUser appUser, String newPassword) {
-//        Result<AppUser> result = validate(appUser.getUsername(), newPassword);
-//        if (!result.isSuccess()) {
-//            return result;
-//        }
-//
-////        String password = encoder.encode(appUser.getPassword());
-//
-//
-//
-//        AppUser appUser = new AppUser(0, username, password, true, List.of("USER"));
-//
-//        try {
-//            appUser = repository.create(appUser);
-//            result.setPayload(appUser);
-//        } catch (DuplicateKeyException e) {
-//            result.setMessages("The provided username already exists", ResultType.INVALID);
-//        }
-//
-//        return result;
-//    }
+    public Result<AppUser> updateUser(AppUser appUser, String oldPassword) {
+        Result<AppUser> result = validate(appUser.getUsername(), appUser.getPassword());
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        AppUser passwordVerify = repository.findByUserId(appUser.getAppUserId());
+
+        if (passwordVerify.getPassword() == encoder.encode(oldPassword)) {
+
+            String password = encoder.encode(appUser.getPassword());
+            appUser.setPassword(password);
+            repository.update(appUser);
+        } else {
+            result.setMessages("The original password you provided does not match our records.",
+                    ResultType.INVALID);
+        }
+
+        return result;
+    }
 
     public Result<AppUser> deleteUser(int appUserId) {
         Result<AppUser> result = new Result<>();
