@@ -25,9 +25,9 @@ Authorization: Bearer {{token}}
 
 {
     "locationId": 5,
-    "streetAddress": "http test",
-    "city": "http test",
-    "zip": "http test",
-    "state": "http test",
-    "country": "test"
+    "streetAddress": "http update",
+    "city": "http update",
+    "zip": "http update",
+    "state": "http update",
+    "country": "update"
 }

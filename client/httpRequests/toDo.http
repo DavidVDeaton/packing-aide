@@ -1,0 +1,39 @@
+@url = http://localhost:8080/api/todo
+@token = 
+
+GET {{url}}/2 HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "toDoDate": "http test",
+    "toDoName": "http test",
+    "toDoDescription": "http test",
+    "toDoStatus": false,
+    "eventId": 2
+}
+
+###
+
+PUT {{url}}/4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "toDoId": 4,
+    "toDoDate": "http update",
+    "toDoName": "http update",
+    "toDoDescription": "http update",
+    "toDoStatus": false,
+    "eventId": 2
+}
+
+###
+
+DELETE {{url}}/3 HTTP/1.1
+Authorization: Bearer {{token}}
