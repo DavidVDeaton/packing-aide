@@ -25,6 +25,7 @@ public class AppUser implements UserDetails {
         this.authorities = authorities;
     }
 
+
     public AppUser(int appUserId, String username, String password, boolean enabled, List<String> roles) {
         this(appUserId, username, password, enabled, convertRolesToAuthorities(roles));
     }
