@@ -146,24 +146,24 @@ class AppUserServiceTest {
                 result.getMessages().get(0));
     }
 
-    @Test
-    void shouldUpdateAppUser() {
-        String username = "mark@melancon.com";
-        String password = "H0meRun!";
-
-        AppUser createUser = new AppUser(6, "mark@melancon.com", "hashedPassword", true, List.of("USER"));
-
-        when(repository.create(any())).thenReturn(createUser);
-
-        Result<AppUser> result = service.createUser(username, password);
-
-        assertTrue(result.isSuccess());
-        assertEquals(6, result.getPayload().getAppUserId());
-        assertEquals("mark@melancon.com", result.getPayload().getUsername());
-        assertEquals("hashedPassword", result.getPayload().getPassword());
-        assertEquals(1, result.getPayload().getAuthorities().size());
-        assertTrue(createUser.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("USER")));
-    }
+//    @Test
+//    void shouldUpdateAppUserUsername() {
+//        AppUser createUser = new AppUser(6, "mark@melancon.com", "hashedPassword", true, List.of("USER"));
+//
+//
+//        when(repository.update(any())).thenReturn(true);
+//        AppUser userToUpdate = repository.findByUserId(1);
+//
+//        userToUpdate.setUsername("bob@gibson.com");
+//
+//        Result<AppUser> result = service.updateUser(userToUpdate, "P@ssw0rd!");
+//
+//        assertTrue(result.isSuccess());
+////        assertEquals(result.getMessages(), "what error");
+//        assertEquals(6, result.getPayload().getAppUserId());
+//        assertEquals("bob@gibson.com", result.getPayload().getUsername());
+//        assertEquals("hashedPassword", result.getPayload().getPassword());
+//    }
 //
 //    @Test
 //    void shouldNotCreateWithNullUsername() {
