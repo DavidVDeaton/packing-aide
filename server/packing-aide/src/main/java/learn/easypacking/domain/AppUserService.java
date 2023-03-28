@@ -57,13 +57,15 @@ public class AppUserService implements UserDetailsService {
         return result;
     }
 
-//    public Result<AppUser> update(String username, String password) {
-//        Result<AppUser> result = validate(username, password);
+//    public Result<AppUser> updatePassword(AppUser appUser, String newPassword) {
+//        Result<AppUser> result = validate(appUser.getUsername(), newPassword);
 //        if (!result.isSuccess()) {
 //            return result;
 //        }
 //
-//        password = encoder.encode(password);
+////        String password = encoder.encode(appUser.getPassword());
+//
+//
 //
 //        AppUser appUser = new AppUser(0, username, password, true, List.of("USER"));
 //
