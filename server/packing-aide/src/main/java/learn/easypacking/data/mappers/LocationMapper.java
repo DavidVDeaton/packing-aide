@@ -15,6 +15,7 @@ public class LocationMapper implements RowMapper<Location> {
         location.setCity(rs.getString("city"));
         location.setZip(rs.getInt("zip"));
         location.setState(rs.getString("state"));
+        location.setState(rs.getString("country"));
         return location;
     }
 }
