@@ -108,7 +108,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     @Override
     @Transactional
-    public boolean delete(int appUserId) {
+    public boolean deleteUser(int appUserId) {
 
         jdbcTemplate.update("delete from item where app_user_id = ?", appUserId);
         jdbcTemplate.update("delete from app_user_role where app_user_id = ?", appUserId);

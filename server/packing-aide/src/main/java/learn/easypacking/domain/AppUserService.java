@@ -32,6 +32,10 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
+    public AppUser findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
+
     public Result<AppUser> create(String username, String password) {
         Result<AppUser> result = validate(username, password);
         if (!result.isSuccess()) {
@@ -50,6 +54,30 @@ public class AppUserService implements UserDetailsService {
         }
 
         return result;
+    }
+
+//    public Result<AppUser> update(String username, String password) {
+//        Result<AppUser> result = validate(username, password);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//
+//        password = encoder.encode(password);
+//
+//        AppUser appUser = new AppUser(0, username, password, true, List.of("USER"));
+//
+//        try {
+//            appUser = repository.create(appUser);
+//            result.setPayload(appUser);
+//        } catch (DuplicateKeyException e) {
+//            result.setMessages("The provided username already exists", ResultType.INVALID);
+//        }
+//
+//        return result;
+//    }
+
+    public boolean deleteUser(int appUserId) {
+        return repository.deleteUser(appUserId);
     }
 
     private Result<AppUser> validate(String username, String password) {

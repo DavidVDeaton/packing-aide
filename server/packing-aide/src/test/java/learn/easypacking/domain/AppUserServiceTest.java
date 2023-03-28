@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest
 class AppUserServiceTest {
@@ -27,7 +29,7 @@ class AppUserServiceTest {
     PasswordEncoder encoder;
 
     @Test
-    void loadUserByUsername() {
+    void shouldLoadUserByUsername() {
         AppUser expected = new AppUser(1, "test", "testPassword", true, List.of("USER"));
         when(repository.findByUsername("test")).thenReturn(expected);
 
@@ -37,6 +39,124 @@ class AppUserServiceTest {
     }
 
     @Test
-    void create() {
+    void shouldCreateAppUser() {
+        String username = "mark@melancon.com";
+        String password = "H0meRun!";
+
+        AppUser createUser = new AppUser(6, "mark@melancon.com", "hashedPassword", true, List.of("USER"));
+
+        when(repository.create(any())).thenReturn(createUser);
+
+        Result<AppUser> result = service.create(username, password);
+
+        assertTrue(result.isSuccess());
+        assertEquals(6, result.getPayload().getAppUserId());
+        assertEquals("mark@melancon.com", result.getPayload().getUsername());
+        assertEquals("hashedPassword", result.getPayload().getPassword());
+        assertEquals(1, result.getPayload().getAuthorities().size());
+        assertTrue(createUser.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("USER")));
     }
+
+    @Test
+    void shouldNotCreateWithNullUsername() {
+        Result<AppUser> result = service.create(null, "H0meRun!");
+
+        assertFalse(result.isSuccess());
+        assertNull(result.getPayload());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("username is required", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotCreateWithBlankUsername() {
+        Result<AppUser> result = service.create("", "H0meRun!");
+
+        assertFalse(result.isSuccess());
+        assertNull(result.getPayload());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("username is required", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotCreateWithUsernameGreaterThan50Chars() {
+        Result<AppUser> result = service.create("a".repeat(51), "H0meRun!");
+
+        assertFalse(result.isSuccess());
+        assertNull(result.getPayload());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("username must be less than 50 characters", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotCreateAppUserWithExistingUsername() {
+        String username = "mark@melancon.com";
+        String password = "H0meRun!";
+
+        when(repository.create(any())).thenThrow(DuplicateKeyException.class);
+
+        Result<AppUser> result = service.create(username, password);
+
+        assertFalse(result.isSuccess());
+        assertNull(result.getPayload());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("The provided username already exists", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotCreateWithNullPassword() {
+        Result<AppUser> result = service.create("valid@username.com", null);
+
+        assertFalse(result.isSuccess());
+        assertNull(result.getPayload());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("password is required", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotCreateWithLessThan8Chars() {
+        Result<AppUser> result = service.create("valid@username.com", "invalid");
+
+        assertFalse(result.isSuccess());
+        assertNull(result.getPayload());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("password must be at least 8 character and contain a digit, a letter, and a non-digit/non-letter",
+                result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotCreateWithoutNumberInPassword() {
+        Result<AppUser> result = service.create("valid@username.com", "HomeRun!");
+
+        assertFalse(result.isSuccess());
+        assertNull(result.getPayload());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("password must be at least 8 character and contain a digit, a letter, and a non-digit/non-letter",
+                result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotCreateWithoutSpecialCharInPassword() {
+        Result<AppUser> result = service.create("valid@username.com", "H0meruns");
+
+        assertFalse(result.isSuccess());
+        assertNull(result.getPayload());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("password must be at least 8 character and contain a digit, a letter, and a non-digit/non-letter",
+                result.getMessages().get(0));
+    }
+
+//    @Test
+//    void shouldDeleteUser() {
+//        AppUser createUser = new AppUser(6, "mark@melancon.com", "hashedPassword", true, List.of("USER"));
+//
+//        when(repository.create(any())).thenReturn(createUser);
+//        repository.create(createUser);
+//
+//        AppUser userToDelete = repository.findByUsername("mark@melancon.com");
+//        assertNotNull(repository.findByUsername("mark@melancon.com"));
+//
+//        repository.deleteUser(userToDelete.getAppUserId());
+//
+//        assertNull(repository.findByUsername("mark@melancon.com"));
+//    }
 }

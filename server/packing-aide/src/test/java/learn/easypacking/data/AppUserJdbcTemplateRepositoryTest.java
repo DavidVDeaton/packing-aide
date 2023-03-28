@@ -72,13 +72,13 @@ public class AppUserJdbcTemplateRepositoryTest {
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.delete(1));
-        assertFalse(repository.delete(1));
+        assertTrue(repository.deleteUser(1));
+        assertFalse(repository.deleteUser(1));
     }
 
     @Test
     void shouldNotDeleteIfDoesNotExists(){
-        assertFalse(repository.delete(5));
+        assertFalse(repository.deleteUser(5));
     }
 
 }
