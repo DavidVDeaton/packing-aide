@@ -56,7 +56,7 @@ public class EventService {
     public Result<Event> deleteEvent(int eventId){
         Result<Event> result = new Result<>();
         if(eventId <= 0){
-            result.setMessages("eventId required for update operation", ResultType.INVALID);
+            result.setMessages("eventId required for delete operation", ResultType.INVALID);
             return result;
         }
         if(!repository.deleteEvent(eventId)){

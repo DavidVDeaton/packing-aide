@@ -2,6 +2,7 @@ package learn.easypacking.domain;
 
 import learn.easypacking.data.AppUserRepository;
 import learn.easypacking.models.AppUser;
+import learn.easypacking.models.Event;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,6 +33,10 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
+    public AppUser findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
+
     public Result<AppUser> create(String username, String password) {
         Result<AppUser> result = validate(username, password);
         if (!result.isSuccess()) {
@@ -49,6 +54,41 @@ public class AppUserService implements UserDetailsService {
             result.setMessages("The provided username already exists", ResultType.INVALID);
         }
 
+        return result;
+    }
+
+//    public Result<AppUser> updatePassword(AppUser appUser, String newPassword) {
+//        Result<AppUser> result = validate(appUser.getUsername(), newPassword);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//
+////        String password = encoder.encode(appUser.getPassword());
+//
+//
+//
+//        AppUser appUser = new AppUser(0, username, password, true, List.of("USER"));
+//
+//        try {
+//            appUser = repository.create(appUser);
+//            result.setPayload(appUser);
+//        } catch (DuplicateKeyException e) {
+//            result.setMessages("The provided username already exists", ResultType.INVALID);
+//        }
+//
+//        return result;
+//    }
+
+    public Result<AppUser> deleteUser(int appUserId) {
+        Result<AppUser> result = new Result<>();
+        if(appUserId <= 0){
+            result.setMessages("appUserId required for delete operation", ResultType.INVALID);
+            return result;
+        }
+        if(!repository.deleteUser(appUserId)){
+            String message = String.format("appUserId: %s not found", appUserId);
+            result.setMessages(message,  ResultType.NOT_FOUND);
+        }
         return result;
     }
 

@@ -1,4 +1,4 @@
-package learn.easypacking.models;
+package learn.easypacking;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

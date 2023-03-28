@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 public class AppUser implements UserDetails {
 
     private int appUserId;
-    private final String username;
-    private final String password;
-    private final boolean enabled;
+    private String username;
+    private String password;
+    private boolean enabled;
     private final Collection<GrantedAuthority> authorities;
 
     public AppUser(int appUserId, String username, String password, boolean enabled, Collection<GrantedAuthority> authorities) {
@@ -76,5 +76,17 @@ public class AppUser implements UserDetails {
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
