@@ -32,13 +32,14 @@ create table location (
     street_address varchar(255),
     city varchar(50),
     zip varchar(20),
-    state varchar(2)
+    state varchar(2),
+    country varchar(50)
 );
 
 create table `event` (
 	event_id int primary key auto_increment,
     event_name varchar(50),
-    event_type bit,
+    event_type bit not null,
     start_date varchar(50),
     end_date varchar(50), 
     app_user_id int not null,
@@ -130,10 +131,11 @@ begin
 		(1, 1),
 		(2, 1);
         
-	insert into location (street_address, city, zip, state) values
-		('123 Lexington ave', 'Manhattan', 10023, 'NY'),
-        ('456 Fulton st', 'Dallas', 13456, 'TX'),
-        ('789 Strawberry rd', 'Santa Monica', 17261, 'CA');
+	insert into location (street_address, city, zip, state, country) values
+		(null, null, null, null, null),
+		('123 Lexington ave', 'Manhattan', 10023, 'NY', 'USA'),
+        ('456 Fulton st', 'Dallas', 13456, 'TX', 'USA'),
+        ('789 Strawberry rd', 'Santa Monica', 17261, 'CA', 'USA');
         
 	insert into `event` (event_name, event_type, start_date, end_date, app_user_id, start_location_id, end_location_id) values
 		('Springbreak', 1, '2022-04-15', '2022-04-30', 1, 1, 3),
@@ -156,3 +158,5 @@ begin
         ('2023-02-01', 'Unload truck', 'Place all boxes in their assigned rooms', 1, 2);
 end //
 delimiter ;
+
+select * from `event`;

@@ -30,8 +30,8 @@ public class LocationJdbcTemplateRepository implements LocationRepository{
 
     @Override
     public Location createLocation(Location location) {
-        String sqlStatement = "Insert into location (street_address, city, zip, state) values" +
-                "(?, ?, ?, ?);";
+        String sqlStatement = "Insert into location (street_address, city, zip, state, country) values" +
+                "(?, ?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -40,6 +40,7 @@ public class LocationJdbcTemplateRepository implements LocationRepository{
             ps.setString(2, location.getCity());
             ps.setInt(3, location.getZip());
             ps.setString(4, location.getState());
+            ps.setString(5, location.getCountry());
             return ps;
         }, keyHolder);
 
@@ -56,10 +57,11 @@ public class LocationJdbcTemplateRepository implements LocationRepository{
                 "street_address = ?, " +
                 "city = ?, " +
                 "zip = ?, " +
-                "state = ? " +
+                "state = ?, " +
+                "country = ? " +
                 "where location_id = ?;";
         return jdbcTemplate.update(sqlStatement,
-                location.getStreetAddress(), location.getCity(), location.getZip(), location.getState(), location.getLocationId()) > 0;
+                location.getStreetAddress(), location.getCity(), location.getZip(), location.getState(), location.getCountry(), location.getLocationId()) > 0;
     }
 
     //Should delete exist for location if it is always tied to an event? Location will never exist on its own, it will always be created through an event

@@ -32,13 +32,14 @@ create table location (
     street_address varchar(255),
     city varchar(50),
     zip varchar(20),
-    state varchar(2)
+    state varchar(2),
+    country varchar(50)
 );
 
 create table `event` (
 	event_id int primary key auto_increment,
     event_name varchar(50),
-    event_type bit,
+    event_type bit not null,
     start_date varchar(50),
     end_date varchar(50), 
     app_user_id int not null,
