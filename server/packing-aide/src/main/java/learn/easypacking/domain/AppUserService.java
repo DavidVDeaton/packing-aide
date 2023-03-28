@@ -2,6 +2,7 @@ package learn.easypacking.domain;
 
 import learn.easypacking.data.AppUserRepository;
 import learn.easypacking.models.AppUser;
+import learn.easypacking.models.Event;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -76,8 +77,17 @@ public class AppUserService implements UserDetailsService {
 //        return result;
 //    }
 
-    public boolean deleteUser(int appUserId) {
-        return repository.deleteUser(appUserId);
+    public Result<AppUser> deleteUser(int appUserId) {
+        Result<AppUser> result = new Result<>();
+        if(appUserId <= 0){
+            result.setMessages("appUserId required for delete operation", ResultType.INVALID);
+            return result;
+        }
+        if(!repository.deleteUser(appUserId)){
+            String message = String.format("appUserId: %s not found", appUserId);
+            result.setMessages(message,  ResultType.NOT_FOUND);
+        }
+        return result;
     }
 
     private Result<AppUser> validate(String username, String password) {

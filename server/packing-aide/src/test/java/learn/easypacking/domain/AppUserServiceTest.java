@@ -2,6 +2,7 @@ package learn.easypacking.domain;
 
 import learn.easypacking.data.AppUserRepository;
 import learn.easypacking.models.AppUser;
+import learn.easypacking.models.Event;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -145,18 +146,18 @@ class AppUserServiceTest {
                 result.getMessages().get(0));
     }
 
-//    @Test
-//    void shouldDeleteUser() {
-//        AppUser createUser = new AppUser(6, "mark@melancon.com", "hashedPassword", true, List.of("USER"));
-//
-//        when(repository.create(any())).thenReturn(createUser);
-//        repository.create(createUser);
-//
-//        AppUser userToDelete = repository.findByUsername("mark@melancon.com");
-//        assertNotNull(repository.findByUsername("mark@melancon.com"));
-//
-//        repository.deleteUser(userToDelete.getAppUserId());
-//
-//        assertNull(repository.findByUsername("mark@melancon.com"));
-//    }
+    @Test
+    void shouldDeleteUser(){
+        when(repository.deleteUser(1)).thenReturn(true);
+        Result<AppUser> actual = service.deleteUser(1);
+        assertEquals(ResultType.SUCCESS, actual.getType());
+    }
+
+    @Test
+    void shouldNotDeleteUserIfDoesNotExist(){
+        when(repository.deleteUser(61)).thenReturn(false);
+        Result<AppUser> actual = service.deleteUser(61);
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
+    }
+
 }
