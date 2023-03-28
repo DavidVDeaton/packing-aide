@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/todo")
 public class ToDoController {
 
-    private final ToDoService toDoService;
+    private final ToDoService service;
     private final AppUserService userService;
 
-    public ToDoController(ToDoService toDoService, AppUserService userService) {
-        this.toDoService = toDoService;
+    public ToDoController(ToDoService service, AppUserService userService) {
+        this.service = service;
         this.userService = userService;
     }
 
     @GetMapping("/{toDoId}")
     public ResponseEntity<ToDo> findById(@PathVariable int toDoId){
-        ToDo toDo = toDoService.findById(toDoId);
+        ToDo toDo = service.findById(toDoId);
         if(toDo == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -32,7 +32,7 @@ public class ToDoController {
 
     @PostMapping
     public ResponseEntity<Object> createToDo(@RequestBody ToDo toDo){
-        Result<ToDo> result = toDoService.createToDo(toDo);
+        Result<ToDo> result = service.createToDo(toDo);
         if(result.isSuccess()){
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
@@ -44,7 +44,7 @@ public class ToDoController {
         if(toDoId != toDo.getToDoId()){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        Result<ToDo> result = toDoService.updateToDo(toDo);
+        Result<ToDo> result = service.updateToDo(toDo);
         if(result.isSuccess()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -53,7 +53,7 @@ public class ToDoController {
 
     @DeleteMapping("/{toDoId}")
     public ResponseEntity<Object> deleteToDo(@PathVariable int toDoId){
-        Result<ToDo> result = toDoService.deleteToDo(toDoId);
+        Result<ToDo> result = service.deleteToDo(toDoId);
         if(result.isSuccess()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
