@@ -11,6 +11,10 @@ public interface ItemRepository {
 
     List<Item> findByContainerId(int containerId);
 
+    List<Item> findByUserId(int userId);
+
+    Item findById(int itemId);
+
     Item createItem (Item item);
 
     boolean updateItem (Item item);

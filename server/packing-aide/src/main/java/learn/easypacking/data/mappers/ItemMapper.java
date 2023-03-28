@@ -15,7 +15,7 @@ public class ItemMapper implements RowMapper<Item> {
         item.setPackStatus(resultSet.getBoolean("pack_status"));
         item.setQuantity(resultSet.getInt("quantity"));
         item.setDescription(resultSet.getString("description"));
-        item.setUserId(resultSet.getInt("user_id"));
+        item.setAppUserId(resultSet.getInt("app_user_id"));
         item.setContainerId(resultSet.getInt("container_id"));
         return item;
     }

@@ -25,7 +25,7 @@ public class ItemService {
     }
 
     public List<Item> findByContainerId(int containerId) {
-        return repository.findByContainerId(containerId);
+        return (List<Item>) repository.findByContainerId(containerId);
     }
 
     public Result<Item> createItem(Item item) {
@@ -58,8 +58,17 @@ public class ItemService {
         return result;
     }
 
-    public boolean deleteById (int itemId) {
-        return repository.deleteById(itemId);
+    public Result<Item> deleteById (int itemId) {
+        Result<Item> result = new Result<>();
+        if(itemId <= 0) {
+            result.setMessages("Item ID required for delete operation", ResultType.INVALID);
+            return result;
+        }
+        if(!repository.deleteById(itemId)) {
+            String message = String.format("Item Id: %s not found", itemId);
+            result.setMessages(message, ResultType.NOT_FOUND);
+        }
+        return result;
     }
 
     private Result<Item> validate(Item item) {
@@ -67,6 +76,14 @@ public class ItemService {
 
         if(item == null) {
             result.setMessages("Item cannot be null", ResultType.INVALID);
+            return result;
+        }
+        if (item.getItemId() == 0) {
+            result.setMessages("Item Id cannot be zero", ResultType.INVALID);
+            return result;
+        }
+        if (item.getContainerId() == 0) {
+            result.setMessages("Container Id cannot be zero", ResultType.INVALID);
             return result;
         }
 

@@ -12,17 +12,17 @@ public class Item {
 
     private String description;
 
-    private int userId;
+    private int appUserId;
 
     private int containerId;
 
-    public Item(int itemId, String itemName, boolean packStatus, int quantity, String description, int userId, int containerId) {
+    public Item(int itemId, String itemName, boolean packStatus, int quantity, String description, int appUserId, int containerId) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.packStatus = packStatus;
         this.quantity = quantity;
         this.description = description;
-        this.userId = userId;
+        this.appUserId = appUserId;
         this.containerId = containerId;
     }
 
@@ -70,12 +70,12 @@ public class Item {
         this.description = description;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getAppUserId() {
+        return appUserId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setAppUserId(int appUserId) {
+        this.appUserId = appUserId;
     }
 
     public int getContainerId() {

@@ -3,6 +3,7 @@ package learn.easypacking.domain;
 import learn.easypacking.data.ContainersRepository;
 import learn.easypacking.data.ItemRepository;
 import learn.easypacking.models.Container;
+import learn.easypacking.models.Event;
 import learn.easypacking.models.Item;
 import learn.easypacking.models.Location;
 import org.springframework.stereotype.Service;
@@ -25,11 +26,10 @@ public class ContainerService {
     }
 
     public Container findById(int containerId) {
-        List<Item> items = itemRepository.findByContainerId(containerId);
-        Container container = repository.findById(containerId);
-        container.setItems(items);
         return  repository.findById(containerId);
     }
+
+    public List<Container> findByEventId(int eventId) {return repository.findByEventId(eventId);}
 
     public Result<Container> createContainer(Container container) {
         Result<Container> result = validate(container);
@@ -61,8 +61,17 @@ public class ContainerService {
         return result;
     }
 
-    public boolean deleteById(int containerId) {
-        return repository.deleteById(containerId);
+    public Result<Container> deleteById(int containerId) {
+        Result<Container> result = new Result<>();
+        if(containerId <= 0){
+            result.setMessages("Container Id required for update operation", ResultType.INVALID);
+            return result;
+        }
+        if(!repository.deleteById(containerId)){
+            String message = String.format("Container ID: %s not found", containerId);
+            result.setMessages(message,  ResultType.NOT_FOUND);
+        }
+        return result;
     }
 
     private Result<Container> validate(Container container) {
@@ -77,6 +86,9 @@ public class ContainerService {
         }
         if(container.getEventId() < 1) {
             result.setMessages("container eventId is required", ResultType.INVALID);
+        }
+        if(container.getContainerId() < 1) {
+            result.setMessages("container Id is 0", ResultType.INVALID);
         }
         return result;
     }

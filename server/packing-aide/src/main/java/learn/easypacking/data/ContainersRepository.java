@@ -9,6 +9,8 @@ public interface ContainersRepository {
 
     Container findById (int containerId);
 
+    List<Container> findByEventId(int eventId);
+
     Container createContainer (Container container);
 
     boolean updateContainer (Container container);
