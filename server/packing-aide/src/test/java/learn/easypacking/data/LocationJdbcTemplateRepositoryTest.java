@@ -24,7 +24,7 @@ class LocationJdbcTemplateRepositoryTest {
     }
     @Test
     void shouldFindById() {
-        Location actual = repository.findById(1);
+        Location actual = repository.findById(2);
         System.out.println(actual.getStreetAddress());
         assertEquals(10023, actual.getZip());
     }
@@ -39,7 +39,7 @@ class LocationJdbcTemplateRepositoryTest {
         Location locationToAdd = createTestLocation();
         Location actual = repository.createLocation(locationToAdd);
         assertNotNull(actual);
-        assertEquals(4, actual.getLocationId());
+        assertEquals(5, actual.getLocationId());
     }
     @Test
     void shouldUpdateLocation() {

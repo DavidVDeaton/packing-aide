@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 public class ItemJdbcTemplateRepository implements ItemRepository{
 
@@ -21,21 +23,34 @@ public class ItemJdbcTemplateRepository implements ItemRepository{
 
     @Override
     public List<Item> findAll() {
-        final String sql = "select item_id, item_name, pack_status, quantity, description, user_id, container_id "
-                + "from item;";
+        final String sql = "Select * from item";
         return jdbcTemplate.query(sql, new ItemMapper());
     }
 
     @Override
-    public List<Item> findByContainerId(int containerId) {
-        final String sql = "SELECT * from item where container_id = ?;";
+    public Item findById(int itemId) {
+        final String sql = "Select * from item where item_id =?;";
+        return jdbcTemplate.query(sql, new ItemMapper(), itemId).stream()
+                .findFirst()
+                .orElse(null);
+    }
 
-        return jdbcTemplate.query(sql, new ItemMapper(), containerId);
+    @Override
+    public List<Item> findByContainerId(int containerId) {
+        final String sql = "Select * from item where container_id = ?;";
+        return jdbcTemplate.query(sql, new ItemMapper(), containerId).stream().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Item> findByUserId(int appUserId) {
+        final String sql = "Select * from item where app_user_id = ?;";
+        return jdbcTemplate.query(sql, new ItemMapper(), appUserId).stream().collect(Collectors.toList());
+
     }
 
     @Override
     public Item createItem (Item item) {
-        final String sql = "insert into location (item_name, pack_status, quantity, description, user_id, container_id)"
+        final String sql = "Insert into item (item_name, pack_status, quantity, `description`, app_user_id, container_id) "
                 + "values (?,?,?,?,?,?);" ;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -45,7 +60,7 @@ public class ItemJdbcTemplateRepository implements ItemRepository{
             ps.setBoolean(2, item.isPackStatus());
             ps.setInt(3, item.getQuantity());
             ps.setString(4, item.getDescription());
-            ps.setInt(5, item.getUserId());
+            ps.setInt(5, item.getAppUserId());
             ps.setInt(6, item.getContainerId());
             return ps;
         }, keyHolder);
@@ -64,9 +79,9 @@ public class ItemJdbcTemplateRepository implements ItemRepository{
                 + "item_name = ?, "
                 + "pack_status = ?, "
                 + "quantity = ?, "
-                + "description = ?, "
-                + "user_id = ?, "
-                + "container_id = ?, "
+                + "`description` = ?, "
+                + "app_user_id = ?, "
+                + "container_id = ? "
                 + "where item_id = ?;";
 
         return jdbcTemplate.update(sql,
@@ -74,7 +89,7 @@ public class ItemJdbcTemplateRepository implements ItemRepository{
                 item.isPackStatus(),
                 item.getQuantity(),
                 item.getDescription(),
-                item.getUserId(),
+                item.getAppUserId(),
                 item.getContainerId(),
                 item.getItemId()) > 0;
     }
@@ -82,7 +97,7 @@ public class ItemJdbcTemplateRepository implements ItemRepository{
     @Override
     public boolean deleteById(int itemId) {
         return jdbcTemplate.update(
-                "delete from location where item_id = ?", itemId
+                "delete from item where item_id = ?", itemId
         ) > 0;
     }
 

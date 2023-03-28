@@ -51,8 +51,15 @@ class ContainersJdbcTemplateRepositoryTest {
     }
 
     @Test
+    void shouldFindByEventId() {
+        List<Container> containers = repository.findByEventId(2);
+        assertEquals(2, containers.size());
+        assertEquals("Kitchen", containers.get(0).getContainerName());
+    }
+
+    @Test
     void add() {
-        Container containerToAdd = createContainer();
+        Container containerToAdd = makeContainer();
         Container actual = repository.createContainer(containerToAdd);
         assertNotNull(actual);
         assertEquals(5, actual.getContainerId());
@@ -64,6 +71,7 @@ class ContainersJdbcTemplateRepositoryTest {
         containerToUpdate.setParentContainerId(2);
         containerToUpdate.setContainerName("updated test");
         containerToUpdate.setEventId(2);
+        containerToUpdate.setContainerId(2);
 
         assertTrue(repository.updateContainer(containerToUpdate));
         assertEquals("updated test", repository.findById(2).getContainerName());
@@ -72,9 +80,9 @@ class ContainersJdbcTemplateRepositoryTest {
     @Test
     void shouldNotUpdate() {
         Container containerToUpdate = new Container();
-        containerToUpdate.setParentContainerId(2);
+        containerToUpdate.setParentContainerId(1);
         containerToUpdate.setContainerName("updated test");
-        containerToUpdate.setEventId(2);
+        containerToUpdate.setEventId(1);
 
         assertFalse(repository.updateContainer(containerToUpdate));
     }
@@ -82,11 +90,11 @@ class ContainersJdbcTemplateRepositoryTest {
 
     @Test
     void deleteById() {
-        assertTrue(repository.deleteById(4));
-        assertTrue(repository.deleteById(4));
+        assertTrue(repository.deleteById(3));
+        assertFalse(repository.deleteById(3));
     }
 
-    private Container createContainer() {
+    private Container makeContainer() {
         Container container = new Container();
         container.setParentContainerId(1);
         container.setContainerName("test");

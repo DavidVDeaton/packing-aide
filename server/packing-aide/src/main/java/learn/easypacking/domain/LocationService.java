@@ -52,15 +52,6 @@ public class LocationService {
             result.setMessages("Location cannot be null", ResultType.INVALID);
             return result;
         }
-
-        if (location.getZip() == 0) {
-            result.setMessages("Zip code is required", ResultType.INVALID);
-        }
-
-        if (location.getCity().isBlank() || location.getCity() == null) {
-            result.setMessages("City is required", ResultType.INVALID);
-        }
-
         return result;
     }
 }
