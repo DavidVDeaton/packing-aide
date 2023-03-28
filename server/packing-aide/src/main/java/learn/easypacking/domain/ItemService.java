@@ -24,6 +24,12 @@ public class ItemService {
         return repository.findAll();
     }
 
+    public Item findById(int itemId) { return repository.findById(itemId);}
+
+    public List<Item> findByUserId(int userId) {
+        return (List<Item>) repository.findByUserId(userId);
+    }
+
     public List<Item> findByContainerId(int containerId) {
         return (List<Item>) repository.findByContainerId(containerId);
     }
