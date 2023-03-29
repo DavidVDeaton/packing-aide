@@ -1,6 +1,7 @@
 @url = http://localhost:8080/api/container
 
-@token =
+@token = 
+
 
 GET {{url}} HTTP/1.1
 Authorization: Bearer {{token}}
@@ -38,5 +39,5 @@ Authorization: Bearer {{token}}
 }
 
 ###
-DELETE {{url}}/2 HTTP/1.1
+DELETE {{url}}/3 HTTP/1.1
 Authorization: Bearer {{token}}

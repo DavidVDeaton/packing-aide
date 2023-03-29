@@ -52,7 +52,7 @@ class ContainerServiceTest {
     @Test
     void updateContainer() {
         Container containerToUpdate = makeContainer();
-        containerToUpdate.setEventId(2);
+        containerToUpdate.setContainerId(1);
 
         when(repository.updateContainer(containerToUpdate)).thenReturn(true);
 
@@ -63,7 +63,7 @@ class ContainerServiceTest {
     @Test
     void shouldNotUpdateWhenInvalid() {
         Container invalidContainer = makeContainer();
-        invalidContainer.setContainerId(0);
+        invalidContainer.setContainerId(999);
 
         Result<Container> actual = service.createContainer(invalidContainer);
         assertEquals(ResultType.INVALID, actual.getType());
@@ -91,7 +91,6 @@ class ContainerServiceTest {
 
     private Container makeContainer() {
         Container container = new Container();
-        container.setContainerId(1);
         container.setParentContainerId(1);
         container.setContainerName("test");
         container.setEventId(2);
