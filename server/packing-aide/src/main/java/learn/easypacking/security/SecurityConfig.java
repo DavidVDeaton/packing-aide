@@ -38,7 +38,7 @@ public class SecurityConfig {
                         "/api/item",
                         "/api/item/*",
                         "/api/item/user/*",
-                        "/api/item/user/container/*",
+                        "/api/item/container/*",
                         "/api/location/*",
                         "/api/todo/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,
