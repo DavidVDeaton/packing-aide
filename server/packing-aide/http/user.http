@@ -30,11 +30,6 @@ Content-Type: application/json
     "password": "P@ssw0rd!"
 }
 
-### Refresh token... be sure to replace the token in the Authorization header with a valid token
-
-POST {{url}}/refresh_token HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY2MjU4NjAwOX0.z8fTECKi60szcsgNoyYwaHErhXkOAiYdbaY2rYctcnM
-
 ### Create an account... returns 201
 
 POST {{url}}/create_account HTTP/1.1
