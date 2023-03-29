@@ -1,7 +1,7 @@
 @url = http://localhost:8080/api/event
 @token = 
 
-GET {{url}}/2 HTTP/1.1
+GET {{url}}/4 HTTP/1.1
 Authorization: Bearer {{token}}
 
 ###
@@ -27,16 +27,17 @@ Authorization: Bearer {{token}}
 
 ###
 
-PUT {{url}}/3 HTTP/1.1
+PUT {{url}}/4 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
+    "eventId": 4,
     "eventName": 3,
-    "eventName": "http test",
+    "eventName": "http update",
     "eventType": false,
-    "startDate": "http test",
-    "endDate": "false",
+    "startDate": "http update",
+    "endDate": "update",
     "appUserId": 2,
     "startLocationId": 2,
     "endLocationId": 3
