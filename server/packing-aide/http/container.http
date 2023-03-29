@@ -1,6 +1,6 @@
 @url = http://localhost:8080/api/container
 
-@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYWNraW5nLWFpZGUiLCJzdWIiOiJqb2huQHNtaXRoLmNvbSIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2ODAxMDk2NTR9.XdrGXfXoXoRIchfV9GNOUygRKyDAmo6THm24dnqQZug
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYWNraW5nLWFpZGUiLCJzdWIiOiJqb2huQHNtaXRoLmNvbSIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2ODAxMTg1NTB9.RsCm_wzwaV6rX8SXzygeNBUDOb7mMVg6HU-Gi1jBLU4
 
 GET {{url}} HTTP/1.1
 Authorization: Bearer {{token}}
@@ -16,13 +16,13 @@ Authorization: Bearer {{token}}
 
 ###
 POST {{url}} HTTP/1.1
-Content-Type: application/application/json
+Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
     "parentContainerId" : 1,
     "containerName": "test name",
-    "eventId": 3
+    "eventId": 2
 }
 
 ###
@@ -34,9 +34,9 @@ Authorization: Bearer {{token}}
     "containerId": 2,
     "parentContainerId" : 1,
     "containerName": "update name",
-    "eventId": 3
+    "eventId": 2
 }
 
 ###
 DELETE {{url}}/2 HTTP/1.1
-Authorization: Bearer{{token}}
+Authorization: Bearer {{token}}
