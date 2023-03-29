@@ -40,25 +40,25 @@ public class SecurityConfig {
                         "/api/item/user/*",
                         "/api/item/user/container/*",
                         "/api/location/*",
-                        "/api/todo/*").hasAnyAuthority("USER")
+                        "/api/todo/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,
                         "/api/container",
                         "/api/event",
                         "/api/item",
                         "/api/location",
-                        "/api/todo").hasAnyAuthority("USER")
+                        "/api/todo").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT,
                         "/api/container/*",
                         "/api/event/*",
                         "/api/item/*",
                         "/api/location/*",
-                        "/api/todo/*").hasAnyAuthority("USER")
+                        "/api/todo/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE,
                         "/api/container/*",
                         "/api/event/*",
                         "/api/item/*",
                         "/api/location/*",
-                        "/api/todo/*").hasAnyAuthority("USER")
+                        "/api/todo/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/**").denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(authConfig), converter))

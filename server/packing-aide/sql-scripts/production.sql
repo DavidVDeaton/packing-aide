@@ -100,5 +100,5 @@ insert into app_user (username, password_hash, disabled)
 
 insert into app_user_role
     values
-    (1, 2),
+    (1, 1),
     (2, 1);
