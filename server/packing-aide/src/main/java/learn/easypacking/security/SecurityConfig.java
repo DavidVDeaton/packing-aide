@@ -7,15 +7,18 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
 
     private final JwtConverter converter;
+//    private final UserDetailsService userDetailsService;
 
     public SecurityConfig(JwtConverter converter) {
         this.converter = converter;
+//        this.userDetailsService = userDetailService;
     }
 
     @Bean
@@ -25,21 +28,33 @@ public class SecurityConfig {
         http.cors();
         http.authorizeRequests()
 
-                .antMatchers("/authenticate").permitAll()
-                .antMatchers("/refresh_token").authenticated()
-                .antMatchers("/create_account").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/authenticate").permitAll()
+                .antMatchers("/api/refresh_token").authenticated()
+                .antMatchers("/api/create_account").permitAll()
                 .antMatchers(HttpMethod.GET,
                         "/api/container",
-                        "api/container/*",
-                        "api/container/event/*",
+                        "/api/container/*",
+                        "/api/container/event/*",
                         "/api/event/*",
                         "/api/event/user/*",
                         "/api/item",
-                        "api/item/*",
-                        "api/item/user/*",
-                        "api/item/user/container/*",
-                        "api/location/*",
-                        "api/todo/*").hasAnyAuthority("USER")
+                        "/api/item/*",
+                        "/api/item/user/*",
+                        "/api/item/user/container/*",
+                        "/api/location/*",
+                        "/api/todo/*").hasAnyAuthority("USER")
+//                .antMatchers(HttpMethod.POST,
+//                        "/api/container",
+//                        "api/container/*",
+//                        "api/container/event/*",
+//                        "/api/event/*",
+//                        "/api/event/user/*",
+//                        "/api/item",
+//                        "api/item/*",
+//                        "api/item/user/*",
+//                        "api/item/user/container/*",
+//                        "api/location/*",
+//                        "api/todo/*").hasAnyAuthority("USER")
                 .antMatchers("/**").denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(authConfig), converter))

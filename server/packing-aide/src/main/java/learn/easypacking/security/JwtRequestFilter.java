@@ -24,13 +24,15 @@ public class JwtRequestFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain chain) throws IOException, ServletException {
+
         String authorization = request.getHeader("Authorization");
         if (authorization != null && authorization.startsWith("Bearer ")) {
+
             AppUser user = converter.getUserFromToken(authorization);
             if (user == null) {
                 response.setStatus(403);
             } else {
-                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getAppUserId(), null, user.getAuthorities());
 
                 SecurityContextHolder.getContext().setAuthentication(token);
             }
