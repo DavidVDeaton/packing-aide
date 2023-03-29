@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,7 +32,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public AppUser findByUsername(String username) {
         List<String> roles = getRolesByUsername(username);
 
-        final String sql = "select app_user_id, username, password_hash, enabled "
+        final String sql = "select app_user_id, username, password_hash, disabled "
                 + "from app_user "
                 + "where username = ?;";
 
@@ -47,7 +46,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public AppUser findByUserId(int appUserId) {
         List<String> roles = getRolesByUserId(appUserId);
 
-        final String sql = "select app_user_id, username, password_hash, enabled "
+        final String sql = "select app_user_id, username, password_hash, disabled "
                 + "from app_user "
                 + "where app_user_id = ?;";
 
@@ -87,11 +86,11 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
         final String sql = "update app_user set "
                 + "username = ?, "
-                + "enabled = ? "
+                + "disabled = ? "
                 + "where app_user_id = ?";
 
         jdbcTemplate.update(sql,
-                user.getUsername(), !user.isEnabled(), user.getAppUserId());
+                user.getUsername(), user.isEnabled(), user.getAppUserId());
 
         updateRoles(user);
     }

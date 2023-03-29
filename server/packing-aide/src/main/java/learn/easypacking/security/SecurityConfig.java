@@ -14,11 +14,9 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final JwtConverter converter;
-//    private final UserDetailsService userDetailsService;
 
     public SecurityConfig(JwtConverter converter) {
         this.converter = converter;
-//        this.userDetailsService = userDetailService;
     }
 
     @Bean
@@ -43,18 +41,24 @@ public class SecurityConfig {
                         "/api/item/user/container/*",
                         "/api/location/*",
                         "/api/todo/*").hasAnyAuthority("USER")
-//                .antMatchers(HttpMethod.POST,
-//                        "/api/container",
-//                        "api/container/*",
-//                        "api/container/event/*",
-//                        "/api/event/*",
-//                        "/api/event/user/*",
-//                        "/api/item",
-//                        "api/item/*",
-//                        "api/item/user/*",
-//                        "api/item/user/container/*",
-//                        "api/location/*",
-//                        "api/todo/*").hasAnyAuthority("USER")
+                .antMatchers(HttpMethod.POST,
+                        "/api/container",
+                        "/api/event",
+                        "/api/item",
+                        "/api/location",
+                        "/api/todo").hasAnyAuthority("USER")
+                .antMatchers(HttpMethod.PUT,
+                        "/api/container/*",
+                        "/api/event/*",
+                        "/api/item/*",
+                        "/api/location/*",
+                        "/api/todo/*").hasAnyAuthority("USER")
+                .antMatchers(HttpMethod.DELETE,
+                        "/api/container/*",
+                        "/api/event/*",
+                        "/api/item/*",
+                        "/api/location/*",
+                        "/api/todo/*").hasAnyAuthority("USER")
                 .antMatchers("/**").denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(authConfig), converter))
