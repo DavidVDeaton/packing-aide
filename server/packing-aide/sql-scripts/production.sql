@@ -6,7 +6,7 @@ create table app_user (
     app_user_id int primary key auto_increment,
     username varchar(50) not null unique,
     password_hash varchar(2048) not null,
-    enabled bit not null default(1)
+    disabled bit not null default(0)
 );
 
 create table app_role (
@@ -27,14 +27,14 @@ create table app_user_role (
         references app_role(app_role_id)
 );
 
-create table location (
-	location_id int primary key auto_increment,
-    street_address varchar(255),
-    city varchar(50),
-    zip varchar(20),
-    state varchar(2),
-    country varchar(50)
-);
+-- create table location (
+-- 	location_id int primary key auto_increment,
+--     street_address varchar(255),
+--     city varchar(50),
+--     zip varchar(20),
+--     state varchar(2),
+--     country varchar(50)
+-- );
 
 create table `event` (
 	event_id int primary key auto_increment,
@@ -43,17 +43,11 @@ create table `event` (
     start_date varchar(50),
     end_date varchar(50), 
     app_user_id int not null,
-    start_location_id int not null,
-    end_location_id int not null,
+    start_location_id int,
+    end_location_id int,
     constraint fk_event_user_id
         foreign key (app_user_id)
-        references app_user(app_user_id),
-    constraint fk_event_start_location_id
-		foreign key (start_location_id)
-        references location(location_id),
-	constraint fk_event_end_location_id
-		foreign key (end_location_id)
-        references location(location_id)
+        references app_user(app_user_id)
 );
 
 create table todo(
@@ -99,10 +93,10 @@ insert into app_role (`name`) values
     ('ADMIN');
 
 -- passwords are set to "P@ssw0rd!"
-insert into app_user (username, password_hash, enabled)
+insert into app_user (username, password_hash, disabled)
     values
-    ('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
-    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1);
+    ('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
 
 insert into app_user_role
     values

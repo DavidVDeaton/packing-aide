@@ -3,7 +3,6 @@ package learn.easypacking.domain;
 import learn.easypacking.data.ItemRepository;
 import learn.easypacking.models.Container;
 import learn.easypacking.models.Item;
-import learn.easypacking.models.Location;
 import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.stereotype.Service;
 
