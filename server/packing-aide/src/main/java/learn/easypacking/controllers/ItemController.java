@@ -36,7 +36,7 @@ public class ItemController {
         return ResponseEntity.ok(item);
     }
 
-    @GetMapping("/appUser/{appUserId}")
+    @GetMapping("/user/{appUserId}")
     public List<Item> findByUserId(@PathVariable int appUserId) throws DataAccessException {
         return service.findByUserId(appUserId);
     }

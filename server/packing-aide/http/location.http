@@ -1,0 +1,33 @@
+@url = http://localhost:8080/api/location
+@token = jh
+GET {{url}}/2 HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "streetAddress": "http test",
+    "city": "http test",
+    "zip": "http test",
+    "state": "http test",
+    "country": "test"
+}
+
+###
+
+PUT {{url}}/5 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "locationId": 5,
+    "streetAddress": "http update",
+    "city": "http update",
+    "zip": "http update",
+    "state": "http update",
+    "country": "update"
+}
