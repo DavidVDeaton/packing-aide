@@ -86,9 +86,6 @@ public class ContainerService {
         if(container.getEventId() < 1) {
             result.setMessages("container eventId is required", ResultType.INVALID);
         }
-        if(container.getContainerId() < 1) {
-            result.setMessages("container Id is 0", ResultType.INVALID);
-        }
         return result;
     }
 }

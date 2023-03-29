@@ -83,10 +83,6 @@ public class ItemService {
             result.setMessages("Item cannot be null", ResultType.INVALID);
             return result;
         }
-        if (item.getItemId() == 0) {
-            result.setMessages("Item Id cannot be zero", ResultType.INVALID);
-            return result;
-        }
         if (item.getContainerId() == 0) {
             result.setMessages("Container Id cannot be zero", ResultType.INVALID);
             return result;

@@ -86,12 +86,12 @@ public class ContainersJdbcTemplateRepository implements ContainersRepository{
     @Override
     @Transactional
     public boolean deleteById(int containerId) {
-        List<Item> items  = jdbcTemplate.query("select * from item where container_id =?;",
-                new ItemMapper(), containerId).stream().collect(Collectors.toList());
-
-        for(int i = 0; i < items.size(); i++) {
-            jdbcTemplate.update("delete from item where container_id = ?;", items.get(i).getContainerId());
-        }
+//        List<Item> items  = jdbcTemplate.query("select * from item where container_id =?;",
+//                new ItemMapper(), containerId).stream().collect(Collectors.toList());
+//
+//        for(int i = 0; i < items.size(); i++) {
+            jdbcTemplate.update("delete from item where container_id = ?;", containerId);
+//        }
         return jdbcTemplate.update("delete from container where container_id = ?;", containerId) > 0;
     }
 

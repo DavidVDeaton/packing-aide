@@ -41,7 +41,7 @@ public class ContainerController {
 
     @PostMapping
     public ResponseEntity<Object> createContainer (@RequestBody Container container) throws DataAccessException {
-        Result result = service.createContainer(container);
+        Result<Container> result = service.createContainer(container);
         if (!result.isSuccess()) {
             return new ResponseEntity<>(result.getMessages(), HttpStatus.BAD_REQUEST);
         }
@@ -63,7 +63,7 @@ public class ContainerController {
 
     @DeleteMapping("/{containerId}")
     public ResponseEntity<Object> deleteById(@PathVariable int containerId) throws DataAccessException {
-        Result result = service.deleteById(containerId);
+        Result<Container> result = service.deleteById(containerId);
         if (!result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT); // 404
         }
