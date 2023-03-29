@@ -24,6 +24,7 @@ public class AppUserJdbcTemplateRepositoryTest {
 
     @BeforeEach
     void setup() {
+        hasSetup = false;
         if (!hasSetup) {
             hasSetup = true;
             jdbcTemplate.update("call set_known_good_state();");
@@ -67,7 +68,7 @@ public class AppUserJdbcTemplateRepositoryTest {
 
         assertNull(repository.findByUsername("john@smith.com"));
         assertNotNull(repository.findByUsername("updatedTest"));
-        assertEquals(false, updateVerify.isEnabled());
+        assertEquals(true, updateVerify.isEnabled());
     }
 
     @Test

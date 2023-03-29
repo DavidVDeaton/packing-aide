@@ -25,6 +25,7 @@ class ItemJdbcTemplateRepositoryTest {
     static boolean hasSetup = false;
     @BeforeEach
     void setup() {
+        hasSetup = false;
         if (!hasSetup){
             jdbcTemplate.update("call set_known_good_state();");
             hasSetup = true;

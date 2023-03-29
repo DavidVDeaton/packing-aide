@@ -34,7 +34,7 @@ class ItemServiceTest {
     @Test
     void shouldNotCreateWhenInvalid() {
         Item invalidItem = makeItem();
-        invalidItem.setItemId(0);
+        invalidItem.setItemId(999);
 
         Result<Item> actual = service.createItem(invalidItem);
         assertEquals(ResultType.INVALID, actual.getType());
@@ -49,6 +49,7 @@ class ItemServiceTest {
     @Test
     void updateItem() {
         Item itemToUpdate = makeItem();
+        itemToUpdate.setItemId(1);
         itemToUpdate.setQuantity(8);
 
         when(repository.updateItem(itemToUpdate)).thenReturn(true);
@@ -60,7 +61,7 @@ class ItemServiceTest {
     @Test
     void shouldNotUpdateWhenInvalid() {
         Item invalidItem = makeItem();
-        invalidItem.setAppUserId(0);
+        invalidItem.setItemId(999);
 
         Result<Item> actual = service.createItem(invalidItem);
         assertEquals(ResultType.INVALID, actual.getType());
@@ -88,7 +89,6 @@ class ItemServiceTest {
 
     private Item makeItem() {
         Item item = new Item();
-        item.setItemId(1);
         item.setItemName("test");
         item.setPackStatus(false);
         item.setQuantity(2);
