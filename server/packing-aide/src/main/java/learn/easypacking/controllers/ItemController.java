@@ -2,10 +2,7 @@ package learn.easypacking.controllers;
 
 import learn.easypacking.domain.ItemService;
 import learn.easypacking.domain.Result;
-import learn.easypacking.models.Event;
 import learn.easypacking.models.Item;
-import learn.easypacking.models.Location;
-import org.apache.coyote.Response;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
