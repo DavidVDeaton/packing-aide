@@ -1,6 +1,6 @@
 @url = http://localhost:8080/api/container
 
-@token =
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYWNraW5nLWFpZGUiLCJzdWIiOiJqb2huQHNtaXRoLmNvbSIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjgwMTEwMjc5fQ.YRPlmObk9Vk0X2EtcgEmQ5w6WeWrtVCPS1uEWYnoZYI
 
 GET {{url}} HTTP/1.1
 Authorization: Bearer {{token}}

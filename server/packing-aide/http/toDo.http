@@ -1,7 +1,7 @@
 @url = http://localhost:8080/api/todo
-@token =
+@token = 
 
-GET {{url}}/2 HTTP/1.1
+GET {{url}}/4 HTTP/1.1
 Authorization: Bearer {{token}}
 
 ###

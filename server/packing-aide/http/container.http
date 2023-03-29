@@ -2,6 +2,7 @@
 
 @token = 
 
+
 GET {{url}} HTTP/1.1
 Authorization: Bearer {{token}}
 
