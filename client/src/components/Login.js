@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { useState } from "react";
+import UserContext from "../contexts/UserContext";
 
-export default function Login(){
+export default function Login(props){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
