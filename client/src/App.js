@@ -2,9 +2,14 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
-import Landing from './components/Landing';
+import Landing from './components/Landing page/Landing';
 import jwtDecode from 'jwt-decode';
+<<<<<<< HEAD
 import UserHome from './layout/UserHome';
+=======
+import EventForm from './components/EventForm';
+import UserHome from './components/UserHome';
+>>>>>>> ea36905c30b7ca600fff2f68242ef3eebbd33693
 
 
 function App() {
@@ -50,6 +55,7 @@ function App() {
     url
   };
 
+  console.log(event);
   
   const refreshData = () => {
     if(user != null){
@@ -71,7 +77,7 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-  
+
   return (
     <BrowserRouter>
     <UserContext.Provider value={authorities}>
@@ -79,7 +85,7 @@ function App() {
        <Routes>
          <Route path="/" element={<Landing authenticationUrl={authenticationUrl} event={event}/>} />
          <Route path="/userhome" element={<UserHome event={event} />} />
-         <Route path="/createevent" element={<CreateEvent event={event} />} />
+         <Route path="/createevent" element={<EventForm event={event} />} />
          {/* <Route path="/event" element={<Event />} />
          <Route path="*" element={<NotFound />} /> */}
        </Routes>
