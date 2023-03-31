@@ -10,8 +10,13 @@ import EventForm from './components/EventForm';
 
 function App() {
 
-  const url = "http://3.135.185.195:8080/api";
-  const authenticationUrl = "http://3.135.185.195:8080/api/authenticate";
+
+  // const url = "http://3.135.185.195:8080/api";
+  // const authenticationUrl = "http://3.135.185.195:8080/api/authenticate";
+
+  const url = "http://localhost:8080/api";
+  const authenticationUrl = "http://localhost:8080/api/authenticate";
+
 
   const [user, setUser] = useState({});
   const [event, setEvent] = useState([]);

@@ -3,17 +3,19 @@ import ExpandingList from "../components/ExpandingList";
 
 export default function UserHome(props) {
     const event = props.event;
+    const move = false;
+    const vacation = true;
 
     return (
         <main>
-            <section>
+            <section className="left-align">
                 <ExpandingList event={event} text="Upcoming Events" past="n" />
             </section>
-            <section className="two-columns">
-                <InternalNavCard text="Plan a New Vacation" cardCSS="vacation-card" />
-                <InternalNavCard text="Plan a New Move" cardCSS="move-card" />
+            <section className="two-column-even-display">
+                <InternalNavCard text="Plan a New Vacation" cardCSS="vacation-card card" eventType={vacation} />
+                <InternalNavCard text="Plan a New Move" cardCSS="move-card card" eventType={move}  />
             </section>
-            <section>
+            <section className="left-align">
                 <ExpandingList event={event} text="Past Events" past="y" />
             </section>
             

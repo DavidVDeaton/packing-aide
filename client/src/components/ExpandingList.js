@@ -13,8 +13,10 @@ export default function ExpandingList(props) {
 
     // Build Link to Event Specific Page
     console.log(date);
+    console.log(events);
 
-    for (let i = 0; i < events.length(); i++) {
+
+    for (let i = 0; i < events.length; i++) {
 
         if (date > events[i].end_date) {
             pastEvents.push(events[i]) 
