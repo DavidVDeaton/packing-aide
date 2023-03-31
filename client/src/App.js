@@ -4,18 +4,14 @@ import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
 import Landing from './components/Landing page/Landing';
 import jwtDecode from 'jwt-decode';
-<<<<<<< HEAD
 import UserHome from './layout/UserHome';
-=======
 import EventForm from './components/EventForm';
-import UserHome from './components/UserHome';
->>>>>>> ea36905c30b7ca600fff2f68242ef3eebbd33693
 
 
 function App() {
 
-  const url = "http://3.135.185.195:8080/api";
-  const authenticationUrl = "http://3.135.185.195/api/authenticate";
+  const url = "http://localhost:8080/api";
+  const authenticationUrl = "http://localhost/api/authenticate";
 
   const [user, setUser] = useState({});
   const [event, setEvent] = useState([]);
