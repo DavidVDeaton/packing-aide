@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
 import Landing from './components/Landing';
 import jwtDecode from 'jwt-decode';
+import UserHome from './layout/UserHome';
 
 
 function App() {
 
-  const url = "http://localhost:8080/api";
-  const authenticationUrl = "http://localhost:8080/api/authenticate";
+  const url = "http://3.135.185.195:8080/api";
+  const authenticationUrl = "http://3.135.185.195/api/authenticate";
 
   const [user, setUser] = useState({});
   const [event, setEvent] = useState([]);

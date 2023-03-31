@@ -9,13 +9,9 @@ export default function UserHome(props) {
             <section>
                 <ExpandingList event={event} text="Upcoming Events" past="n" />
             </section>
-            <section>
-                <div>
-                    <InternalNavCard text="Plan a New Vacation" />
-                </div>
-                <div>
-                    <InternalNavCard text="Plan a New Move" />
-                </div>
+            <section className="two-columns">
+                <InternalNavCard text="Plan a New Vacation" cardCSS="vacation-card" />
+                <InternalNavCard text="Plan a New Move" cardCSS="move-card" />
             </section>
             <section>
                 <ExpandingList event={event} text="Past Events" past="y" />
