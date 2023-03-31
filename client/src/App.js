@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
-import Landing from './components/Landing';
+import Landing from './components/Landing page/Landing';
 import jwtDecode from 'jwt-decode';
 import EventForm from './components/EventForm';
 import UserHome from './components/UserHome';
@@ -73,7 +73,7 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-  
+
   return (
     <BrowserRouter>
     <UserContext.Provider value={authorities}>
