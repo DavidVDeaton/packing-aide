@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import Login from "./Login";
 import boxes from "../../images/boxes.png";
@@ -15,10 +14,10 @@ export default function Landing(props){
             <Login authenticationUrl={props.authenticationUrl}/>
             <img src={luggages} id="luggageImage" width="300" />
             </section>
-            <section class="aboutContainer">
+            <section className="aboutContainer">
 
             </section>
-            <section class="featuresContainer">
+            <section className="featuresContainer">
 
             </section>
         </main>
