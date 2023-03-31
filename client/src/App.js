@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
-import Landing from './components/Landing';
+import Landing from './components/Landing page/Landing';
 import jwtDecode from 'jwt-decode';
 
 
@@ -70,15 +70,15 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-  
+
   return (
     <BrowserRouter>
     <UserContext.Provider value={authorities}>
        {/* <NavBar /> */}
        <Routes>
          <Route path="/" element={<Landing authenticationUrl={authenticationUrl} event={event}/>} />
-         <Route path="/userhome" element={<UserHome event={event} />} />
-         <Route path="/createevent" element={<CreateEvent event={event} />} />
+         {/* <Route path="/userhome" element={<UserHome event={event} />} />
+         <Route path="/createevent" element={<CreateEvent event={event} />} /> */}
          {/* <Route path="/event" element={<Event />} />
          <Route path="*" element={<NotFound />} /> */}
        </Routes>
