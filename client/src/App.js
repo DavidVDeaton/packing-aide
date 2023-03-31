@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
 import Landing from './components/Landing page/Landing';
 import jwtDecode from 'jwt-decode';
+import EventForm from './components/EventForm';
+import UserHome from './components/UserHome';
 
 
 function App() {
@@ -49,6 +51,7 @@ function App() {
     url
   };
 
+  console.log(event);
   
   const refreshData = () => {
     if(user != null){
@@ -77,8 +80,8 @@ function App() {
        {/* <NavBar /> */}
        <Routes>
          <Route path="/" element={<Landing authenticationUrl={authenticationUrl} event={event}/>} />
-         {/* <Route path="/userhome" element={<UserHome event={event} />} />
-         <Route path="/createevent" element={<CreateEvent event={event} />} /> */}
+         <Route path="/userhome" element={<UserHome event={event} />} />
+         <Route path="/createevent" element={<EventForm event={event} />} />
          {/* <Route path="/event" element={<Event />} />
          <Route path="*" element={<NotFound />} /> */}
        </Routes>

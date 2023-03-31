@@ -1,4 +1,4 @@
-@url = http://localhost:8080/api/event
+@url = http://3.135.185.195:8080/api/event
 
 @token = 
 
