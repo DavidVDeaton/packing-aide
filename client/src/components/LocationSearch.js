@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const URL = "https://nominatim.openstreetmap.org/?addressdetails=1&q=bakery+in+berlin+wedding&format=json&limit=1";
+
+const URL = "https://nominatim.openstreetmap.org/search?";
     
-export default LocationSearch = () => {
-
+export default function LocationSearch (props) {
+    // const{ selectPosition, setSelectPosition } = useState(props);
     const[searchText, setSearchText] = useState("");
     const[locationList, setLocationList] = useState([]);
+    useEffect(() => {
+        setSearchText(props.selectPosition.display_name)
+    }, [props.selectPosition])
 
     const submitSearch = () => {
         const parameters = {
@@ -27,13 +31,19 @@ export default LocationSearch = () => {
         <div>
             <div>
                 <input type="text" value={searchText} onChange={(e) => {setSearchText(e.target.value)}}/>
-                <button value="Search" onClick={() => {submitSearch}}/>
+                <button value="Search" onClick={() => {submitSearch()}}/>
             </div>
             <div>
                 <ul>
                 {locationList.map((location) => {
                     return(
-                        <li key={location.osm_id}>{location.display_name}</li>
+                        <div key={location.osm_id}>
+                            <button onClick={() => {
+                                props.setSelectPosition(location)
+                                setLocationList([])
+                            }}></button>
+                            {location.display_name}
+                        </div>
                     )
                 })}
                 </ul>
