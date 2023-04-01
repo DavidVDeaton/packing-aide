@@ -3,6 +3,7 @@ import UserContext from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Login(props){
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -48,6 +49,7 @@ export default function Login(props){
             const json = await response.json();
             const jwt_token = json.jwt_token;
             authorities.login(jwt_token);
+            clearFields();
             navigate("/userhome");
             window.localStorage.setItem("userToken", jwt_token);
         }
