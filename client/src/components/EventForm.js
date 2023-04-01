@@ -17,7 +17,6 @@ export default function EventForm(props) {
         formTemplate = props.event;
     }
 
-
     const [formState, setFormState] = useState(formTemplate);
     const [errors, setErrors] = useState([]);
     const [selectStartPosition, setSelectStartPosition] = useState({})

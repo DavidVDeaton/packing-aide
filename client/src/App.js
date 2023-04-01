@@ -84,8 +84,8 @@ console.log(authorities);
        <Routes>
          <Route path="/" element={<Landing authenticationUrl={authenticationUrl} event={event}/>} />
          <Route path="/userhome" element={<UserHome event={event} />} />
-         <Route path="/createmove" element={<EventForm event={event} />} />
-         <Route path="/createvacation" element={<EventForm event={event} />} />
+         <Route path="/createmove" element={<EventForm event={event} eventType="move" />} />
+         <Route path="/createvacation" element={<EventForm event={event} eventType="vacation" />} />
          {/* <Route path="/event" element={<Event />} />
          <Route path="*" element={<NotFound />} /> */}
        </Routes>
