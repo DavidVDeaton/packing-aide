@@ -1,19 +1,24 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
-import Landing from './components/Landing page/Landing';
+import Landing from './layout/Landing';
 import jwtDecode from 'jwt-decode';
+import Nav from './layout/Nav';
 import UserHome from './layout/UserHome';
 import EventForm from './components/EventForm';
 
-
 function App() {
 
-  const url = "http://localhost:8080/api";
-  const authenticationUrl = "http://localhost/api/authenticate";
 
-  const [user, setUser] = useState({});
+  // const url = "http://3.135.185.195:8080/api";
+  // const authenticationUrl = "http://3.135.185.195:8080/api/authenticate";
+
+  const url = "http://localhost:8080/api";
+  const authenticationUrl = "http://localhost:8080/api/authenticate";
+
+
+  const [user, setUser] = useState(null);
   const [event, setEvent] = useState([]);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
@@ -50,8 +55,6 @@ function App() {
     logout,
     url
   };
-
-  console.log(event);
   
   const refreshData = () => {
     if(user != null){
@@ -62,7 +65,6 @@ function App() {
     })
     .then((response) => response.json())
     .then((data) => setEvent(data))
-    console.log(event);
   }
 }
 
@@ -73,11 +75,12 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
+console.log(authorities);
 
   return (
     <BrowserRouter>
     <UserContext.Provider value={authorities}>
-       {/* <NavBar /> */}
+      <Nav />
        <Routes>
          <Route path="/" element={<Landing authenticationUrl={authenticationUrl} event={event}/>} />
          <Route path="/userhome" element={<UserHome event={event} />} />
