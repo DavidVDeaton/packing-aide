@@ -2,6 +2,7 @@ import InternalNavCard from "../components/InternalNavCard";
 import ExpandingList from "../components/ExpandingList";
 
 export default function UserHome(props) {
+
     // const events = [];
 
     // const event1 = {

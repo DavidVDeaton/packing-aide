@@ -37,10 +37,12 @@ export default function ExpandingList(props) {
             <div>
                 <div className="display-selected-card"> 
                 </div>
+
                 <div className="card-rows">{displayedEvents.map((event) => {
 
                         let cardCSS = "move-card"
                         if (event.event_type === 1) {
+
                             cardCSS = "vacation-card"
                         }
                         return (
@@ -57,3 +59,4 @@ export default function ExpandingList(props) {
         </div>
     );
 }
+
