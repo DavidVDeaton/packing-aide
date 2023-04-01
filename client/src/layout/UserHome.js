@@ -5,7 +5,7 @@ export default function UserHome(props) {
     const event = props.event;
     const move = false;
     const vacation = true;
-
+ 
     return (
         <main>
             <section className="left-align">

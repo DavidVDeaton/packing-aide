@@ -2,8 +2,8 @@ import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import Login from "../components/landingPage/Login";
 import About from "../components/landingPage/About";
-import boxes from "../../images/boxes.png";
-import luggages from "../../images/luggages.png";
+import boxes from "../images/boxes.png"
+import luggages from "../images/luggages.png";
 import Features from "../components/landingPage/Features";
 
 export default function Landing(props){
@@ -16,10 +16,10 @@ export default function Landing(props){
                 <Login authenticationUrl={props.authenticationUrl}/>
                 <img src={luggages} id="luggageImage" width="300" />
             </section>
-            <section className="aboutContainer">
+            <section id="aboutContainer">
                 <About />
             </section>
-            <section className="featuresContainer">
+            <section id="featuresContainer">
                 <Features />
             </section>
         </main>

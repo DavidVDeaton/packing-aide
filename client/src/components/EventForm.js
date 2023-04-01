@@ -4,7 +4,7 @@ import LocationSearch from "./LocationSearch";
 import { useNavigate } from "react-router-dom";
 
 export default function EventForm(props) {
-    
+
     let formTemplate;
     if(props.event === undefined) {
             formTemplate = {
