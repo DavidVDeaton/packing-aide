@@ -65,8 +65,8 @@ function App() {
     })
     .then((response) => response.json())
     .then((data) => setEvent(data))
+    }
   }
-}
 
   useEffect(refreshData, [user]);
   useEffect(() => {
