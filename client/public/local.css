@@ -197,6 +197,6 @@ nav {
     height: 8rem;
     border: 1px solid black;
     background-color: blue;
-    z-index: 2;
+    z-index: 1;
     position: absolute;
 }

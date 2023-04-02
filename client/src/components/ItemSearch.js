@@ -31,7 +31,7 @@ export default function ItemSearch (props) {
     const [searchText, setSearchText] = useState("");
 
     const submitSearch = (searchText) => {
-
+        
         for (let pop=0; pop<itemToDisplay.length; ) {
             itemToDisplay.pop();
         }

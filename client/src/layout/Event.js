@@ -34,7 +34,7 @@ export default function Event(props) {
                 {/* <ExpandingList text="ToDos" /> */}
             </section>
             <section className="left-align">
-                <ListCard eventId={params.id}/>
+                <ListCard eventId={params.id} event={eventToEdit}/>
             </section>
         </main>
     )

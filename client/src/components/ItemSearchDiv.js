@@ -8,7 +8,7 @@ export default function ItemSearchDiv() {
         <div className="left-align">
             <h3>Item Search</h3>
             <div>
-                <ItemSearch item={itemToDisplay} />
+                {/* <ItemSearch item={itemToDisplay} /> */}
             </div>
         </div>
     )
