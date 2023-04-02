@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
@@ -7,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import Nav from './layout/Nav';
 import UserHome from './layout/UserHome';
 import EventForm from './components/EventForm';
+import Event from "./layout/Event";
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [event, setEvent] = useState([]);
+  const [eventBeingUpdated, setEventBeingUpdated] = useState("");
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
   const login = (token) => {
@@ -75,7 +76,6 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-console.log(authorities);
 
   return (
     <BrowserRouter>
@@ -83,11 +83,11 @@ console.log(authorities);
       <Nav />
        <Routes>
          <Route path="/" element={<Landing authenticationUrl={authenticationUrl} event={event}/>} />
-         <Route path="/userhome" element={<UserHome event={event} />} />
-         <Route path="/createmove" element={<EventForm event={event} eventType="move" />} />
-         <Route path="/createvacation" element={<EventForm event={event} eventType="vacation" />} />
-         {/* <Route path="/event" element={<Event />} />
-         <Route path="*" element={<NotFound />} /> */}
+         <Route path="/userhome" element={<UserHome event={event} setEventBeingUpdated={setEventBeingUpdated}/>} />
+         <Route path="/createmove" element={<EventForm event={event} eventType="move" setEventBeingUpdated={setEventBeingUpdated} />} />
+         <Route path="/createvacation" element={<EventForm event={event} eventType="vacation" setEventBeingUpdated={setEventBeingUpdated} />} />
+         <Route path="/event" element={<Event eventBeingUpdated={eventBeingUpdated} />} />
+         {/* <Route path="*" element={<NotFound />} /> */}
        </Routes>
        {/* <Footer /> */}
     </UserContext.Provider>

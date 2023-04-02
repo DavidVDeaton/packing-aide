@@ -7,7 +7,6 @@ import luggages from "../images/luggages.png";
 import Features from "../components/landingPage/Features";
 
 export default function Landing(props){
-    const authorities = useContext(UserContext);
     
     return(
         <main id="landingPageContainer">
