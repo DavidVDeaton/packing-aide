@@ -34,7 +34,7 @@ function App() {
       token,
       hasRole(role) {
         return this.roles.includes(role);
-      },
+      }
     };
 
     console.log(user);
@@ -70,12 +70,15 @@ function App() {
 
   useEffect(refreshData, [user]);
   useEffect(() => {
-    if (localStorage.getItem("userToken")) {
+    if (localStorage.getItem("userToken") != null) {
       login(localStorage.getItem("userToken"));
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
+  if(!restoreLoginAttemptCompleted){
+    return (<div>loading</div>)
+  }
   return (
     <BrowserRouter>
     <UserContext.Provider value={authorities}>

@@ -171,6 +171,7 @@ nav {
     background-color: red;
     width: 100%;
     min-height: 10rem;
+    max-height: 30rem;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -183,20 +184,54 @@ nav {
     justify-content: space-between;
     padding: 0 1rem;
 }
+.formWrapper{
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+}
 .listSection{
     border: 1px solid black;
     background-color: white;
-    height: 5.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    min-height: 5.5rem;
+    max-height: 30rem;
+    overflow:scroll;
     width: 95%;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
-
+.listSection::-webkit-scrollbar{
+    /*figure out how to show scroll without impacting spacing of containers */
+   display: none;
+}
 #createContainerForm{
-    width: 20rem;
-    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 0 .5rem .5rem 0;
+}
+
+.container{
     border: 1px solid black;
-    background-color: blue;
-    z-index: 1;
-    position: absolute;
+    width: 10rem;
+    max-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container:hover{
+    background-color: #999999;
+}
+.containerButtons{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: .5rem .5rem 0 0;
+}
+.containerName{
+    padding-bottom: 3rem;
 }

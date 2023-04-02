@@ -33,8 +33,8 @@ export default function Event(props) {
             <section className="left-align">
                 {/* <ExpandingList text="ToDos" /> */}
             </section>
-            <section className="left-align">
-                <ListCard eventId={params.id} event={eventToEdit}/>
+            <section className="left-align" id="listCardSection">
+                <ListCard eventId={params.id} event={eventToEdit} listType="containers"/>
             </section>
         </main>
     )

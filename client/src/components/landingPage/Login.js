@@ -49,9 +49,9 @@ export default function Login(props){
             const json = await response.json();
             const jwt_token = json.jwt_token;
             authorities.login(jwt_token);
+            window.localStorage.setItem("userToken", jwt_token);
             clearFields();
             navigate("/userhome");
-            window.localStorage.setItem("userToken", jwt_token);
         }
     };
 
