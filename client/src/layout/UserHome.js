@@ -4,17 +4,6 @@ import ItemSearchDiv from "../components/ItemSearchDiv";
 
 export default function UserHome(props) {
 
-    console.log(props);
-
-    // const events = [];
-
-    // const event1 = {
-    //     eventId: 1,
-    //     eventName: "Event 1",
-    //     eventType: false,
-    //     startDate: ""
-    // }
-
     return (
         <main>
             <section className="left-align">

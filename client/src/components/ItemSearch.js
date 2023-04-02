@@ -30,20 +30,28 @@ export default function ItemSearch (props) {
 
     const [searchText, setSearchText] = useState("");
 
-
     const submitSearch = (searchText) => {
 
         for (let pop=0; pop<itemToDisplay.length; ) {
             itemToDisplay.pop();
         }
 
-        for (let i=0; i<items.length; i++) {
-            if (items[i].itemName.toUpperCase().includes(searchText.toUpperCase())) {
-                itemToDisplay.push(items[i]);
-                setSearchText("");
+        if (searchText.length > 2) {
+            for (let i=0; i<items.length; i++) {
+                if (items[i].itemName.toUpperCase().includes(searchText.toUpperCase())) {
+                    itemToDisplay.push(items[i]);
+                    setSearchText("");
+                }
+            }
+        } else {
+            for (let i=0; i<items.length; i++) {
+                if (items[i].itemName.toUpperCase() === searchText.toUpperCase()) {
+                    itemToDisplay.push(items[i]);
+                    setSearchText("");
+                }
             }
         }
-        
+
     }
 
     return (
@@ -61,5 +69,4 @@ export default function ItemSearch (props) {
             </div>
         </div>
     )
-  
 }
