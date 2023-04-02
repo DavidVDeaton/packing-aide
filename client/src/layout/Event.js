@@ -1,5 +1,6 @@
 import ExpandingList from "../components/ExpandingList";
 import ItemSearchDiv from "../components/ItemSearchDiv";
+import ListCard from "../components/eventPage/ListCard"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -32,8 +33,8 @@ export default function Event(props) {
             <section className="left-align">
                 {/* <ExpandingList text="ToDos" /> */}
             </section>
-            <section className="left-align">
-                {/* <ExpandingList text="Containers" /> */}
+            <section className="left-align" id="listCardSection">
+                <ListCard eventId={params.id} event={eventToEdit} listType="containers"/>
             </section>
         </main>
     )
