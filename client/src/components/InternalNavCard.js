@@ -10,6 +10,6 @@ export default function InternalNavCard(props) {
     }
 
     return (
-        <Link to ={linkTo} className={props.cardCSS}>{props.text}</Link>
+        <Link to={linkTo} className={props.cardCSS}>{props.text}</Link>
     )
 }

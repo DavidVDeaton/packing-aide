@@ -18,12 +18,17 @@ export default function ExpandingList(props) {
 
     for (let i = 0; i < events.length; i++) {
 
-        if (date > events[i].end_date) {
+        let eventEndDate = new Date(events[i].endDate)
+
+        if (date > eventEndDate) {
             pastEvents.push(events[i]) 
         } else {
             futureEvents.push(events[i])
         }
     }
+
+    console.log(pastEvents);
+    console.log(futureEvents);
 
     if (past === "y") {
         displayedEvents = pastEvents;
@@ -33,23 +38,21 @@ export default function ExpandingList(props) {
 
     return (
         <div>
-            <h3 id="responsive-title">{props.text}</h3>
+            <h3 className="">{props.text}</h3>
             <div>
                 <div className="display-selected-card"> 
                 </div>
-
                 <div className="card-rows">{displayedEvents.map((event) => {
 
-                        let cardCSS = "move-card"
-                        if (event.event_type === 1) {
-
-                            cardCSS = "vacation-card"
+                        let cardCSS = "move-card card100 three-column-in-card"
+                        if (event.eventType === false) {
+                            cardCSS = "vacation-card card100 three-column-in-card"
                         }
                         return (
                             // onClick Function to take user to event specific page will be inserted into this div
                         <div className={cardCSS} >  
-                            <p>{event.event_name}</p>
-                            <p>{event.start_date} - {event.end_date}</p>
+                            <p class="left-align">{event.eventName}</p>
+                            <p>{event.startDate} - {event.endDate}</p>
                             <EditIcons />
                         </div>
                         );
@@ -59,4 +62,3 @@ export default function ExpandingList(props) {
         </div>
     );
 }
-

@@ -1,6 +1,6 @@
 export default function EditIcons() {
     return (
-        <div>
+        <div className="right-align">
             <button>Edit</button>
             <button>Delete</button>
         </div>

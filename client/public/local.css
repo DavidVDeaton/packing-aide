@@ -2,21 +2,22 @@
 body {
     display: grid;
     place-items: center;
+    margin: 0;
 }
 
 main {
-    padding: 2em;
     display: grid;
     place-items: center;
+    width: 100%;
 }
 
 section {
-    margin: 1em 0em;
+    margin: 1rem 0rem;
     display: grid;
     place-items: center;
-    width: 75vw;
-    padding: 1rem;
+    width: 80vw;
     border: 1px dotted #222222;
+    padding: 1rem;
 }
 
 /* Alignment CSS */
@@ -42,6 +43,7 @@ section {
     padding: 3rem 3rem;
     box-shadow: 2px 2px 8px #444444;
     border-radius: 10px;
+    width: 300px;
 }
 
 .card:hover {
@@ -49,13 +51,24 @@ section {
 
 }
 
+.card100 {
+    padding: .5rem 1rem;
+    box-shadow: 2px 2px 5px #444444;
+    border-radius: 10px;
+    margin: .5rem 1rem;
+}
+
+.card-rows {
+    display: grid;
+    width: 100%;
+}
+
 .vacation-card {
-    width: 300px;
-    background: linear-gradient(100deg, rgba(100,197,165,1) 0%, rgba(0,212,255,1) 35%, rgba(124,0,255,1) 95%);
+    background: linear-gradient(100deg, rgba(100,197,165,1) 0%, rgba(0,212,255,1) 85%);
 }
 
 .move-card {
-    width: 300px;
+    background: linear-gradient(100deg, #999999 0%, #aaaaaa 35%, #cccccc 95%);
 }
 
 
@@ -66,8 +79,90 @@ section {
     grid-gap: 6rem;
 }
 
+.three-column-in-card {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-gap: 1rem;
+}
+
 /* Misc CSS */
 a {
     text-decoration: none;
     color: black;
+}
+
+
+/* Sam's CSS */
+#landingPageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px red solid;
+    height: 100%;
+}
+#landingMainSection{
+    border: 1px black solid;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#loginCard{
+    border: 1px blue solid;
+    padding: 3rem;
+}
+
+.inputSection{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.loginInput{
+    width: 15rem;
+    height: 2rem;
+}
+
+#loginButtons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#featuresContent{
+    width: 100%;
+}
+#featureCards{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.featureCard{
+    border: solid 1px black;
+    width: 15rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.featureImage{
+    border: 1px solid red;
+    height: 14rem;
+    width: 100%;
+}
+
+nav {
+    padding: .5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 95vw;
+    grid-gap: 7.5rem;
+    border-bottom: 3.5px dashed #f8f8f8;
+}
+
+.navButton{
+    border: 1px solid black;
+    margin-right: 1rem;
 }
