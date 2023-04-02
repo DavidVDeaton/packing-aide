@@ -1,4 +1,7 @@
-import EditIcons from "./EditIcons";
+// import EditIcons from "./EditIcons";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import UserContext from '../contexts/UserContext';
 
 export default function ExpandingList(props) {
 
@@ -11,11 +14,6 @@ export default function ExpandingList(props) {
     let futureEvents = [];
     let displayedEvents = [];
 
-    // Build Link to Event Specific Page
-    console.log(date);
-    console.log(events);
-
-
     for (let i = 0; i < events.length; i++) {
 
         let eventEndDate = new Date(events[i].endDate)
@@ -27,13 +25,29 @@ export default function ExpandingList(props) {
         }
     }
 
-    console.log(pastEvents);
-    console.log(futureEvents);
-
     if (past === "y") {
         displayedEvents = pastEvents;
     } else {
         displayedEvents = futureEvents;
+    }
+
+    const navigate = useNavigate();
+
+    const editEvent = (eventId) => {
+        navigate(`/event/${eventId}`);
+    }
+
+    const url = useContext(UserContext);
+    console.log(url.url);
+
+    const deleteEvent = (eventId) => {
+
+        fetch(`${url.url}/event/${eventId}`, { 
+            method: "DELETE",
+            headers: {
+                  "Authorization": `Bearer ${url.user.token}`
+            }})
+        .then(navigate("/userhome"));
     }
 
     return (
@@ -53,7 +67,10 @@ export default function ExpandingList(props) {
                         <div className={cardCSS} >  
                             <p class="left-align">{event.eventName}</p>
                             <p>{event.startDate} - {event.endDate}</p>
-                            <EditIcons />
+                            <div className="right-align">
+                                <button onClick={() => {editEvent(event.eventId)}}>Edit</button>
+                                <button onClick={() => {deleteEvent(event.eventId)}}>Delete</button>
+                            </div>
                         </div>
                         );
                     })}

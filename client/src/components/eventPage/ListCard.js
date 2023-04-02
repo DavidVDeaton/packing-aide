@@ -1,16 +1,17 @@
+import { useParams } from "react-router-dom";
 import ListSection from "./ListSection";
+import CreateContainerForm from "./CreateContainerForm";
+import { useState } from "react";
 
-export default function ListCard(){
-
-    const createContainer = () => {
-        
-    }
+export default function ListCard(props){
+    const [containerFormOpen, setContainerFormOpen] = useState(false);
     return(
         <div className="listCard">
             <div className="listCardHeader">
                 <h3>props.listTitle</h3>
-                <button onClick={createContainer}>Add icon</button>
+                <button onClick={() => setContainerFormOpen(true)}>Add icon</button>
             </div>
+            {containerFormOpen && <CreateContainerForm />}
             <ListSection />
         </div>
     )

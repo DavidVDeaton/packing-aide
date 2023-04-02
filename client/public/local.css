@@ -191,3 +191,12 @@ nav {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
+
+#createContainerForm{
+    width: 20rem;
+    height: 8rem;
+    border: 1px solid black;
+    background-color: blue;
+    z-index: 2;
+    position: absolute;
+}

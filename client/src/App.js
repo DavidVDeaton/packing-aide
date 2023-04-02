@@ -20,7 +20,6 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [event, setEvent] = useState([]);
-  const [eventBeingUpdated, setEventBeingUpdated] = useState("");
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
   const login = (token) => {
@@ -83,10 +82,10 @@ function App() {
       <Nav />
        <Routes>
          <Route path="/" element={<Landing authenticationUrl={authenticationUrl} event={event}/>} />
-         <Route path="/userhome" element={<UserHome event={event} setEventBeingUpdated={setEventBeingUpdated}/>} />
-         <Route path="/createmove" element={<EventForm event={event} eventType="move" setEventBeingUpdated={setEventBeingUpdated} />} />
-         <Route path="/createvacation" element={<EventForm event={event} eventType="vacation" setEventBeingUpdated={setEventBeingUpdated} />} />
-         <Route path="/event" element={<Event eventBeingUpdated={eventBeingUpdated} />} />
+         <Route path="/userhome" element={<UserHome event={event} />} />
+         <Route path="/createmove" element={<EventForm event={event} eventType="move" />} />
+         <Route path="/createvacation" element={<EventForm event={event} eventType="vacation" />} />
+         <Route path="/event/:id" element={<Event event={event} />} />
          {/* <Route path="*" element={<NotFound />} /> */}
        </Routes>
        {/* <Footer /> */}
