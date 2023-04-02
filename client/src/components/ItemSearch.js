@@ -5,30 +5,27 @@ export default function ItemSearch (props) {
 
     const itemToDisplay = props.item;
 
+    const [items, setItems] = useState([]);
+
     const user = useContext(UserContext);
     const id = user.user.userId;
-
     const url = user.url;
     const token = user.user.token;
 
-    const [items, setItems] = useState([]);
-
-    const refreshData = () => {
-
+    useEffect( () => {
         fetch(`${url}/item/user/${id}`, {
-          headers: {
+            headers: {
             "Authorization": `Bearer ${token}`
-          }
+            }
         })
         .then((response) => response.json())
         .then((data) => setItems(data))
-    }
-
-    useEffect(refreshData, []);
+    }, []);
 
     console.log(items);
 
     const [searchText, setSearchText] = useState("");
+
 
     const submitSearch = (searchText) => {
 
@@ -36,22 +33,30 @@ export default function ItemSearch (props) {
             itemToDisplay.pop();
         }
 
-        if (searchText.length > 2) {
-            for (let i=0; i<items.length; i++) {
+        for (let i=0; i<items.length; i++) {
+            if (searchText.length>2){
                 if (items[i].itemName.toUpperCase().includes(searchText.toUpperCase())) {
                     itemToDisplay.push(items[i]);
                     setSearchText("");
                 }
-            }
-        } else {
-            for (let i=0; i<items.length; i++) {
-                if (items[i].itemName.toUpperCase() === searchText.toUpperCase()) {
+            } else {
+                if (items[i].itemName.toUpperCase()===searchText.toUpperCase()) {
                     itemToDisplay.push(items[i]);
                     setSearchText("");
                 }
             }
         }
 
+        const noItem = {
+            itemName: "No Item",
+            description: "Please refine search."
+        }
+
+        if (itemToDisplay.length < 1) {
+            itemToDisplay.push(noItem);
+            setSearchText("");
+        }
+        
     }
 
     return (
@@ -69,4 +74,5 @@ export default function ItemSearch (props) {
             </div>
         </div>
     )
+  
 }

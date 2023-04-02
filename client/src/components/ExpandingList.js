@@ -1,14 +1,17 @@
 // import EditIcons from "./EditIcons";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from '../contexts/UserContext';
 
 export default function ExpandingList(props) {
 
+
     // useEffect(props.refreshData, []);
+    console.log(props.refreshData);
     const past = props.past;
     const date = new Date;
-    const events = props.event;
+    // const events = props.event;
+    const [events, setEvents] = useState([props.event]);
 
     let pastEvents = [];
     let futureEvents = [];
@@ -47,12 +50,26 @@ export default function ExpandingList(props) {
             headers: {
                   "Authorization": `Bearer ${url.user.token}`
             }})
+        .then(refreshData, [])
         .then(navigate("/userhome"));
     }
 
+    const refreshData = () => {
+        fetch(`${url.url}/event/user/${url.user.userId}`, {
+            headers: {
+                "Authorization": `Bearer ${url.user.token}`
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => setEvents(data))
+    }
+
+    useEffect(refreshData, []);
+  
+
     return (
         <div>
-            <h3 className="">{props.text}</h3>
+            <h3>{props.text}</h3>
             <div>
                 <div className="display-selected-card"> 
                 </div>
