@@ -28,7 +28,7 @@ export default function ItemSearch (props) {
 
 
     const submitSearch = (searchText) => {
-
+        
         for (let pop=0; pop<itemToDisplay.length; ) {
             itemToDisplay.pop();
         }

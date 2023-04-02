@@ -6,16 +6,16 @@ import jwtDecode from 'jwt-decode';
 import Nav from './layout/Nav';
 import UserHome from './layout/UserHome';
 import EventForm from './components/EventForm';
-import Event from './layout/Event';
+import Event from "./layout/Event";
 
 function App() {
 
 
-  const url = "http://3.135.185.195:8080/api";
-  const authenticationUrl = "http://3.135.185.195:8080/api/authenticate";
+  // const url = "http://3.135.185.195:8080/api";
+  // const authenticationUrl = "http://3.135.185.195:8080/api/authenticate";
 
-  // const url = "http://localhost:8080/api";
-  // const authenticationUrl = "http://localhost:8080/api/authenticate";
+  const url = "http://localhost:8080/api";
+  const authenticationUrl = "http://localhost:8080/api/authenticate";
 
 
   const [user, setUser] = useState(null);
@@ -34,7 +34,7 @@ function App() {
       token,
       hasRole(role) {
         return this.roles.includes(role);
-      },
+      }
     };
 
     console.log(user);
@@ -70,13 +70,15 @@ function App() {
 
   useEffect(refreshData, [user]);
   useEffect(() => {
-    if (localStorage.getItem("userToken")) {
+    if (localStorage.getItem("userToken") != null) {
       login(localStorage.getItem("userToken"));
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-console.log(authorities);
 
+  if(!restoreLoginAttemptCompleted){
+    return (<div>loading</div>)
+  }
   return (
     <BrowserRouter>
     <UserContext.Provider value={authorities}>
