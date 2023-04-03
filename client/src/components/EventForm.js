@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import Errors from "./Errors";
-import LocationSearch from "./LocationSearch"; 
+import LocationSearch from "./LocationSearch";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 
@@ -8,6 +8,7 @@ import UserContext from "../contexts/UserContext";
 export default function EventForm(props) {
     
     const authorities = useContext(UserContext);
+    
 
     let formTemplate;
     // if(props.event === undefined) {
@@ -18,7 +19,7 @@ export default function EventForm(props) {
             endLocationId: "",
             appUserId: authorities.user.userId,
             eventName:"",
-            eventType: props.eventType,
+            eventType: false,
         }
     // } else {
     //     formTemplate = props.event;
@@ -28,7 +29,7 @@ export default function EventForm(props) {
     const [errors, setErrors] = useState([]);
     const [selectStartPosition, setSelectStartPosition] = useState({})
     const [selectEndPosition, setSelectEndPosition] = useState({})
-
+    const navigate = useNavigate();
 
 
     // const authorities = useContext(UserContext);
@@ -37,12 +38,12 @@ export default function EventForm(props) {
         setFormState(formTemplate);    
     }, [props.event])
 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         let method;
         let url;
-        const navigate = useNavigate;
+        
+
 
    
         if(props.event === undefined || props.event.eventId === undefined) {
@@ -53,21 +54,21 @@ export default function EventForm(props) {
             url = `${authorities.url}/event/${props.event.eventId}`;
         }
 
-        setFormState({
-            ...formState,
-            startLocationId: selectStartPosition.osm_id,
+        // setFormState({
+        //     ...formState,
+        //     startLocationId: selectStartPosition.osm_id,
 
-          });
+        //   });
 
-          setFormState({
-            ...formState,
-            endLocationId: selectEndPosition.osm_id,
-          });
+        //   setFormState({
+        //     ...formState,
+        //     endLocationId: selectEndPosition.osm_id,
+        //   });
 
 
           console.log(selectStartPosition.osm_id)
           console.log(selectEndPosition.osm_id)
-        
+          console.log(formState)
     
         const response = await fetch(url, {
             method: method,
@@ -79,10 +80,10 @@ export default function EventForm(props) {
             body: JSON.stringify(formState),
           });
           if (response.status >= 200 && response.status < 300) {
-            props.refreshData();
+            // props.refreshData();
             setFormState(formTemplate);
             setErrors([]);
-            navigate("/event");
+            navigate(`/event/${props.event.eventId}`);  
           } else {
             const errors = await response.json();
             setErrors(errors);
@@ -91,7 +92,7 @@ export default function EventForm(props) {
 
     return(
         <form id="eventForm" onSubmit = {handleSubmit}>
-            <Errors errors = {errors}/>
+            {/* <Errors errors = {errors}/> */}
             
             <div id="eventName">
                 <label htmlFor = "eventName-input">Event Name:</label>
@@ -111,7 +112,7 @@ export default function EventForm(props) {
                     <input
                     id = "startDate-input"
                     type = "date"
-                    value={formState.startDate}
+                    value={formState.startDate.toString()}
                     onChange={(event) => {
                         setFormState({ ...formState, startDate: event.target.value })
                     }}
@@ -123,7 +124,7 @@ export default function EventForm(props) {
                     <input
                     id = "endDate-input"
                     type = "date"
-                    value={formState.endDate}
+                    value={formState.endDate.toString()}
                     onChange={(event) => {
                         setFormState({ ...formState, endDate: event.target.value })
                     }}
@@ -135,36 +136,17 @@ export default function EventForm(props) {
                 <div>
                     <label htmlFor = "startLocationId-input">Start Location:</label>
                     <LocationSearch selectPosition={selectStartPosition} setSelectPosition={setSelectStartPosition} selectStartPosition={selectStartPosition} setFormState={setFormState} formState={formState} locationType = "start"/>
-                    {/* <input
-                    id = "startLocation-input"
-                    type = "text"
-                    value={formState.startLocation}
-                    onChange={(event) => {
-                        setFormState({ ...formState, startLocation: event.target.value })
-                    }}
-                    /> */}
                 </div>
 
                 <div>
                     <label htmlFor = "endLocationId-input">End Location:</label>
                     <LocationSearch selectPosition={selectEndPosition} setSelectPosition={setSelectEndPosition} selectEndPosition={selectEndPosition} setFormState={setFormState} formState={formState} locationType = "end"/>
-                    {/* <input
-                    id = "endLocation-input"
-                    type = "text"
-                    value={formState.endLocation}
-                    onChange={(event) => {
-                        setFormState({ ...formState, endLocation: event.target.value })
-                    }}
-                    /> */}
                 </div>
             </div>
 
             <div id="eventFormSubmitButton">
                 <input type = "submit" value = "Submit"/>
             </div>
-
         </form>
     )
-
-
 }
