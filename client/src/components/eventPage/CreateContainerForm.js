@@ -26,10 +26,10 @@ export default function CreateContainerForm(props){
                 body: JSON.stringify(container)
             })
             if(response.status >= 200 && response.status < 300){
-                props.refreshContainerData();
+                props.refreshData();
                 setContainer(containerTemplate);
                 setErrors([]);
-                props.setContainerFormOpen(false);
+                props.setAddFormOpen(false);
             } else{
                 const error = await response.json();
                 setErrors(error);
