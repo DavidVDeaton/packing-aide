@@ -1,8 +1,14 @@
 import InternalNavCard from "../components/InternalNavCard";
 import ExpandingList from "../components/ExpandingList";
 import ItemSearchDiv from "../components/ItemSearchDiv";
+import { useContext } from "react";
+import UserContext from '../contexts/UserContext';
+import EditIcons from "../components/EditIcons";
 
 export default function UserHome(props) {
+
+    const user = useContext(UserContext);
+    console.log(user);
 
     return (
         <main>
@@ -19,7 +25,6 @@ export default function UserHome(props) {
             <section className="left-align">
                 <ExpandingList event={props.event} text="Past Events" past="y" />
             </section>
-            
         </main>
     )
 }

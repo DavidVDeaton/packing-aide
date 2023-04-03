@@ -12,17 +12,6 @@ export default function ItemSearch (props) {
     const [containers, setContainers] = useState([]);
 
     const displayObjects= [];
-        // {
-        //     itemName: "itemToDisplay[i].itemName",
-        //     description: "itemToDisplay[i].description",
-        //     containerName: "temporaryContainerObject.containerName",
-        //     parentName: "temporaryParentContainerObject.containerName",
-        //     eventName: "temporaryEventObject.eventName",
-        //     eventStart: "temporaryEventObject.startDate",
-        //     eventEnd: "temporaryEventObject.endDate"
-        // }
-
-    // const events = [];
 
     const user = useContext(UserContext);
     const id = user.user.userId;
@@ -71,13 +60,11 @@ export default function ItemSearch (props) {
                 if (items[i].itemName.toUpperCase().includes(searchText.toUpperCase())) {
                     itemToDisplay.push(items[i]);
                     setSearchText("");
-                    // itemDisplay();
                 }
             } else {
                 if (items[i].itemName.toUpperCase()===searchText.toUpperCase()) {
                     itemToDisplay.push(items[i]);
                     setSearchText("");
-                    // itemDisplay();
                 }
             }
         }
@@ -91,7 +78,6 @@ export default function ItemSearch (props) {
             itemToDisplay.push(noItem);
             setSearchText("");
         }
-        
     }
 
     let temporaryContainerObject = {};
@@ -135,51 +121,6 @@ export default function ItemSearch (props) {
     }
 
     console.log(mainObjects);
-
-    // const itemDisplay = () => {
-    //     let temporaryContainerObject = {};
-    //     let temporaryParentContainerObject = {};
-    //     let temporaryEventObject = {};
-
-    //     for (let i=0; i<itemToDisplay.length; i++) {
-
-    //         for (let j=0; j<containers.length; j++) {
-    //             if (containers[j].containerId === itemToDisplay[i].containerId) {
-    //                 temporaryContainerObject = containers[j];
-    //             }
-    //         }
-
-    //         if (temporaryContainerObject.parentContainerId != 0) {
-    //             for (let k=0; k<containers.length; k++) {
-    //                 if (containers[k].containerId === temporaryContainerObject.parentContainerId) {
-    //                     temporaryParentContainerObject = containers[k];
-    //                 }
-    //             }
-    //         }
-
-    //         for (let l=0; l<events.length; l++) {
-    //             if (events[l].eventId === temporaryContainerObject.eventId) {
-    //                 temporaryEventObject = events[l];
-    //             }
-    //         }
-
-    //         mainObjects[i] = {
-    //             itemName: itemToDisplay[i].itemName,
-    //             description: itemToDisplay[i].description,
-    //             containerName: temporaryContainerObject.containerName,
-    //             parentName: temporaryParentContainerObject.containerName,
-    //             eventName: temporaryEventObject.eventName,
-    //             eventStart: temporaryEventObject.startDate,
-    //             eventEnd: temporaryEventObject.endDate
-    //         }
-
-    //         displayObjects.push(mainObjects[i]);
-    //         console.log(displayObjects);
-    //     }
-
-    //     console.log(mainObjects);
-    // }
-    // console.log(displayObjects);
 
     return (
         <div>

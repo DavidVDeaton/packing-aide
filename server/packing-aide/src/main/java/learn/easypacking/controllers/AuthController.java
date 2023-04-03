@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -84,6 +85,23 @@ public class AuthController {
         map.put("appUserId", result.getPayload().getAppUserId());
 
         return new ResponseEntity<>(map, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/api/update_account")
+    public ResponseEntity<?> updateAccount(@RequestBody AppUser appUser, String oldPassword) {
+
+        Result<AppUser> result = appUserService.updateUser(appUser, oldPassword);
+
+        // unhappy path...
+        if (!result.isSuccess()) {
+            return new ResponseEntity<>(result.getMessages(), HttpStatus.BAD_REQUEST);
+        }
+
+        // happy path...
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("appUserId", result.getPayload().getAppUserId());
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }
 

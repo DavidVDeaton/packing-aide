@@ -71,7 +71,6 @@ section {
     background: linear-gradient(100deg, #999999 0%, #aaaaaa 35%, #cccccc 95%);
 }
 
-
 /* Grid Column CSS */
 .two-column-even-display {
     display: grid;
@@ -85,12 +84,21 @@ section {
     grid-gap: 1rem;
 }
 
+.three-column-in-card-right {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-gap: 1rem;
+}
+
 /* Misc CSS */
 a {
     text-decoration: none;
     color: black;
 }
 
+.width100 {
+    width: 100%;
+}
 
 /* Sam's CSS */
 #landingPageContainer{
