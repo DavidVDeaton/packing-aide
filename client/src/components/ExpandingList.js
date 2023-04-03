@@ -5,12 +5,9 @@ import UserContext from '../contexts/UserContext';
 
 export default function ExpandingList(props) {
 
-
-    // useEffect(props.refreshData, []);
     console.log(props.refreshData);
     const past = props.past;
     const date = new Date;
-    // const events = props.event;
     const [events, setEvents] = useState([props.event]);
 
     let pastEvents = [];
@@ -65,6 +62,8 @@ export default function ExpandingList(props) {
     }
 
     useEffect(refreshData, []);
+  
+
     return (
         <div>
             <h3>{props.text}</h3>

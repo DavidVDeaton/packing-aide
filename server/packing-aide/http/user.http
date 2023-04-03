@@ -39,3 +39,20 @@ Content-Type: application/json
   "username": "bob@jones.com",
   "password": "P@ssw0rd!"
 }
+
+### Update an account... returns 201
+
+PUT {{url}}/update_account/6 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "username": "bob@jones.com",
+  "passwordNew": "H0meRun!"
+  "passwordOld": "P@ssw0rd!"
+}
+
+###
+
+DELETE {{url}}/delete_account/2 HTTP/1.1
+Authorization: Bearer {{token}}

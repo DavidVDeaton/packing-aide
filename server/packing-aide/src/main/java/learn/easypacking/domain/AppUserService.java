@@ -57,19 +57,20 @@ public class AppUserService implements UserDetailsService {
         return result;
     }
 
-    public Result<AppUser> updateUser(AppUser appUser, String oldPassword) {
-        Result<AppUser> result = validate(appUser.getUsername(), appUser.getPassword());
+    public Result<AppUser> updateUser(int appUserId, String username, String newPassword, String oldPassword) {
+        Result<AppUser> result = validate(username, newPassword);
         if (!result.isSuccess()) {
             return result;
         }
 
-        AppUser passwordVerify = repository.findByUserId(appUser.getAppUserId());
+        AppUser passwordVerifiedUser = repository.findByUserId(appUserId);
 
-        if (passwordVerify.getPassword() == encoder.encode(oldPassword)) {
+        if (passwordVerifiedUser.getPassword() == encoder.encode(oldPassword)) {
 
-            String password = encoder.encode(appUser.getPassword());
-            appUser.setPassword(password);
-            repository.update(appUser);
+            String password = encoder.encode(newPassword);
+            passwordVerifiedUser.setPassword(password);
+            passwordVerifiedUser.setUsername(username);
+            repository.update(passwordVerifiedUser);
         } else {
             result.setMessages("The original password you provided does not match our records.",
                     ResultType.INVALID);
