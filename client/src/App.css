@@ -1,0 +1,92 @@
+#landingPageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px red solid;
+    height: 100vh;
+}
+#landingMainSection{
+    border: 1px black solid;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 7rem;
+}
+
+#loginCard{
+    border: 1px blue solid;
+    padding: 3rem;
+}
+
+.inputSection{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.loginInput{
+    width: 15rem;
+    height: 2rem;
+}
+
+#loginButtons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#eventForm{
+    border: 3px solid black;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-top: 10%;
+    height: auto;
+}
+
+#eventName, #eventDates, #eventLocation, #eventFormSubmitButton {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#eventDates{
+    justify-content: space-evenly;
+}
+
+#eventLocation{
+    justify-content: space-evenly;
+}
+
+#eventName-input, #startDate-input, #endDate-input, #locationSearch {
+    height: 1.5rem;
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 1rem;
+}
+
+#searchResult {
+    font-size: 1rem;
+}
+
+
+.searchResult{
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #ffff;
+  z-index: 9;
+  color: grey;
+  padding-top: 0;
+}
+
+.hoverMe {
+    border: 1px solid black;
+}
+
+#hoverMe:hover{
+    color: black;
+    display: flex;
+}
+

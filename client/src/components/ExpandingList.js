@@ -65,8 +65,6 @@ export default function ExpandingList(props) {
     }
 
     useEffect(refreshData, []);
-  
-
     return (
         <div>
             <h3>{props.text}</h3>

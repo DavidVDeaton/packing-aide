@@ -3,6 +3,7 @@ import ItemSearchDiv from "../components/ItemSearchDiv";
 import ListCard from "../components/eventPage/ListCard"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import EventItemSearch from "../components/EventItemSearch";
 
 export default function Event(props) {
 
@@ -24,11 +25,13 @@ export default function Event(props) {
 
     useEffect(eventToEdit, [events]);
 
+    const item = [];
+
     return (
         <main>
             <section className="two-column-even-display">
                 {/* <ExpandingList events={editEvent} text={editEvent.eventName} /> */}
-                <ItemSearchDiv />
+                <EventItemSearch params={params.id} item={item} />
             </section>
             <section className="left-align">
                 {/* <ExpandingList text="ToDos" /> */}

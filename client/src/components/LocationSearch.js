@@ -7,11 +7,12 @@ export default function LocationSearch (props) {
     // const{ selectPosition, setSelectPosition } = useState(props);
     const[searchText, setSearchText] = useState("");
     const[locationList, setLocationList] = useState([]);
+    
     useEffect(() => {
         setSearchText(props.selectPosition.display_name)
     }, [props.selectPosition])
 
-    const submitSearch = () => {
+    const submitSearch = (searchText) => {
         const parameters = {
             q: searchText,
             format: "json",
@@ -30,18 +31,21 @@ export default function LocationSearch (props) {
     return (
         <div>
             <div>
-                <input type="text" value={searchText} onChange={(e) => {setSearchText(e.target.value)}}/>
-                <button value="Search" onClick={() => {submitSearch()}}/>
+                <input type="text" value={searchText} onChange={(e) => {submitSearch(e.target.value)}}/>
             </div>
-            <div>
+            <div class="searchResult popUp">
                 <ul>
                 {locationList.map((location) => {
                     return(
-                        <div key={location.osm_id}>
-                            <button onClick={() => {
-                                props.setSelectPosition(location)
-                                setLocationList([])
-                            }}></button>
+                        <div key={location.osm_id} class = "hoverMe" onClick={() => {
+                            props.setSelectPosition(location)
+                            if(props.locationType === "start") {
+                                props.setFormState({...props.formState, startLocationId: location.osm_id})
+                            } else {
+                                props.setFormState({...props.formState, endLocationId: location.osm_id})
+                            }
+                    setLocationList([])
+                        }}>
                             {location.display_name}
                         </div>
                     )
@@ -51,3 +55,34 @@ export default function LocationSearch (props) {
         </div>
     )
 }
+
+
+
+// props.setSelectPosition(location)
+// // props.setFormState({ ...props.formState, startLocationId: props.selectStartPositioncd })
+// // props.setFormState({ ...props.formState, endLocationIdS: props.selectEndPosition})
+
+// props.setFormState({ ...props.formState, startLocationId: location.osm_id, endLocationId: location.osm_id })
+
+// if (props.isStartLocation) {
+//     props.setFormState({
+//         ...props.formState,
+//         startLocationId: location.osm_id
+//     });
+//     } else {
+//     props.setFormState({
+//         ...props.formState,
+//         endLocationId: location.osm_id
+//     });
+//     }
+//   props.setSelectPosition(location);
+
+
+
+// const { osm_id } = location;
+// if (props.isStartLocation) {
+//     props.setFormState({ ...props.formState, startLocationId: osm_id });
+// } else {
+//     props.setFormState({ ...props.formState, endLocationId: osm_id });
+// }
+// props.setSelectPosition(location);

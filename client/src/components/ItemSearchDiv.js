@@ -1,6 +1,6 @@
 import ItemSearch from "./ItemSearch";
 
-export default function ItemSearchDiv() {
+export default function ItemSearchDiv(props) {
 
     const itemToDisplay = [];
 
@@ -8,7 +8,7 @@ export default function ItemSearchDiv() {
         <div className="left-align">
             <h3>Item Search</h3>
             <div>
-                {/* <ItemSearch item={itemToDisplay} /> */}
+                <ItemSearch event={props.event} item={itemToDisplay} />
             </div>
         </div>
     )

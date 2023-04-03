@@ -1,7 +1,6 @@
-@url = http://3.135.185.195:8080/api/container
+@url = http://3.129.73.57:8080/api/container
 
 @token = 
-
 
 GET {{url}} HTTP/1.1
 Authorization: Bearer {{token}}
@@ -12,7 +11,7 @@ Authorization: Bearer {{token}}
 
 ###
 
-GET {{url}}/event/1 HTTP/1.1
+GET {{url}}/event/4 HTTP/1.1
 Authorization: Bearer {{token}}
 
 ###
