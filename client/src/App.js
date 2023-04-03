@@ -1,19 +1,24 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
-import Landing from './components/Landing page/Landing';
+import Landing from './layout/Landing';
 import jwtDecode from 'jwt-decode';
+import Nav from './layout/Nav';
 import UserHome from './layout/UserHome';
 import EventForm from './components/EventForm';
-
+import Event from "./layout/Event";
 
 function App() {
+
+
+  // const url = "http://3.135.185.195:8080/api";
+  // const authenticationUrl = "http://3.135.185.195:8080/api/authenticate";
 
   const url = "http://localhost:8080/api";
   const authenticationUrl = "http://localhost:8080/api/authenticate";
 
-  const [user, setUser] = useState({});
+
+  const [user, setUser] = useState(null);
   const [event, setEvent] = useState([]);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
@@ -29,7 +34,7 @@ function App() {
       token,
       hasRole(role) {
         return this.roles.includes(role);
-      },
+      }
     };
 
     console.log(user);
@@ -50,8 +55,6 @@ function App() {
     logout,
     url
   };
-
-  console.log(event);
   
   const refreshData = () => {
     if(user != null){
@@ -62,28 +65,31 @@ function App() {
     })
     .then((response) => response.json())
     .then((data) => setEvent(data))
-    console.log(event);
+    }
   }
-}
 
   useEffect(refreshData, [user]);
   useEffect(() => {
-    if (localStorage.getItem("userToken")) {
+    if (localStorage.getItem("userToken") != null) {
       login(localStorage.getItem("userToken"));
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
+  if(!restoreLoginAttemptCompleted){
+    return (<div>loading</div>)
+  }
   return (
     <BrowserRouter>
     <UserContext.Provider value={authorities}>
-       {/* <NavBar /> */}
+      <Nav />
        <Routes>
          <Route path="/" element={<Landing authenticationUrl={authenticationUrl} event={event}/>} />
          <Route path="/userhome" element={<UserHome event={event} />} />
-         <Route path="/createevent" element={<EventForm event={event} refreshData={refreshData}/>} />
-         {/* <Route path="/event" element={<Event />} />
-         <Route path="*" element={<NotFound />} /> */}
+         <Route path="/createmove" element={<EventForm event={event} eventType="move" />} />
+         <Route path="/createvacation" element={<EventForm event={event} eventType="vacation" />} />
+         <Route path="/event/:id" element={<Event event={event} />} />
+         {/* <Route path="*" element={<NotFound />} /> */}
        </Routes>
        {/* <Footer /> */}
     </UserContext.Provider>

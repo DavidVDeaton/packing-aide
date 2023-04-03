@@ -1,0 +1,237 @@
+/* General Body, Main and Section CSS */
+body {
+    display: grid;
+    place-items: center;
+    margin: 0;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+section {
+    margin: 1rem 0rem;
+    display: grid;
+    place-items: center;
+    width: 80vw;
+    border: 1px dotted #222222;
+    padding: 1rem;
+}
+
+/* Alignment CSS */
+.left-align {
+    display: block;
+    text-align: left;
+}
+
+.right-align {
+    display: block;
+    text-align: right;
+}
+
+.center-align {
+    display: block;
+    text-align: center;
+}
+
+/* Card CSS */
+.card {
+    display: grid;
+    place-items: center;
+    padding: 3rem 3rem;
+    box-shadow: 2px 2px 8px #444444;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.card:hover {
+    box-shadow: 2px 2px 5px #444444;
+
+}
+
+.card100 {
+    padding: .5rem 1rem;
+    box-shadow: 2px 2px 5px #444444;
+    border-radius: 10px;
+    margin: .5rem 1rem;
+}
+
+.card-rows {
+    display: grid;
+    width: 100%;
+}
+
+.vacation-card {
+    background: linear-gradient(100deg, rgba(100,197,165,1) 0%, rgba(0,212,255,1) 85%);
+}
+
+.move-card {
+    background: linear-gradient(100deg, #999999 0%, #aaaaaa 35%, #cccccc 95%);
+}
+
+
+/* Grid Column CSS */
+.two-column-even-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 6rem;
+}
+
+.three-column-in-card {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-gap: 1rem;
+}
+
+/* Misc CSS */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Sam's CSS */
+#landingPageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px red solid;
+    width: 100%;
+    height: 100%;
+}
+#landingMainSection{
+    border: 1px black solid;
+    width: auto;
+    height: 30rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#loginCard{
+    border: 1px blue solid;
+    padding: 3rem;
+}
+
+.inputSection{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.loginInput{
+    width: 15rem;
+    height: 2rem;
+}
+
+#loginButtons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#featuresContent{
+    width: 100%;
+}
+#featureCards{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.featureCard{
+    border: solid 1px black;
+    width: 15rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.featureImage{
+    border: 1px solid red;
+    height: 14rem;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    padding: .5rem 2rem;
+}
+
+.navButton{
+    border: 1px solid black;
+    margin-right: 1rem;
+}
+
+.listCard{
+    background-color: red;
+    width: 100%;
+    min-height: 10rem;
+    max-height: 30rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.listCardHeader{
+    display: flex;
+    width: 93%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+.formWrapper{
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+}
+.listSection{
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    min-height: 5.5rem;
+    max-height: 30rem;
+    overflow:scroll;
+    width: 95%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.listSection::-webkit-scrollbar{
+    /*figure out how to show scroll without impacting spacing of containers */
+   display: none;
+}
+#createContainerForm{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 0 .5rem .5rem 0;
+}
+
+.container{
+    border: 1px solid black;
+    width: 10rem;
+    max-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container:hover{
+    background-color: #999999;
+}
+.containerButtons{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: .5rem .5rem 0 0;
+}
+.containerName{
+    padding-bottom: 3rem;
+}

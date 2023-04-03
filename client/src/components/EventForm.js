@@ -9,7 +9,6 @@ export default function EventForm(props) {
     
     const authorities = useContext(UserContext);
 
-    
     let formTemplate;
     // if(props.event === undefined) {
             formTemplate = {
@@ -24,7 +23,6 @@ export default function EventForm(props) {
     // } else {
     //     formTemplate = props.event;
     // }
-
 
     const [formState, setFormState] = useState(formTemplate);
     const [errors, setErrors] = useState([]);
