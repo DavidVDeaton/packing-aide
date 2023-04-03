@@ -89,6 +89,7 @@ function App() {
          <Route path="/createmove" element={<EventForm event={event} eventType="move" />} />
          <Route path="/createvacation" element={<EventForm event={event} eventType="vacation" />} />
          <Route path="/event/:id" element={<Event event={event} />} />
+         <Route path="/profile" />
          {/* <Route path="*" element={<NotFound />} /> */}
        </Routes>
        {/* <Footer /> */}
