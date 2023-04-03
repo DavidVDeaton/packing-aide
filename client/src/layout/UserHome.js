@@ -14,7 +14,7 @@ export default function UserHome(props) {
                 <InternalNavCard text="Plan a New Move" cardCSS="move-card card" eventType="move" />
             </section>
             <section className="left-align">
-                <ItemSearchDiv />
+                <ItemSearchDiv event={props.event} />
             </section>
             <section className="left-align">
                 <ExpandingList event={props.event} text="Past Events" past="y" />
