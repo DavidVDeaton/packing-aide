@@ -1,8 +1,9 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import UserContext from "../../contexts/UserContext"
 
 export default function Container(props){
 
+    
     const [confirmDelete, setConfirmDelete] = useState(false);
 
     const authorities = useContext(UserContext);
@@ -16,9 +17,8 @@ export default function Container(props){
         })
         .then(props.refreshContainerData)
     }
-
     return(
-        <div className="container" onClick={() => {props.setEditContainers(props.container)}}>
+        <div className="container" onClick={() => {props.setEditContainers([...props.editContainers, props.container])}}>
             <div className="containerButtons">
             <button onClick={() => {setConfirmDelete(!confirmDelete)}}>{!confirmDelete ? "delete icon" : "cancel icon"}</button>
             </div>

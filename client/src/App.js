@@ -6,7 +6,7 @@ import jwtDecode from 'jwt-decode';
 import Nav from './layout/Nav';
 import UserHome from './layout/UserHome';
 import EventForm from './components/EventForm';
-import Event from "./layout/Event";
+import Event from './layout/Event';
 
 function App() {
 
