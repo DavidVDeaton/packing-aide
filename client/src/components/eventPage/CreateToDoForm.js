@@ -2,9 +2,9 @@
 import UserContext from "../../contexts/UserContext";
 import CloseForm from "./CloseForm";
 import Errors from "../Errors";
+
 export default function ToDo(props){
 
-//if one edit open, full width
     const authorities = useContext(UserContext);
 
     let toDoTemplate = undefined;
@@ -55,13 +55,7 @@ export default function ToDo(props){
             setErrors(error);
         }
     }
-    // const closeForm = () => {
-    //     if(props.toDoToEdit === undefined){
-    //         props.setAddFormOpen(false);
-    //     } else{
-    //         props.setEditMode(false);
-    //     }
-    // }
+
     return(
         <form id="createtoDoForm" onSubmit={submitToDo}>
             <Errors errors={errors} />

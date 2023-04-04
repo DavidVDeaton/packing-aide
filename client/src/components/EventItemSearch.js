@@ -36,7 +36,7 @@ export default function EventItemSearch (props) {
         .then((data) => setContainers(data))
     }, []);
 
-    console.log(items);
+    //console.log(items);
 
     const submitSearch = (searchText) => {
 
