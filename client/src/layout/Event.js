@@ -34,8 +34,7 @@ export default function Event(props) {
                 <EventItemSearch params={params.id} item={item} />
             </section>
             <section className="left-align">
-                {/* <ExpandingList text="ToDos" /> */}
-                {/* <ListCard eventId={params.id} listType="todos"/> */}
+                <ListCard eventId={params.id} listType="toDos"/>
             </section>
             <section className="left-align" id="listCardSection">
                 <ListCard eventId={params.id} listType="containers"/>

@@ -17,9 +17,6 @@ export default function Item(props){
         .then(props.refreshData)
     }
 
-    const editItem =() => {
-
-    }
     return(
         <div className="itemContainer">
             <div className="item">
