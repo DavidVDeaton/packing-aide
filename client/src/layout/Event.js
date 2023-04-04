@@ -10,6 +10,7 @@ export default function Event(props) {
 
     const events = props.event;
 
+
     const params = useParams();
 
     let [editEvent, setEditEvent] = useState({});
@@ -31,7 +32,7 @@ export default function Event(props) {
     return (
         <main>
             <section>
-                <ListEvent event={events}/>
+                <ListEvent editEvent={editEvent} eventId={params.id} refreshData = {props.refreshData}/>
             </section>
             <section className="two-column-even-display">
                 {/* <ExpandingList events={editEvent} text={editEvent.eventName} /> */}

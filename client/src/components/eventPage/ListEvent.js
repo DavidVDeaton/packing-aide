@@ -1,24 +1,35 @@
-import UserContext from "../contexts/UserContext";
+import { useContext, useState } from "react";
+import UserContext from "../../contexts/UserContext";
+import EventForm from "../EventForm";
+
 
 export default function ListEvent(props) {
-    const beginDelete = (eventId) => {
-        fetch(`${props.backendUrl}/event/${props.event.eventId}`, {method: "DELETE"})
+    const [editEvent, setEditEvent] = useState(false);
+    const authorities = useContext(UserContext);
+
+    const beginDelete = () => {
+        fetch(`${authorities.url}/event/${props.eventId}`, {method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${authorities.user.token}`
+        }
+    })
         .then(props.refreshData);
     }
 
-    const authorities = useContext(UserContext);
+
+    
+
 
     return (
         <div>
-            <div>Event: {props.event.eventName}</div>
-            <div>Start Date: {props.event.startDate}</div>
-            <div>End Date: {props.event.endDate}</div>
-            <div>Start Location: {props.event.startLocationId}</div>
-            <div>End Location: {props.event.endLocationId}</div>
-            <button onClick={() => {
-                beginDelete(props.event.eventId)
-            }}>Delete Event</button>
-            <button>Edit Event</button>
+            <div>Event: {props.editEvent.eventName}</div>
+            <div>Start Date: {props.editEvent.startDate}</div>
+            <div>End Date: {props.editEvent.endDate}</div>
+            <div>Start Location: {props.editEvent.startLocationId}</div>
+            <div>End Location: {props.editEvent.endLocationId}</div>
+            <button onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "edit" : "cancel update"}</button> 
+            <button onClick={beginDelete}>Delete Event</button>
+            {editEvent && <EventForm  eventFormEdit={props.editEvent} setEditEvent={setEditEvent} refreshData={props.refreshData} /> }
         </div>
     )
 }
