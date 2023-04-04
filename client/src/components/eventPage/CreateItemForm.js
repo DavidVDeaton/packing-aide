@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import UserContext from "../../contexts/UserContext"
-
+import CloseForm from "./CloseForm";
+import Errors from "../Errors";
 export default function CreateItemForm(props){
 
     const authorities = useContext(UserContext);
@@ -17,9 +18,10 @@ export default function CreateItemForm(props){
         } else{
         itemTemplate = props.itemToEdit;
         }
+
     const [item, setItem] = useState(itemTemplate);
     const [errors, setErrors] = useState([])
-
+    console.log(props.itemToEdit)
     const submitItem = async (event) => {
         event.preventDefault();
 
@@ -39,11 +41,10 @@ export default function CreateItemForm(props){
             },
             body: JSON.stringify(item)
         })
-        console.log(response)
+       
         if(response.status >= 200 && response.status < 300){
             props.refreshData();
-            props.setEditMode(false);
-            props.setAddFormOpen(false);
+            CloseForm(props.itemToEdit, props.setAddFormOpen, props.setEditMode);
             setErrors([]);
             setItem(itemTemplate);
         } else{
@@ -55,6 +56,7 @@ export default function CreateItemForm(props){
 
     return(
         <form id="createItemForm" onSubmit={submitItem}>
+            <Errors errors={errors} />
             <div className="inputDiv">
             <label htmlFor="itemName">Item name:</label>
             <input type="text" id="itemName" value={item.itemName} onChange={(e) => {setItem({...item, itemName: e.target.value})}} />
