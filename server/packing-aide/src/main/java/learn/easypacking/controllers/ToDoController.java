@@ -3,11 +3,12 @@ package learn.easypacking.controllers;
 import learn.easypacking.domain.AppUserService;
 import learn.easypacking.domain.Result;
 import learn.easypacking.domain.ToDoService;
-import learn.easypacking.models.AppUser;
 import learn.easypacking.models.ToDo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/todo")
@@ -28,6 +29,15 @@ public class ToDoController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(toDo);
+    }
+
+    @GetMapping("/event/{eventId}")
+        public ResponseEntity<List<ToDo>> findByEventId(@PathVariable int eventId) {
+        List<ToDo> toDoList = service.findByEventId(eventId);
+        if(toDoList == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(toDoList);
     }
 
     @PostMapping

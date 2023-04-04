@@ -1,8 +1,11 @@
 package learn.easypacking.domain;
 
 import learn.easypacking.data.ToDoRepository;
+import learn.easypacking.models.Container;
 import learn.easypacking.models.ToDo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ToDoService {
@@ -13,7 +16,9 @@ public class ToDoService {
         this.repository = repository;
     }
 
-    public ToDo findById(int toDoListId){return repository.findById(toDoListId);}
+    public ToDo findById(int toDoId){return repository.findById(toDoId);}
+
+    public List<ToDo> findByEventId(int eventId) {return repository.findByEventId(eventId);}
 
     public Result<ToDo> createToDo(ToDo toDo){
         Result<ToDo> result = validate(toDo);

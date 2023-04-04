@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -41,6 +42,12 @@ class ToDoJdbcTemplateRepositoryTest {
         assertNull(actual);
     }
 
+    @Test
+    void shouldFindEventById() {
+        List<ToDo> actual = repository.findByEventId(1);
+        assertEquals(2, actual.size());
+        assertEquals("Sightseeing", actual.get(1).getToDoName());
+    }
     @Test
     void shouldCreateToDo() {
         ToDo toDoListToAdd = createTestToDoList();
