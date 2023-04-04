@@ -1,6 +1,8 @@
 package learn.easypacking.data;
 
+import learn.easypacking.data.mappers.ContainerMapper;
 import learn.easypacking.data.mappers.ToDoMapper;
+import learn.easypacking.models.Container;
 import learn.easypacking.models.ToDo;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ToDoJdbcTemplateRepository implements ToDoRepository {
@@ -25,6 +29,13 @@ public class ToDoJdbcTemplateRepository implements ToDoRepository {
         return jdbcTemplate.query(sqlStatement, new ToDoMapper(), toDoListId).stream()
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Override
+    public List<ToDo> findByEventId(int eventId) {
+        String sql = "Select * from todo where event_id = ?;";
+        return jdbcTemplate.query(sql, new ToDoMapper(), eventId).stream()
+                .collect(Collectors.toList());
     }
 
     @Override

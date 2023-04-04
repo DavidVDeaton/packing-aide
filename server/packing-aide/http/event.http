@@ -1,6 +1,6 @@
 @url = http://3.129.73.57:8080/api/event
 
-@token = 
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwYWNraW5nLWFpZGUiLCJzdWIiOiJqb2huQHNtaXRoLmNvbSIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2ODA2OTYyNTB9.Tc8vFIkslnTHkpWi5Zd2c-iEPwPfJalZAKEd6HwjTts
 
 GET {{url}}/1 HTTP/1.1
 Authorization: Bearer {{token}}
