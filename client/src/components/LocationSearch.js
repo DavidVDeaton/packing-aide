@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const URL = "https://nominatim.openstreetmap.org/search?";
     
 export default function LocationSearch (props) {
-    // const{ selectPosition, setSelectPosition } = useState(props);
+    const{ selectPosition, setSelectPosition } = useState(props);
     const[searchText, setSearchText] = useState("");
     const[locationList, setLocationList] = useState([]);
     
@@ -12,11 +12,12 @@ export default function LocationSearch (props) {
         setSearchText(props.selectPosition.display_name)
     }, [props.selectPosition])
 
-    const submitSearch = (searchText) => {
+    const submitSearch = () => {
         const parameters = {
             q: searchText,
             format: "json",
-            addressdetails: 1 
+            addressdetails: 1,
+            limit: 5
         };
         const queryString = new URLSearchParams(parameters).toString();
 
@@ -31,20 +32,22 @@ export default function LocationSearch (props) {
     return (
         <div>
             <div>
-                <input type="text" value={searchText} onChange={(e) => {submitSearch(e.target.value)}}/>
+                <input id="searchTextInput" type="text" value={searchText} onChange={(e) => {setSearchText(e.target. value)}}/>
+                <input type="button" value="Search" onClick={() => {submitSearch()}}/>
             </div>
-            <div class="searchResult popUp">
+            <div className="searchResult popUp">
                 <ul>
                 {locationList.map((location) => {
                     return(
-                        <div key={location.osm_id} class = "hoverMe" onClick={() => {
+                        <div key={location.osm_id} className="hoverMe" onClick={() => {
                             props.setSelectPosition(location)
                             if(props.locationType === "start") {
                                 props.setFormState({...props.formState, startLocationId: location.osm_id})
                             } else {
                                 props.setFormState({...props.formState, endLocationId: location.osm_id})
                             }
-                    setLocationList([])
+                                setLocationList([])
+
                         }}>
                             {location.display_name}
                         </div>
