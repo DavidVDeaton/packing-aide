@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import UserContext from "../../contexts/UserContext"
 
 export default function Container(props){
-
+    
     const [confirmDelete, setConfirmDelete] = useState(false);
 
     const authorities = useContext(UserContext);
@@ -14,13 +14,13 @@ export default function Container(props){
                 Authorization: `Bearer ${authorities.user.token}`
             }
         })
-        .then(props.refreshContainerData)
+        .then(props.refreshData)
     }
-
+    console.log("hello from container");
     return(
-        <div className="container" onClick={() => {props.setEditContainers(props.container)}}>
+        <div className="container" onClick={() => {props.addToEditList(props.container)}}>
             <div className="containerButtons">
-            <button onClick={() => {setConfirmDelete(!confirmDelete)}}>{!confirmDelete ? "delete icon" : "cancel icon"}</button>
+            <button id="deleteContainer" onClick={() => {setConfirmDelete(!confirmDelete)}}>{!confirmDelete ? "delete icon" : "cancel icon"}</button>
             </div>
             {!confirmDelete 
             ?

@@ -32,7 +32,7 @@ export default function LocationSearch (props) {
     return (
         <div>
             <div>
-                <input type="text" value={searchText} onChange={(e) => {setSearchText(e.target. value)}}/>
+                <input id="searchTextInput" type="text" value={searchText} onChange={(e) => {setSearchText(e.target. value)}}/>
                 <input type="button" value="Search" onClick={() => {submitSearch()}}/>
             </div>
             <div className="searchResult popUp">

@@ -3,6 +3,7 @@ package learn.easypacking.controllers;
 import learn.easypacking.domain.AppUserService;
 import learn.easypacking.domain.Result;
 import learn.easypacking.models.AppUser;
+import learn.easypacking.models.Event;
 import learn.easypacking.security.JwtConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,6 +83,36 @@ public class AuthController {
         map.put("appUserId", result.getPayload().getAppUserId());
 
         return new ResponseEntity<>(map, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/api/update_account/{appUserId}")
+    public ResponseEntity<?> updateAccount(@PathVariable int appUserId, @RequestBody Map<String, String> credentials) {
+
+        String username = credentials.get("username");
+        String passwordNew = credentials.get("passwordNew");
+        String passwordOld = credentials.get("passwordOld");
+
+        Result<AppUser> result = appUserService.updateUser(appUserId, username, passwordNew, passwordOld);
+
+        // unhappy path...
+        if (!result.isSuccess()) {
+            return new ResponseEntity<>(result.getMessages(), HttpStatus.BAD_REQUEST);
+        }
+
+        // happy path...
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("appUserId", result.getPayload().getAppUserId());
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/api/delete_account/{appUserId}")
+    public ResponseEntity<Object> deleteAccount(@PathVariable int appUserId){
+        Result<AppUser> result = appUserService.deleteUser(appUserId);
+        if(result.isSuccess()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return ErrorResponse.build(result);
     }
 }
 

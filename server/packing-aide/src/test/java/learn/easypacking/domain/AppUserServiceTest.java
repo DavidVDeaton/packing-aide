@@ -146,22 +146,9 @@ class AppUserServiceTest {
                 result.getMessages().get(0));
     }
 
-//    @Test
-//    void shouldUpdateAppUserUsername() {
-//        AppUser user = new AppUser(6, "mark@melancon.com", "H0meRun!", true, List.of("USER"));
-//
-//        Result<AppUser> result = service.updateUser(user, "H0meRun!");
-//
-//        assertTrue(result.isSuccess());
-//        assertEquals(6, result.getPayload().getAppUserId());
-//        assertEquals("mark@melancon.com", result.getPayload().getUsername());
-//        assertEquals("H0meRun!", result.getPayload().getPassword());
-//    }
-
     @Test
     void shouldNotUpdateWithNullUsername() {
-        AppUser user = new AppUser(6, null, "H0meRun!", true, List.of("USER"));
-        Result<AppUser> result = service.updateUser(user, "H0meRun!");
+        Result<AppUser> result = service.updateUser(6, null, "H0meRun!", "H0meRun!");
 
         assertFalse(result.isSuccess());
         assertNull(result.getPayload());
@@ -171,8 +158,7 @@ class AppUserServiceTest {
 
     @Test
     void shouldNotUpdateWithBlankUsername() {
-        AppUser user = new AppUser(6, "", "H0meRun!", true, List.of("USER"));
-        Result<AppUser> result = service.updateUser(user, "H0meRun!");
+        Result<AppUser> result = service.updateUser(6, "", "H0meRun!", "H0meRun!");
 
         assertFalse(result.isSuccess());
         assertNull(result.getPayload());
@@ -182,8 +168,7 @@ class AppUserServiceTest {
 
     @Test
     void shouldNotUpdateWithUsernameGreaterThan50Chars() {
-        AppUser user = new AppUser(6, "a".repeat(51), "H0meRun!", true, List.of("USER"));
-        Result<AppUser> result = service.updateUser(user, "H0meRun!");
+        Result<AppUser> result = service.updateUser(6, "a".repeat(51), "H0meRun!", "H0meRun!");
 
         assertFalse(result.isSuccess());
         assertNull(result.getPayload());
@@ -191,22 +176,9 @@ class AppUserServiceTest {
         assertEquals("username must be less than 50 characters", result.getMessages().get(0));
     }
 
-//    @Test
-//    void shouldNotUpdateAppUserWithExistingUsername() {
-//        AppUser user = new AppUser(6, "john@smith.com", "H0meRun!", true, List.of("USER"));
-//
-//        Result<AppUser> result = service.updateUser(user, "H0meRun!");
-//
-//        assertFalse(result.isSuccess());
-//        assertNull(result.getPayload());
-//        assertEquals(1, result.getMessages().size());
-//        assertEquals("The provided username already exists", result.getMessages().get(0));
-//    }
-
     @Test
     void shouldNotUpdateWithNullPassword() {
-        AppUser user = new AppUser(6, "mark@melancon.com", null, true, List.of("USER"));
-        Result<AppUser> result = service.updateUser(user, "H0meRun!");
+        Result<AppUser> result = service.updateUser(6, "Howard", null, "H0meRun!");
 
         assertFalse(result.isSuccess());
         assertNull(result.getPayload());
@@ -215,9 +187,8 @@ class AppUserServiceTest {
     }
 
     @Test
-    void shouldNotUpdateWithLessThan8Chars() {
-        AppUser user = new AppUser(6, "mark@melancon.com", "Pw123!", true, List.of("USER"));
-        Result<AppUser> result = service.updateUser(user, "H0meRun!");
+    void shouldNotUpdateWithLessThan8CharsInPassword() {
+        Result<AppUser> result = service.updateUser(6, "Howard", "H0meRu#", "H0meRun!");
 
         assertFalse(result.isSuccess());
         assertNull(result.getPayload());
@@ -228,8 +199,7 @@ class AppUserServiceTest {
 
     @Test
     void shouldNotUpdateWithoutNumberInPassword() {
-        AppUser user = new AppUser(6, "mark@melancon.com", "HomeRun!", true, List.of("USER"));
-        Result<AppUser> result = service.updateUser(user, "H0meRun!");
+        Result<AppUser> result = service.updateUser(6, "Howard", "HomeRun!", "H0meRun!");
 
         assertFalse(result.isSuccess());
         assertNull(result.getPayload());
@@ -240,8 +210,7 @@ class AppUserServiceTest {
 
     @Test
     void shouldNotUpdateWithoutSpecialCharInPassword() {
-        AppUser user = new AppUser(6, "mark@melancon.com", "HomeRuns", true, List.of("USER"));
-        Result<AppUser> result = service.updateUser(user, "H0meRun!");
+        Result<AppUser> result = service.updateUser(6, "Howard", "H0meRuns", "H0meRun!");
 
         assertFalse(result.isSuccess());
         assertNull(result.getPayload());

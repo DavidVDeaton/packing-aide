@@ -82,6 +82,8 @@ export default function EventForm(props) {
           if (response.status >= 200 && response.status < 300) {
             // props.refreshData();
             setFormState(formTemplate);
+            setSelectStartPosition("");
+            setSelectEndPosition("");
             setErrors([]);
             navigate(`/event/${props.event.eventId}`);  
           } else {

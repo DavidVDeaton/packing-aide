@@ -71,7 +71,6 @@ section {
     background: linear-gradient(100deg, #999999 0%, #aaaaaa 35%, #cccccc 95%);
 }
 
-
 /* Grid Column CSS */
 .two-column-even-display {
     display: grid;
@@ -85,12 +84,21 @@ section {
     grid-gap: 1rem;
 }
 
+.three-column-in-card-right {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-gap: 1rem;
+}
+
 /* Misc CSS */
 a {
     text-decoration: none;
     color: black;
 }
 
+.width100 {
+    width: 100%;
+}
 
 /* Sam's CSS */
 #landingPageContainer{
@@ -202,6 +210,20 @@ nav {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
+#editContainersWrapper{
+    width: 100%;
+    max-height: 25rem;
+    display: flex;
+}
+.smallListSection{
+    border: 1px solid black;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
 .listSection::-webkit-scrollbar{
     /*figure out how to show scroll without impacting spacing of containers */
    display: none;
@@ -221,6 +243,7 @@ nav {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .container:hover{
@@ -235,7 +258,6 @@ nav {
 .containerName{
     padding-bottom: 3rem;
 }
-
 /* createEvent */
 #eventForm{
     border: 3px solid black;
@@ -290,3 +312,51 @@ nav {
     color: black;
     display: flex;
 }
+
+#deleteContainer{
+    z-index: 1;
+}
+#openContainer{
+    width: 50%;
+    height: 25rem;
+    border: 1px solid black;
+}
+
+.item{
+    width: 99%;
+    background-color: bisque;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    
+}
+
+.itemText{
+    height: 2rem;
+    width: 75%;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: .5rem;
+    line-height: .8;
+}
+.itemTitle{
+    display: flex;
+    align-items:center;
+    margin: 0;
+}
+.itemName{
+    margin: 0;
+    line-height: 0;
+}
+
+.quantity{
+    margin: 0;
+}
+.itemDescription{
+    font-size: x-small;
+}
+
