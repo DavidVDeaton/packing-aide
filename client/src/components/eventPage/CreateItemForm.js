@@ -1,24 +1,37 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import UserContext from "../../contexts/UserContext"
 
 export default function CreateItemForm(props){
-    const authorities = useContext(UserContext);
-    const itemTemplate = {
-        itemName: "",
-        packStatus: false,
-        quantity: 1,
-        description: "",
-        appUserId: authorities.user.userId,
-        containerId: props.containerId
 
-    }
+    const authorities = useContext(UserContext);
+    let itemTemplate = undefined;
+    if(props.itemToEdit === undefined){
+        itemTemplate = {
+            itemName: "",
+            packStatus: false,
+            quantity: 1,
+            description: "",
+            appUserId: authorities.user.userId,
+            containerId: props.containerId
+        }
+        } else{
+        itemTemplate = props.itemToEdit;
+        }
     const [item, setItem] = useState(itemTemplate);
     const [errors, setErrors] = useState([])
 
     const submitItem = async (event) => {
         event.preventDefault();
-        const response = await fetch(`${authorities.url}/item`, {
-            method: "POST",
+
+        let url = `${authorities.url}/item`;
+        let method = "POST";
+
+        if(props.itemToEdit !== undefined){
+            url = `${authorities.url}/item/${props.itemToEdit.itemId}`
+            method = "PUT" 
+        }
+        const response = await fetch(url, {
+            method: method,
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${authorities.user.token}`,
@@ -26,16 +39,19 @@ export default function CreateItemForm(props){
             },
             body: JSON.stringify(item)
         })
+        console.log(response)
         if(response.status >= 200 && response.status < 300){
             props.refreshData();
-            setItem(itemTemplate);
-            setErrors([]);
+            props.setEditMode(false);
             props.setAddFormOpen(false);
+            setErrors([]);
+            setItem(itemTemplate);
         } else{
             const error = await response.json();
             setErrors(error);
         }
     }
+ 
 
     return(
         <form id="createItemForm" onSubmit={submitItem}>
@@ -51,7 +67,7 @@ export default function CreateItemForm(props){
             <label htmlFor="quantity">Quantity:</label>
             <input type="number" id="quantity" value={item.quantity} onChange={(e) => {setItem({...item, quantity: e.target.value})}} />
             </div>
-            <input type="submit" className="addItemButton" value="Add item"/>
+            <input type="submit" className="addItemButton" value={props.itemToEdit === undefined ? "Add item" : "Update"}/>
         </form>
     )
 }

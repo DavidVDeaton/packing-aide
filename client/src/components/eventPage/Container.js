@@ -16,7 +16,7 @@ export default function Container(props){
         })
         .then(props.refreshData)
     }
-    console.log("hello from container");
+
     return(
         <div className="container" onClick={() => {props.addToEditList(props.container)}}>
             <div className="containerButtons">
