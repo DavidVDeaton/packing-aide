@@ -79,7 +79,7 @@ export default function ExpandingList(props) {
                         return (
                             // onClick Function to take user to event specific page will be inserted into this div
                         <div className={cardCSS} >  
-                            <p class="left-align">{event.eventName}</p>
+                            <p class="left-align highlight">{event.eventName}</p>
                             <p>{event.startDate} - {event.endDate}</p>
                             <div className="right-align">
                                 <button onClick={() => {editEvent(event.eventId)}}>Edit</button>
