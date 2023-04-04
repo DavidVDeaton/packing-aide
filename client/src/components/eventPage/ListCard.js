@@ -68,13 +68,10 @@ export default function ListCard(props){
          
     }, [allData]);
 
-    const updateField = () => {
-        
-    }
     return(
         <div className="listCard">
             <div className="listCardHeader">
-                <h3 onDoubleClick={updateField}>{props.listType === "containers" ? "Containers" : props.listType === "todos" ? "ToDo's" : props.container.containerName}</h3>
+                <h3>{props.listType === "containers" ? "Containers" : props.listType === "todos" ? "ToDo's" : props.container.containerName}</h3>
                 <div>
                 <button onClick={() => setAddFormOpen(!addFormOpen)}>{!addFormOpen ? "Add icon" : "Cancel icon"}</button>
                 {props.listType === "items" && <button onClick={() => {props.closeListItem(props.container.containerId)}}>close icon</button>}

@@ -25,7 +25,6 @@ export default function ListSection(props){
             setEditContainers(arrayToSave);
         }
 
-    console.log(props.listType)
     return(
         <div className={props.listType === "items" ? "smallListSection" : "listSection"}>
             <div id="editContainersWrapper">
@@ -49,7 +48,7 @@ export default function ListSection(props){
             &&
             props.listItems.map((item) => {
                 return(
-                    <Item item={item}/>
+                    <Item key={item.itemId} item={item} refreshData={props.refreshData} />
                 )
             })
             }
