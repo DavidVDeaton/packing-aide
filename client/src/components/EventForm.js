@@ -19,7 +19,7 @@ export default function EventForm(props) {
             endLocationId: "",
             appUserId: authorities.user.userId,
             eventName:"",
-            eventType: false,
+            eventType: props.eventType,
         }
     // } else {
     //     formTemplate = props.event;

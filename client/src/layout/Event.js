@@ -4,6 +4,7 @@ import ListCard from "../components/eventPage/ListCard"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import EventItemSearch from "../components/EventItemSearch";
+import ListEvent from "../components/eventPage/ListEvent";
 
 export default function Event(props) {
 
@@ -29,6 +30,9 @@ export default function Event(props) {
 
     return (
         <main>
+            <section>
+                <ListEvent event={events}/>
+            </section>
             <section className="two-column-even-display">
                 {/* <ExpandingList events={editEvent} text={editEvent.eventName} /> */}
                 <EventItemSearch params={params.id} item={item} />
