@@ -9,7 +9,9 @@ public class Event {
     private String endDate;
     private int appUserId;
     private int startLocationId;
+    private String startLocationType;
     private int endLocationId;
+    private String endLocationType;
 
     public int getEventId() {
         return eventId;
@@ -73,5 +75,21 @@ public class Event {
 
     public void setEndLocationId(int endLocationId) {
         this.endLocationId = endLocationId;
+    }
+
+    public String getStartLocationType() {
+        return startLocationType;
+    }
+
+    public void setStartLocationType(String startLocationType) {
+        this.startLocationType = startLocationType;
+    }
+
+    public String getEndLocationType() {
+        return endLocationType;
+    }
+
+    public void setEndLocationType(String endLocationType) {
+        this.endLocationType = endLocationType;
     }
 }

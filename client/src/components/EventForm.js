@@ -66,9 +66,9 @@ export default function EventForm(props) {
         //   });
 
 
-          console.log(selectStartPosition.osm_id)
-          console.log(selectEndPosition.osm_id)
-          console.log(formState)
+        //   console.log(selectStartPosition.osm_id)
+        //   console.log(selectEndPosition.osm_id)
+        //   console.log(formState)
     
         const response = await fetch(url, {
             method: method,

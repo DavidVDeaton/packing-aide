@@ -44,7 +44,9 @@ create table `event` (
     end_date varchar(50), 
     app_user_id int not null,
     start_location_id int,
+    start_location_type varchar(50),
     end_location_id int,
+    end_location_type varchar(50),
     constraint fk_event_user_id
         foreign key (app_user_id)
         references app_user(app_user_id)

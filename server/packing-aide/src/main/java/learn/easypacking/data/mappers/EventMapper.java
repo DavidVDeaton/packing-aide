@@ -18,7 +18,9 @@ public class EventMapper implements RowMapper<Event> {
         event.setEndDate(rs.getString("end_date"));
         event.setAppUserId(rs.getInt("app_user_id"));
         event.setStartLocationId(rs.getInt("start_location_id"));
+        event.setStartLocationType(rs.getString("start_location_type"));
         event.setEndLocationId(rs.getInt("end_location_id"));
+        event.setEndLocationType(rs.getString("end_location_type"));
         return event;
     }
 }
