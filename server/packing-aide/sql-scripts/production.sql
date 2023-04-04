@@ -44,7 +44,9 @@ create table `event` (
     end_date varchar(50), 
     app_user_id int not null,
     start_location_id int,
+    start_location_type varchar(50),
     end_location_id int,
+    end_location_type varchar(50),
     constraint fk_event_user_id
         foreign key (app_user_id)
         references app_user(app_user_id)
@@ -102,3 +104,25 @@ insert into app_user_role
     values
     (1, 1),
     (2, 1);
+
+insert into `event` (event_name, event_type, start_date, end_date, app_user_id, start_location_id, end_location_id) values
+		('Springbreak', 1, '2022-04-15', '2022-04-30', 1, 1, 3),
+		('First House', 0, '2023-02-01', '2023-02-01', 2, 2, 1);
+    
+	insert into container (parent_container_id, container_name, event_id) values
+		(null, 'Kitchen', 2),
+        (1, 'Silverware', 2),
+        (null, 'Blue Luggage', 1),
+        (3, 'Shoe bag', 1); 
+    
+	insert into item (item_name, pack_status, quantity, `description`, app_user_id, container_id) values
+		('Spoon', 0, 400, 'Wish I had more spoons', 2, 2),
+        ('Fork', 1, 1, 'My favorite fork', 2, 2),
+        ('Shoes', 1, 3, 'Nike runners, Brown dress shoes, Black boots', 1, 4);
+    
+    insert into todo (todo_date, todo_name, todo_description, todo_status, event_id) values
+		('2022-04-16', 'Beach Day', 'go to the beach at 12pm', 0, 1),
+        ('2022-04-17', 'Sightseeing', 'Head to townsquare to begin tour', 0, 1),
+        ('2023-02-01', 'Unload truck', 'Place all boxes in their assigned rooms', 1, 2);
+        
+select * from item

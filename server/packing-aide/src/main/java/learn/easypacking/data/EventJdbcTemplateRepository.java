@@ -41,8 +41,8 @@ public class EventJdbcTemplateRepository implements EventRepository{
 
     @Override
     public Event createEvent(Event event) {
-        String sqlStatement = "Insert into `event` (event_name, event_type, start_date, end_date, app_user_id, start_location_id, end_location_id) values " +
-                "(?, ?, ?, ?, ?, ?, ?);";
+        String sqlStatement = "Insert into `event` (event_name, event_type, start_date, end_date, app_user_id, start_location_id, start_location_type, end_location_id, end_location_type) values " +
+                "(?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -53,7 +53,9 @@ public class EventJdbcTemplateRepository implements EventRepository{
             ps.setString(4, event.getEndDate());
             ps.setInt(5, event.getAppUserId());
             ps.setInt(6, event.getStartLocationId());
-            ps.setInt(7, event.getEndLocationId());
+            ps.setString(7, event.getStartLocationType());
+            ps.setInt(8, event.getEndLocationId());
+            ps.setString(9, event.getEndLocationType());
             return ps;
         }, keyHolder);
         if(rowsAffected <= 0){
@@ -71,12 +73,14 @@ public class EventJdbcTemplateRepository implements EventRepository{
                 "start_date = ?, " +
                 "end_date = ?, " +
                 "start_location_id = ?, " +
-                "end_location_id = ? " +
+                "start_location_type = ?, " +
+                "end_location_id = ?, " +
+                "end_location_type = ? " +
                 "where event_id = ?;";
         return jdbcTemplate.update(sqlStatement,
                 event.getEventName(), event.getEventType(),
-                event.getStartDate(), event.getEndDate(), event.getStartLocationId(),
-                event.getEndLocationId(), event.getEventId()) > 0;
+                event.getStartDate(), event.getEndDate(), event.getStartLocationId(), event.getStartLocationType(),
+                event.getEndLocationId(), event.getEndLocationType(), event.getEventId()) > 0;
     }
 
     @Override

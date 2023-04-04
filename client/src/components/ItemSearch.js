@@ -6,7 +6,7 @@ export default function ItemSearch (props) {
     const itemToDisplay = props.item;
     const events = props.event;
 
-    console.log(events);
+    // console.log(events);
 
     const [items, setItems] = useState([]);
     const [containers, setContainers] = useState([]);
@@ -38,8 +38,8 @@ export default function ItemSearch (props) {
         .then((data) => setContainers(data))
     }, []);
 
-    console.log(items);
-    console.log(containers);
+    //console.log(items);
+    //console.log(containers);
 
     const [searchText, setSearchText] = useState("");
     let mainObjects = [{}];
@@ -117,10 +117,10 @@ export default function ItemSearch (props) {
         }
 
         displayObjects.push(mainObjects[i]);
-        console.log(displayObjects);
+        //console.log(displayObjects);
     }
 
-    console.log(mainObjects);
+    //console.log(mainObjects);
 
     return (
         <div>
