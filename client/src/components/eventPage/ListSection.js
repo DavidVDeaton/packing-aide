@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Container from "./Container"
+import ToDo from "./ToDo";
 import ListCard from "./ListCard";
 import Item from "./Item";
 
@@ -13,30 +14,40 @@ export default function ListSection(props){
                 return;
             }
             tempArray.push(container)
-            if(tempArray.length == 3){
+            if(tempArray.length === 3){
                 tempArray.shift();
             }
             setEditContainers(tempArray);
         }
-
+    
         const closeListItem = (id) => {
             const tempArray= [...editContainers]
             const arrayToSave = tempArray.filter((container) => container.containerId !== id)
             setEditContainers(arrayToSave);
         }
-
+     
     return(
         <div className={props.listType === "items" ? "smallListSection" : "listSection"}>
             <div id="editContainersWrapper">
                 {editContainers !== undefined && 
                 editContainers.map((container) => {
                     return(
-                        <div id="openContainer">
-                            <ListCard eventId={props.eventId} container={container} closeListItem={closeListItem} listType="items"/>
+                        <div className={editContainers.length === 2 ? "twoOpenContainers" : "oneOpenContainer"}>
+                        <ListCard eventId={props.eventId} container={container} closeListItem={closeListItem} listType="items"/>
                         </div>
+                        
+                        
                     )
                 })}
             </div>
+            {props.listType === "toDos" 
+            &&
+            props.listItems.sort((a, b) => (new Date(a.toDoDate)-new Date(b.toDoDate)))
+            .map((toDo) => {
+                return(
+                    <ToDo toDo={toDo} key={toDo.toDoId} refreshData={props.refreshData} />
+                )
+            })}
             {props.listType === "containers" 
             &&
             props.listItems.map((container) => {

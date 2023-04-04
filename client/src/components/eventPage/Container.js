@@ -18,13 +18,13 @@ export default function Container(props){
     }
 
     return(
-        <div className="container" onClick={() => {props.addToEditList(props.container)}}>
+        <div className="container">
             <div className="containerButtons">
             <button id="deleteContainer" onClick={() => {setConfirmDelete(!confirmDelete)}}>{!confirmDelete ? "delete icon" : "cancel icon"}</button>
             </div>
             {!confirmDelete 
             ?
-            <h3 className="containerName">{props.container.containerName}</h3>
+            <h3 className="containerName" onClick={() => {props.addToEditList(props.container)}}>{props.container.containerName}</h3>
             :
             <>
             <p >If you haven't moved the items inside, deleting this container will delete all items as well. Are you sure you want to delete?</p>

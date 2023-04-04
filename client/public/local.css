@@ -335,10 +335,10 @@ p {
 .container{
     border: 1px solid black;
     width: 10rem;
-    max-height: 10rem;
+    min-height: 10rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     position: relative;
 }
@@ -351,9 +351,11 @@ p {
     display: flex;
     justify-content: end;
     padding: .5rem .5rem 0 0;
+    z-index: 1;
 }
 .containerName{
-    padding-bottom: 3rem;
+    padding: 2rem;
+    z-index: 0;
 }
 /* createEvent */
 #eventForm{
@@ -413,8 +415,13 @@ p {
 #deleteContainer{
     z-index: 1;
 }
-#openContainer{
+.twoOpenContainer{
     width: 50%;
+    height: 25rem;
+    border: 1px solid black;
+}
+.oneOpenContainer{
+    width: 100%;
     height: 25rem;
     border: 1px solid black;
 }
@@ -440,12 +447,12 @@ p {
     margin-left: .5rem;
     line-height: .8;
 }
-.itemTitle{
+.itemTitle, .toDoTitle{
     display: flex;
     align-items:center;
     margin: 0;
 }
-.itemName{
+.itemName, .toDoName{
     margin: 0;
     line-height: 0;
 }
@@ -455,5 +462,22 @@ p {
 }
 .itemDescription{
     font-size: x-small;
+}
+
+.toDoContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.toDo{
+    width: 95%;
+    background-color: bisque;
+    border: 1px black solid;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
 }
 

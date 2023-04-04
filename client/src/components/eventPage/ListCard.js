@@ -1,6 +1,7 @@
 import ListSection from "./ListSection";
 import CreateContainerForm from "./CreateContainerForm";
 import CreateItemForm from "./CreateItemForm";
+import CreateToDoForm from "./CreateToDoForm";
 import { useState, useEffect, useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 
@@ -44,40 +45,39 @@ export default function ListCard(props){
      const refreshData = () => {
         if(props.listType === "containers"){
             refreshContainerData();
-        } 
-        if (props.listType === "todos"){
+        } else if (props.listType === "toDos"){
             refreshToDos();
-        } 
-        if(props.listType === "items"){
+        } else if(props.listType === "items"){
             refreshItems();
         }
      }
-    useEffect( () => {
-        // if(props.listType === "containers" && authorities.user.token != null){
-        //     refreshContainerData();
-        // } 
-        // if(props.listType === "todos" && authorities.user.token != null){
-        //     refreshToDos();
-        // } 
-        // if (props.listType ==="items" && authorities.user.token != null){
-        //     refreshItems();
-        // }
+useEffect( () => {
         if(authorities.user.token != null){
             refreshData()
         }
          
-    }, [allData]);
+    }, []);
 
     return(
         <div className="listCard">
             <div className="listCardHeader">
-                <h3>{props.listType === "containers" ? "Containers" : props.listType === "todos" ? "ToDo's" : props.container.containerName}</h3>
+                <h3>{props.listType === "containers" ? "Containers" : props.listType === "toDos" ? "ToDos" : props.container.containerName}</h3>
                 <div>
                 <button onClick={() => setAddFormOpen(!addFormOpen)}>{!addFormOpen ? "Add icon" : "Cancel icon"}</button>
                 {props.listType === "items" && <button onClick={() => {props.closeListItem(props.container.containerId)}}>close icon</button>}
                 </div>
             </div>
-            {props.listType === "Containers" 
+            {props.listType === "toDos" 
+            &&
+            <>
+            {addFormOpen && 
+            <div className="formWrapper">
+            <CreateToDoForm eventId={props.eventId} setAddFormOpen={setAddFormOpen} refreshData={refreshData}/>
+            </div>
+            }
+            </>
+            }
+            {props.listType === "containers" 
             &&
             <>
             {addFormOpen && 
@@ -87,8 +87,6 @@ export default function ListCard(props){
             }
             </>
             }
-            {/* {toDoFormOpen && <CreateToDoForm eventId={props.eventId} setToDoFormOpen={setToDoFormOpen} />}
-            <ListSection /> */}
             {props.listType === "items" 
             &&
             <>
