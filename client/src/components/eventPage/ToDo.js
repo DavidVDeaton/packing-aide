@@ -18,22 +18,22 @@ export default function ToDo(props){
         })
         .then(props.refreshData)
     }
-
+    console.log(checked)
     props.toDo.toDoStatus = checked;
     return(
-        <div className="toDoContainer">
-            <div className="toDo">
-                <div className="toDoText">
-                    <div className="toDoTitle">
-                    <h4 className="toDoName">{props.toDo.toDoName}</h4>
-                    <p className="quantity">({props.toDo.toDoDate})</p>
+        <div className="listItemContainer">
+            <div className="listItem">
+                <div className="listItemText">
+                    <div className="listItemTitle">
+                    <h4 className="listItemName">{props.toDo.toDoName}</h4>
+                    <p className="date">({props.toDo.toDoDate})</p>
                     </div>
-                    <p className="toDoDescription">{props.toDo.toDoDescription}</p>
+                    <p className="listItemDescription">{props.toDo.toDoDescription}</p>
                 </div>
                 <div className="toDoButtons">
-                <button onClick={() => setChecked(!checked)}>check</button>
-                <button onClick={() => setEditMode(!editMode)}>{!editMode ? "edit icon" : "cancel update"}</button> 
-                <button onClick={deletetoDo}>X</button>
+                <span className="listItemButton material-symbols-outlined" onClick={() => setChecked(!checked)}>{!checked ? "done" : "done_all"}</span>
+                <span className="listItemButton material-symbols-outlined" onClick={() => setEditMode(!editMode)}> edit_note</span> 
+                <span className="listItemButton material-symbols-outlined" onClick={deletetoDo}>delete</span>
                 </div>
             </div>
             {editMode && <CreateToDoForm toDoToEdit={props.toDo} refreshData={props.refreshData} setEditMode={setEditMode}/>}
