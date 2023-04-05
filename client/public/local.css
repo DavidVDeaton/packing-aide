@@ -58,6 +58,12 @@ nav {
     transition: .15s;
 }
 
+.navButtonDisabled{
+    font-size: 1.25rem;
+    transition: .15s;
+    color: #777777;
+}
+
 .section-heading {
     font-size: 2rem;
     color: #0d8cd4;
@@ -72,17 +78,12 @@ nav {
     text-transform: uppercase;
 }
 
-a {
+/* a {
     text-decoration: none;
     color: #0d8cd4;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
-    transition: .15s;
-}
-
-a:hover {
-    filter: blur(.85px);
-}
+} */
 
 input[type="submit"] {
     padding: .5rem 1rem;
@@ -128,6 +129,7 @@ input[type="submit"]:hover {
     box-shadow: 2px 2px 8px #444444;
     border-radius: 10px;
     width: 300px;
+    background-color: white;
 }
 
 .card:hover {
@@ -141,6 +143,7 @@ input[type="submit"]:hover {
     margin: .5rem 1rem;
     width: 65rem;
     max-width: 55vw;
+    background-color: white;
 }
 
 .card-rows {
