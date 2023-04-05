@@ -185,7 +185,7 @@ nav {
     flex-direction: column;
     align-items: center;
 }
-.listCardHeader{
+.cardHeader{
     display: flex;
     width: 93%;
     align-items: center;

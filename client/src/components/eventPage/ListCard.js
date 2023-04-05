@@ -59,10 +59,10 @@ useEffect( () => {
     }, []);
 
     return(
-        <div className="listCard">
-            <div className="listCardHeader">
-                <h3>{props.listType === "containers" ? "Containers" : props.listType === "toDos" ? "ToDos" : props.container.containerName}</h3>
-                <div>
+        <div className="card100">
+            <div className="cardHeader">
+                <h3 className="left-align">{props.listType === "containers" ? "Containers" : props.listType === "toDos" ? "ToDos" : props.container.containerName}</h3>
+                <div className="right-align">
                 <button onClick={() => setAddFormOpen(!addFormOpen)}>{!addFormOpen ? "Add icon" : "Cancel icon"}</button>
                 {props.listType === "items" && <button onClick={() => {props.closeListItem(props.container.containerId)}}>close icon</button>}
                 </div>

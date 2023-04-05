@@ -21,7 +21,8 @@ export default function CreateItemForm(props){
 
     const [item, setItem] = useState(itemTemplate);
     const [errors, setErrors] = useState([])
-    console.log(props.itemToEdit)
+
+    console.log(item)
     const submitItem = async (event) => {
         event.preventDefault();
 

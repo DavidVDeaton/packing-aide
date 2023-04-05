@@ -5,6 +5,7 @@ import CreateItemForm from "./CreateItemForm";
 export default function Item(props){
 
     const[editMode, setEditMode] = useState(false);
+    const[checked, setChecked] = useState(false);
     const authorities = useContext(UserContext);
 
     const deleteItem = () => {
@@ -16,7 +17,7 @@ export default function Item(props){
         })
         .then(props.refreshData)
     }
-
+    props.item.packStatus = checked;
     return(
         <div className="itemContainer">
             <div className="item">
@@ -28,6 +29,7 @@ export default function Item(props){
                 <p className="itemDescription">{props.item.description}</p>
                 </div>
                 <div className="itemButtons">
+                <button onClick={() => setChecked(!checked)}>check</button>
                 <button onClick={() => setEditMode(!editMode)}>{!editMode ? "edit icon" : "cancel update"}</button> 
                 <button onClick={deleteItem}>X</button>
                 </div>

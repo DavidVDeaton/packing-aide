@@ -35,8 +35,6 @@ export default function ListSection(props){
                         <div className={editContainers.length === 2 ? "twoOpenContainers" : "oneOpenContainer"}>
                         <ListCard eventId={props.eventId} container={container} closeListItem={closeListItem} listType="items"/>
                         </div>
-                        
-                        
                     )
                 })}
             </div>
