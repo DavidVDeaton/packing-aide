@@ -8,7 +8,6 @@ import EditIcons from "../components/EditIcons";
 export default function UserHome(props) {
 
     const user = useContext(UserContext);
-    console.log(user);
     const itemToDisplay = [];
     const params = 0;
 

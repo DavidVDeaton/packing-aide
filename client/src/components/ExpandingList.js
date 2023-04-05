@@ -80,7 +80,7 @@ export default function ExpandingList(props) {
 
     return (
         <div>
-            <h3 class="section-heading">{props.text}</h3>
+            <h3 className="section-heading">{props.text}</h3>
             <div>
                 <div className="display-selected-card"> 
                 </div>
