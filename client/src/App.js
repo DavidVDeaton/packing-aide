@@ -7,7 +7,6 @@ import Nav from './layout/Nav';
 import UserHome from './layout/UserHome';
 import EventForm from './components/EventForm';
 import Event from "./layout/Event";
-import Profile from "./layout/Profile";
 import NotFound from "./layout/NotFound";
 
 function App() {
@@ -92,7 +91,7 @@ function App() {
          <Route path="/createmove" element={<EventForm event={event} eventType={move} refreshData={refreshData}/>} />
          <Route path="/createvacation" element={<EventForm event={event} eventType={vacation} refreshData={refreshData}/>} />
          <Route path="/event/:id" element={<Event event={event} refreshData={refreshData}/>} />
-         <Route path="/profile" element={<Profile />} />
+         {/* <Route path="/profile" element={<Profile />} /> */}
          <Route path="*" element={<NotFound />} />
        </Routes>
        {/* <Footer /> */}

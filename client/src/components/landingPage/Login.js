@@ -66,8 +66,8 @@ export default function Login(props){
         setErrors([]);
     }
     return(
-        <div id="loginCard">
-            <h3>{createMode ? "Create an Account" : "Login"}</h3>
+        <div className="loginCard">
+            <h3 className="subHeading">{createMode ? "Create an Account" : "Login"}</h3>
             <form onSubmit={handleSubmit}>
                 <div className="inputSection">
                     <label htmlFor="usernameInput">Username:</label>
@@ -95,7 +95,7 @@ export default function Login(props){
                         )
                     })}
                 <div id="loginButtons">
-                <input type="submit" value={createMode ? "Create account" : "Log in"} />
+                <input type="submit" value={createMode ? "Create Account" : "Login"} />
                 <a href="#" id="createLink" onClick={switchCreateMode}>{createMode ? "Login" : "Create an account"}</a>
                 </div>
             </form>
