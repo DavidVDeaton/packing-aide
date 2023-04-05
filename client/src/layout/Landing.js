@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import Login from "../components/landingPage/Login";
-import About from "../components/landingPage/About";
 import logo from "../images/pa-logo-transparent.png"
 import Features from "../components/landingPage/Features";
 import ballon from "../images/pa-logo-ballon.png";
@@ -30,9 +29,7 @@ export default function Landing(props){
             <section className="featuresContainer">
                 <Features />
             </section>
-            <section className="aboutContainer">
-                <About />
-            </section>
+
 
         </main>
     )
