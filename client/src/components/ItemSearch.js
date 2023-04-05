@@ -118,24 +118,27 @@ export default function ItemSearch (props) {
 
     return (
         <div>
-            <input type="text" value={searchText} onChange={(e) => {setSearchText(e.target.value)}}/>
-            <button value="search" onClick={() => {submitSearch(searchText)}}>Search</button>
+            <div className="itemSearchDiv">
+                <h3 className="subHeading">Item Search</h3>
+                <input className="itemSearchInput" type="text" value={searchText} onChange={(e) => {setSearchText(e.target.value)}}/>
+                <input type="submit" value="Search" onClick={() => {submitSearch(searchText)}}/>
+            </div>
             <div className="card-rows">
                 {displayObjects.map((item) => {
                     if (item.parentName === undefined) {
                         return (
-                            <div className="card100 three-column-in-card" >  
-                                <p class="left-align">{item.itemName}</p>
+                            <div className="three-column-in-card" >  
+                                <p class="left-align highlight">{item.itemName}</p>
                                 <p class="left-align">{item.description}</p>
-                                <p>{item.eventName} {item.eventStart}-{item.eventEnd} &gt; {item.containerName}</p>
+                                <p>{item.eventName} <span className="highlight">&gt;</span> {item.containerName}</p>
                             </div>
                         );
                     } else {
                         return (
-                            <div className="card100 three-column-in-card" >  
-                                <p class="left-align">{item.itemName}</p>
+                            <div className="three-column-in-card" >  
+                                <p class="left-align highlight">{item.itemName}</p>
                                 <p class="left-align">{item.description}</p>
-                                <p>{item.eventName} {item.eventStart}-{item.eventEnd} &gt; {item.parentName} &gt; {item.containerName}</p>
+                                <p>{item.eventName} <span className="highlight">&gt;</span> {item.parentName} <span className="highlight">&gt;</span> {item.containerName}</p>
                             </div>
                         );
                     }

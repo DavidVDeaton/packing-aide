@@ -20,8 +20,8 @@ export default function Landing(props){
                     
                 </div>
                 <div className="taglineDiv">
-                    <p className="question">Business Trip?</p>
-                    <p className="question">Upcoming Move?</p>
+                    <p className="question center-align">Business Trip?</p>
+                    <p className="question center-align">Upcoming Move?</p>
                     <p className="tagline">Packing Aide is an all-in-one, inventory, itenerary, to-do-list, to aide your next move or trip.</p>
                 </div>
 

@@ -22,6 +22,8 @@ export default function ExpandingList(props) {
     let futureEvents = [];
     let displayedEvents = [];
 
+    format (new Date(), 'do MMMM Y');
+
     for (let i = 0; i < events.length; i++) {
 
         events.sort((a, b) => (new Date(a.startDate)- new Date(b.startDate)));
@@ -94,7 +96,7 @@ export default function ExpandingList(props) {
                             // onClick Function to take user to event specific page will be inserted into this div
                         <div className={cardCSS} >  
                             <p className="left-align highlight">{event.eventName}</p>
-                            {/* <p>{format(new Date(event.startDate), "MMMM do Y")} - {format(new Date(event.endDate), "MMMM do Y")}</p> */}
+                            <p>{event.startDate} - {event.endDate}</p>
                             <div className="right-align">
                                 <button className={iconCSS} onClick={() => {editEvent(event.eventId)}}>{edit}</button>
                                 <button className={iconCSS} onClick={() => {deleteEvent(event.eventId)}}>{trash}</button>

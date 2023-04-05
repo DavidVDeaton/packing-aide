@@ -86,7 +86,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
         final String sql = "update app_user set "
                 + "username = ?, "
-                + "disabled = ? "
+                + "password_hash = ? "
                 + "where app_user_id = ?";
 
         jdbcTemplate.update(sql,
