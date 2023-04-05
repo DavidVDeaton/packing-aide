@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 const URL = "https://nominatim.openstreetmap.org/search?";
     
 export default function LocationSearch (props) {
-    const{ selectPosition, setSelectPosition } = useState(props);
     const[searchText, setSearchText] = useState("");
     const[locationList, setLocationList] = useState([]);
     
@@ -36,7 +35,7 @@ export default function LocationSearch (props) {
                 <input type="button" value="Search" onClick={() => {submitSearch()}}/>
             </div>
             <div className="searchResult popUp">
-                <ul>
+                <ul class="locationPopUp">
                 {locationList.map((location) => {
                     return(
                         <div key={location.osm_id} className="hoverMe" onClick={() => {
