@@ -103,7 +103,7 @@ public class AuthController {
         HashMap<String, Integer> map = new HashMap<>();
         map.put("appUserId", result.getPayload().getAppUserId());
 
-        return new ResponseEntity<>(map, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/api/delete_account/{appUserId}")
