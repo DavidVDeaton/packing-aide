@@ -12,12 +12,3 @@ export default function FeatureCard(props){
     )
 }
 
-// .featureCard{
-//     border: solid 1px black;
-//     width: 15rem;
-//     height: 20rem;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-   
-// }

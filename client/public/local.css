@@ -480,4 +480,16 @@ p {
     align-items: center;
     border-radius: 10px;
 }
+/* Not Found */
+.notFound{
+    font-size: 2rem;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.notFoundText{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
 

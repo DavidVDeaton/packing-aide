@@ -11,19 +11,21 @@ export default function EventForm(props) {
     
 
     let formTemplate;
-    // if(props.event === undefined) {
+    if(props.eventFormEdit === undefined) {
             formTemplate = {
             startDate: "",
             endDate: "",
             startLocationId: "",
+            startLocationType: "",
             endLocationId: "",
+            endLocationType:"",
             appUserId: authorities.user.userId,
             eventName:"",
-            eventType: false,
+            eventType: props.eventType,
         }
-    // } else {
-    //     formTemplate = props.event;
-    // }
+    } else {
+        formTemplate = props.eventFormEdit;
+    }
 
     const [formState, setFormState] = useState(formTemplate);
     const [errors, setErrors] = useState([]);
@@ -40,20 +42,20 @@ export default function EventForm(props) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        let method;
-        let url;
+        let method = "POST";
+        let url = `${authorities.url}/event`;
+        
         
 
-
-   
-        if(props.event === undefined || props.event.eventId === undefined) {
-            method = "POST";
-            url = `${authorities.url}/event`;
-        } else {
-            method = "PUT";
-            url = `${authorities.url}/event/${props.event.eventId}`;
+        if(props.eventFormEdit !== undefined) {
+            url = `${authorities.url}/event/${props.eventFormEdit.eventId}`
+            method = "PUT"
+            console.log(props.eventFormEdit.eventId)
         }
-
+        // if(props.event === undefined || props.event.eventId === undefined) {
+        //     method = "PUT";
+        //     url = `${authorities.url}/event/${props.event.eventId}`;
+        // }
         // setFormState({
         //     ...formState,
         //     startLocationId: selectStartPosition.osm_id,
@@ -80,17 +82,29 @@ export default function EventForm(props) {
             body: JSON.stringify(formState),
           });
           if (response.status >= 200 && response.status < 300) {
-            // props.refreshData();
+              let eventFormEdit = undefined;
+            if(props.eventFormEdit === undefined) {
+             let a = await response.json();
+                eventFormEdit = a;
+        } 
+            console.log(eventFormEdit)
+            props.refreshData();
             setFormState(formTemplate);
             setSelectStartPosition("");
             setSelectEndPosition("");
             setErrors([]);
-            navigate(`/event/${props.event.eventId}`);  
+            if(props.eventFormEdit === undefined) {
+            navigate(`/event/${eventFormEdit.eventId}`);  
+            } else {
+                props.setEditEvent(false);
+                navigate(`/event/${props.eventFormEdit.eventId}`)
+            }
           } else {
             const errors = await response.json();
             setErrors(errors);
           }
     }
+    
 
     return(
         <form id="eventForm" onSubmit = {handleSubmit}>
@@ -147,7 +161,7 @@ export default function EventForm(props) {
             </div>
 
             <div id="eventFormSubmitButton">
-                <input type = "submit" value = "Submit"/>
+                <input type = "submit" value = {props.eventFormEdit === undefined ? "AddEvent" : "Update"}/>
             </div>
         </form>
     )
