@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import UserContext from "../../contexts/UserContext"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrash, faXmark} from "@fortawesome/free-solid-svg-icons";
 export default function Container(props){
     
     const [confirmDelete, setConfirmDelete] = useState(false);
@@ -18,17 +19,15 @@ export default function Container(props){
     }
 
     return(
-        <div className="container">
-            <div className="containerButtons">
-            <button id="deleteContainer" onClick={() => {setConfirmDelete(!confirmDelete)}}>{!confirmDelete ? "delete icon" : "cancel icon"}</button>
-            </div>
+        <div className="containerWrapper">
+                <FontAwesomeIcon onClick={() => {setConfirmDelete(!confirmDelete)}} icon={!confirmDelete ? faTrash : faXmark} className="listItemButton deleteIconContainer"/>
             {!confirmDelete 
             ?
             <h3 className="containerName" onClick={() => {props.addToEditList(props.container)}}>{props.container.containerName}</h3>
             :
             <>
-            <p >If you haven't moved the items inside, deleting this container will delete all items as well. Are you sure you want to delete?</p>
-            <button onClick={deleteContainer}>delete icon</button>
+            <p>All items will be erased...</p>
+            <button className="submitButton" onClick={deleteContainer}>Confirm Delete</button>
             </>
              }
         </div>

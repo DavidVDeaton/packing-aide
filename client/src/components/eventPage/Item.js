@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext"
 import CreateItemForm from "./CreateItemForm";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCheck, faCheckDouble, faMarker, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 export default function Item(props){
 
@@ -19,19 +21,19 @@ export default function Item(props){
     }
     props.item.packStatus = checked;
     return(
-        <div className="itemContainer">
-            <div className="item">
-                <div className="itemText">
-                <div className="itemTitle">
-                <h4 className="itemName">{props.item.itemName}</h4>
-                <p className="quantity">(quantity:{props.item.quantity})</p>
+        <div className="listItemWrapper">
+            <div className="listItem">
+                <span className="listItemButton checkIcon" onClick={() => setChecked(!checked)}>{!checked ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCheckDouble} />}</span>
+                <div className="listItemText">
+                    <div className="listItemTitle">
+                    <h4 className="listItemName">{props.item.itemName}</h4>
+                    <p className="quantity">(quantity:{props.item.quantity})</p>
+                    </div>
+                    <p className="listItemDescription">{props.item.description}</p>
                 </div>
-                <p className="itemDescription">{props.item.description}</p>
-                </div>
-                <div className="itemButtons">
-                <button onClick={() => setChecked(!checked)}>check</button>
-                <button onClick={() => setEditMode(!editMode)}>{!editMode ? "edit icon" : "cancel update"}</button> 
-                <button onClick={deleteItem}>X</button>
+                <div className="multipleButtons">
+                    <FontAwesomeIcon icon={faMarker} className="listItemButton editIcon" onClick={() => setEditMode(!editMode)}/> 
+                    <FontAwesomeIcon icon={faTrash} className="listItemButton deleteIcon" onClick={deleteItem}/>
                 </div>
             </div>
             {editMode && <CreateItemForm itemToEdit={props.item} refreshData={props.refreshData} setEditMode={setEditMode} />}

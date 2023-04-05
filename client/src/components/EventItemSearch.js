@@ -78,7 +78,9 @@ export default function ItemSearch (props) {
 
     }
 
-    const submitSearch = (searchText) => {
+    const refreshSearch = (searchText) => {
+
+        setSearchText(searchText);
 
         fetch(`${url}/item/user/${id}`, {
             headers: {
@@ -96,6 +98,9 @@ export default function ItemSearch (props) {
         .then((response) => response.json())
         .then((data) => setContainers(data));
 
+    }
+
+    const submitSearch = (searchText) => {
         
         for (let pop=0; pop<itemToDisplay.length; ) {
             itemToDisplay.pop();
@@ -133,7 +138,7 @@ export default function ItemSearch (props) {
     return (
         <div>
             <h3>Item Search</h3>
-            <input type="text" value={searchText} onChange={(e) => {setSearchText(e.target.value)}}/>
+            <input type="text" value={searchText} onChange={(e) => {refreshSearch(e.target.value)}}/>
             <button value="search" onClick={() => {submitSearch(searchText)}}>Search</button>
             <div className="card-rows">
                 {displayObjects.map((item) => {

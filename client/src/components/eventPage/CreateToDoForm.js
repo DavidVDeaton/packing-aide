@@ -72,7 +72,7 @@ export default function ToDo(props){
             <input type="text" className="input" id="description" value={toDo.toDoDescription} onChange={(e) => {setToDo({...toDo, toDoDescription: e.target.value})}} />
             </div>
             <div className="submitButtonDiv">
-            <input type="submit" className="submitButton" value={props.toDoToEdit === undefined ? "Create" : "Update"}/>
+            <button className="submitButton" type="submit" >{props.toDoToEdit === undefined ? "Create" : "Update"}</button>
             </div>
         </form>
     )

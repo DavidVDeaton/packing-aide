@@ -2,9 +2,16 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from '../contexts/UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMarker } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function ExpandingList(props) {
 
+    const edit = <FontAwesomeIcon icon={faMarker}/>
+    const plus = <FontAwesomeIcon icon={faPlus} />
+    const trash = <FontAwesomeIcon icon= {faTrash} />
     //console.log(props.refreshData);
     const past = props.past;
     const date = new Date;
@@ -82,8 +89,8 @@ export default function ExpandingList(props) {
                             <p class="left-align highlight">{event.eventName}</p>
                             <p>{event.startDate} - {event.endDate}</p>
                             <div className="right-align">
-                                <button onClick={() => {editEvent(event.eventId)}}>Edit</button>
-                                <button onClick={() => {deleteEvent(event.eventId)}}>Delete</button>
+                                <button className="icon" onClick={() => {editEvent(event.eventId)}}>{edit}</button>
+                                <button className="icon" onClick={() => {deleteEvent(event.eventId)}}>{trash}</button>
                             </div>
                         </div>
                         );

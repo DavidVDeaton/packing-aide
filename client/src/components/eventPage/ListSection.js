@@ -27,8 +27,8 @@ export default function ListSection(props){
         }
      
     return(
-        <div className={props.listType === "items" ? "smallListSection scroll" : props.listType === "containers" ? "containerList scroll" : "toDoList scroll"}>
-            <div id="editContainersWrapper">
+        <div className={props.listType === "containers" ? "containerList scroll" :  "listWrapper scroll"}>
+            <div className="editContainerWrapper">
                 {editContainers !== undefined && 
                 editContainers.map((container) => {
                     return(

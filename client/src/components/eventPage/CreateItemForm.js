@@ -56,21 +56,23 @@ export default function CreateItemForm(props){
  
 
     return(
-        <form id="createItemForm" onSubmit={submitItem}>
+        <form className="add-form" onSubmit={submitItem}>
             <Errors errors={errors} />
             <div className="inputDiv">
-            <label htmlFor="itemName">Item name:</label>
-            <input type="text" id="itemName" value={item.itemName} onChange={(e) => {setItem({...item, itemName: e.target.value})}} />
+            <label htmlFor="itemName" className="label">Item name:</label>
+            <input type="text" className="input" id="itemName" value={item.itemName} onChange={(e) => {setItem({...item, itemName: e.target.value})}} />
             </div>
             <div className="inputDiv">
-            <label htmlFor="description">Description:</label>
-            <input type="text" id="description" value={item.description} onChange={(e) => {setItem({...item, description: e.target.value})}} />
+            <label htmlFor="description" className="label">Description:</label>
+            <input type="text" className="input" id="description" value={item.description} onChange={(e) => {setItem({...item, description: e.target.value})}} />
             </div>
             <div className="inputDiv">
-            <label htmlFor="quantity">Quantity:</label>
-            <input type="number" id="quantity" value={item.quantity} onChange={(e) => {setItem({...item, quantity: e.target.value})}} />
+            <label htmlFor="quantity" className="label">Quantity:</label>
+            <input type="number" className="input" id="quantity" value={item.quantity} onChange={(e) => {setItem({...item, quantity: e.target.value})}} />
             </div>
-            <input type="submit" className="addItemButton" value={props.itemToEdit === undefined ? "Add item" : "Update"}/>
+            <div className="submitButtonDiv">
+            <button type="submit" className="submitButton" >{props.itemToEdit === undefined ? "Add" : "Update"}</button>
+            </div>
         </form>
     )
 }
