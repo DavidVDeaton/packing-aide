@@ -16,8 +16,8 @@ export default function UserHome(props) {
                 <ExpandingList event={props.event} text="Upcoming Events" past="n" />
             </section>
             <section className="two-column-even-display">
-                <InternalNavCard text="Plan a New Vacation" cardCSS="vacation-card card" eventType="vacation" />
-                <InternalNavCard text="Plan a New Move" cardCSS="move-card card" eventType="move" />
+                <InternalNavCard text="Plan a New Vacation" cardCSS="vacation-card-special card" eventType="vacation" />
+                <InternalNavCard text="Plan a New Move" cardCSS="move-card-special card" eventType="move" />
             </section>
             <section className="left-align">
                 <ItemSearchDiv event={props.event} />

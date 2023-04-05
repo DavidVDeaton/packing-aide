@@ -17,16 +17,13 @@ export default function ListEvent(props) {
     }
 
 
-    
-
-
     return (
         <div>
             <div>Event: {props.editEvent.eventName}</div>
             <div>Start Date: {props.editEvent.startDate}</div>
             <div>End Date: {props.editEvent.endDate}</div>
-            <div>Start Location: {props.editEvent.startLocationId}</div>
-            <div>End Location: {props.editEvent.endLocationId}</div>
+            <div>Start Location: {props.editEvent.startLocationType}</div>
+            <div>End Location: {props.editEvent.endLocationType}</div>
             <button onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "edit" : "cancel update"}</button> 
             <button onClick={beginDelete}>Delete Event</button>
             {editEvent && <EventForm  eventFormEdit={props.editEvent} setEditEvent={setEditEvent} refreshData={props.refreshData} /> }
