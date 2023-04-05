@@ -6,12 +6,15 @@ export default function ItemSearch (props) {
     const itemToDisplay = props.item;
     const events = props.event;
 
-    console.log(events);
-
     const [items, setItems] = useState([]);
     const [containers, setContainers] = useState([]);
+    const [searchText, setSearchText] = useState("");
 
     const displayObjects= [];
+    let mainObjects = [{}];
+    let temporaryContainerObject = {};
+    let temporaryParentContainerObject = {};
+    let temporaryEventObject = {};
 
     const user = useContext(UserContext);
     const id = user.user.userId;
@@ -28,6 +31,7 @@ export default function ItemSearch (props) {
         .then((data) => setItems(data))
     }, []);
 
+
     useEffect( () => {
         fetch(`${url}/container`, {
             headers: {
@@ -37,14 +41,46 @@ export default function ItemSearch (props) {
         .then((response) => response.json())
         .then((data) => setContainers(data))
     }, []);
+    
+    for (let i=0; i<itemToDisplay.length; i++) {
 
-    console.log(items);
-    console.log(containers);
+        for (let j=0; j<containers.length; j++) {
+            if (containers[j].containerId === itemToDisplay[i].containerId) {
+                temporaryContainerObject = containers[j];
+            }
+        }
 
-    const [searchText, setSearchText] = useState("");
-    let mainObjects = [{}];
+        if (temporaryContainerObject.parentContainerId != 0) {
+            for (let k=0; k<containers.length; k++) {
+                if (containers[k].containerId === temporaryContainerObject.parentContainerId) {
+                    temporaryParentContainerObject = containers[k];
+                }
+            }
+        }
 
+        for (let l=0; l<events.length; l++) {
+            if (events[l].eventId === temporaryContainerObject.eventId) {
+                temporaryEventObject = events[l];
+            }
+        }
 
+        console.log(temporaryEventObject);
+
+        mainObjects[i] = {
+            itemName: itemToDisplay[i].itemName,
+            description: itemToDisplay[i].description,
+            containerName: temporaryContainerObject.containerName,
+            parentName: temporaryParentContainerObject.containerName,
+            eventName: temporaryEventObject.eventName,
+            eventStart: temporaryEventObject.startDate,
+            eventEnd: temporaryEventObject.endDate,
+            eventType: temporaryEventObject.eventType
+        }
+
+        displayObjects.push(mainObjects[i]);
+
+    }
+    
     const submitSearch = (searchText) => {
         
         for (let pop=0; pop<itemToDisplay.length; ) {
@@ -70,8 +106,8 @@ export default function ItemSearch (props) {
         }
 
         const noItem = {
-            itemName: "No Item",
-            description: "Please refine search."
+            itemName: searchText,
+            description: "Item not found. Please refine search."
         }
 
         if (itemToDisplay.length < 1) {
@@ -79,48 +115,6 @@ export default function ItemSearch (props) {
             setSearchText("");
         }
     }
-
-    let temporaryContainerObject = {};
-    let temporaryParentContainerObject = {};
-    let temporaryEventObject = {};
-
-    for (let i=0; i<itemToDisplay.length; i++) {
-
-        for (let j=0; j<containers.length; j++) {
-            if (containers[j].containerId === itemToDisplay[i].containerId) {
-                temporaryContainerObject = containers[j];
-            }
-        }
-
-        if (temporaryContainerObject.parentContainerId != 0) {
-            for (let k=0; k<containers.length; k++) {
-                if (containers[k].containerId === temporaryContainerObject.parentContainerId) {
-                    temporaryParentContainerObject = containers[k];
-                }
-            }
-        }
-
-        for (let l=0; l<events.length; l++) {
-            if (events[l].eventId === temporaryContainerObject.eventId) {
-                temporaryEventObject = events[l];
-            }
-        }
-
-        mainObjects[i] = {
-            itemName: itemToDisplay[i].itemName,
-            description: itemToDisplay[i].description,
-            containerName: temporaryContainerObject.containerName,
-            parentName: temporaryParentContainerObject.containerName,
-            eventName: temporaryEventObject.eventName,
-            eventStart: temporaryEventObject.startDate,
-            eventEnd: temporaryEventObject.endDate
-        }
-
-        displayObjects.push(mainObjects[i]);
-        console.log(displayObjects);
-    }
-
-    console.log(mainObjects);
 
     return (
         <div>
