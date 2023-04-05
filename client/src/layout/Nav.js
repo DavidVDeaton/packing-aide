@@ -17,10 +17,10 @@ export default function Nav(){
             <>
             <Link to="/userhome" className="navButton">Home</Link>
 
-            <Link to="/createMove" className="navButton">Start a Move</Link>
+            <Link to="/createMove" className="navButton">Plan a Move</Link>
 
-            <Link to="/createVacation" className="navButton">Start a Vacation</Link>
-            <Link to="/profile" className="navButton">Profile</Link>
+            <Link to="/createVacation" className="navButton">Plan a Trip</Link>
+            {/* <Link to="/profile" className="navButton">Profile</Link> */}
             <Link to="/" onClick={authorities.logout} className="navButton">Log Out</Link>
             </>
             :

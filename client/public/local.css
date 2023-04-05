@@ -5,6 +5,7 @@ body {
     margin: 0;
     background: linear-gradient(176deg, #D4E8FF80 20%, #D4E8FF 60%);
     width: 100%;
+    font-family: "Rubik", sans-serif;
 }
 
 main {
@@ -13,11 +14,27 @@ main {
     width: 100%;
 }
 
+/* .landingPageMain {
+    background: linear-gradient(176deg, transparent 60%, #0d8cd4 60.2%);
+} */
+
+.step1 {
+    margin-top: -60px;
+}
+
+.step2 {
+    margin-top: 60px;
+}
+
+.step3 {
+    margin-top: 180px;
+}
+
 section {
     margin: 1rem 0rem;
     display: grid;
     place-items: center;
-    width: 60vw;
+    width: 70vw;
     padding: 1rem;
 }
 
@@ -41,65 +58,50 @@ nav {
     transition: .15s;
 }
 
-.navButton:hover{
+.section-heading {
+    font-size: 2rem;
+    color: #0d8cd4;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+}
+
+.subHeading {
+    font-size: 1.25rem;
+    color: #0d8cd4;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: #0d8cd4;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    transition: .15s;
+}
+
+a:hover {
     filter: blur(.85px);
 }
 
-.balloon {
-    animation: float 85s linear infinite;
-    top: 0;
-    left: 0;
-    position: fixed;
-    z-index: 999;
-    pointer-events: none;
-
+input[type="submit"] {
+    padding: .5rem 1rem;
+    font-family: "Rubik", sans-serif;
+    border: none;
+    background-color: #0d8cd4;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    box-shadow: 2px 2px 4px #444444;
+    color: white;
+    transition: .15s;
 }
 
-@keyframes float {
-    0% {
-        transform: translate(-10%, 20vh) rotateZ(5deg);
-        opacity: 0.5;
-    }
-    10% {
-        transform: translate(60%, 22vh) rotateZ(8deg);
-    }
-    15% {
-        opacity: 1;
-    }
-    20% {
-        transform: translate(100%, 17vh) rotateZ(5deg);
-    }
-    30% {
-        transform: translate(200%, 14vh) rotateZ(3deg);
-    }
-    35% {
-        transform: translate(250%, 20vh) rotateZ(1deg);
-    }
-    40% {
-        transform: translate(340%, 23vh) rotateZ(2deg);
-    }
-    50% {
-        transform: translate(450%, 19vh) rotateZ(8deg);
-    }
-    60% {
-        transform: translate(520%, 15vh) rotateZ(4deg);
-    }
-    70% {
-        transform: translate(620%, 12vh) rotateZ(0deg);
-    }
-    80% {
-        transform: translate(780%, 18vh) rotateZ(9deg);
-    }
-    90% {
-        transform: translate(850%, 22vh) rotateZ(5deg);
-    }
-    95% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(1000%, 25vh) rotateZ(0deg);
-        opacity: 0;
-    }
+input[type="submit"]:hover {
+    filter: blur(.85px);
+}
+
+.navButton:hover{
+    filter: blur(.85px);
 }
 
 /* Alignment CSS */
@@ -130,7 +132,6 @@ nav {
 
 .card:hover {
     box-shadow: 2px 2px 5px #444444;
-
 }
 
 .card100 {
@@ -140,7 +141,6 @@ nav {
     margin: .5rem 1rem;
     width: 65rem;
     max-width: 55vw;
-
 }
 
 .card-rows {
@@ -161,9 +161,23 @@ nav {
     letter-spacing: 1.2px;
 }
 
+.taglineDiv {
+    display: grid;
+    place-items: center;
+    margin: 3rem 0rem 2rem;
+}
+
 .highlight {
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
+}
+
+.question {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 2.25rem;
+    color: #0d8cd4;
+    margin: 0;
 }
 
 .move-card-special {
@@ -178,6 +192,7 @@ nav {
 /* Grid Column CSS */
 .two-column-even-display {
     display: grid;
+    place-items: center;
     grid-template-columns: 1fr 1fr;
     grid-gap: 6rem;
 }
@@ -194,16 +209,22 @@ nav {
     grid-gap: 1rem;
 }
 
-/* Misc CSS */
-a {
-    text-decoration: none;
-    color: #0d8cd4;
-    font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
+.three-column-even {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
 }
+
+/* Misc CSS */
 
 p {
     font-size: 1.25rem;
+    font-family: 'Rubik', sans-serif;
+}
+
+.tagline {
+    font-size: 1.4rem;
 }
 
 .width100 {
@@ -228,9 +249,8 @@ p {
     align-items: center;
 }
 
-#loginCard{
-    border: 1px blue solid;
-    padding: 3rem;
+.loginCard{
+    width: 280px
 }
 
 .inputSection{
@@ -238,9 +258,11 @@ p {
     flex-direction: column;
     margin-bottom: 1rem;
 }
+
 .loginInput{
-    width: 15rem;
+    width: 280px;
     height: 2rem;
+    border-radius: 5px;
 }
 
 #loginButtons{
