@@ -1,0 +1,106 @@
+.balloon {
+    animation: float 180s linear infinite;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-70%, 18vh) rotateZ(5deg);
+    }
+    10% {
+        transform: translate(180%, 22vh) rotateZ(8deg);
+    }
+    15% {
+        transform: translate(300%, 27vh) rotateZ(6deg);
+    }
+    20% {
+        transform: translate(400%, 20vh) rotateZ(5deg);
+    }
+    30% {
+        transform: translate(500%, 14vh) rotateZ(3deg);
+    }
+    35% {
+        transform: translate(630%, 20vh) rotateZ(1deg);
+    }
+    40% {
+        transform: translate(735%, 23vh) rotateZ(2deg);
+    }
+    50% {
+        transform: translate(890%, 19vh) rotateZ(8deg);
+    }
+    60% {
+        transform: translate(1020%, 15vh) rotateZ(4deg);
+    }
+    70% {
+        transform: translate(1200%, 12vh) rotateZ(0deg);
+    }
+    80% {
+        transform: translate(1470%, 10vh) rotateZ(9deg);
+    }
+    90% {
+        transform: translate(1600%, 18vh) rotateZ(5deg);
+    }
+    95% {
+        transform: translate(1660%, 20vh) rotateZ(5deg);
+    }
+    100% {
+        transform: translate(1800%, 25vh) rotateZ(0deg);
+
+    }
+}
+
+.balloon-two {
+    animation: float2 300s linear infinite;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+}
+
+@keyframes float2 {
+    0%{
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-70%, 18vh) rotateZ(5deg);
+        opacity: 0;
+    }
+    55% {
+        transform: translate(180%, 22vh) rotateZ(8deg);
+        opacity: 1;
+    }
+    60% {
+        transform: translate(300%, 27vh) rotateZ(6deg);
+    }
+    65% {
+        transform: translate(400%, 20vh) rotateZ(5deg);
+    }
+    70% {
+        transform: translate(500%, 14vh) rotateZ(3deg);
+    }
+    75% {
+        transform: translate(630%, 20vh) rotateZ(1deg);
+    }
+    80% {
+        transform: translate(735%, 23vh) rotateZ(2deg);
+    }
+    85% {
+        transform: translate(890%, 19vh) rotateZ(8deg);
+    }
+    90% {
+        transform: translate(1020%, 15vh) rotateZ(4deg);
+    }
+    95% {
+        transform: translate(1200%, 12vh) rotateZ(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(1470%, 10vh) rotateZ(9deg);
+        opacity: 0;
+    }
+}

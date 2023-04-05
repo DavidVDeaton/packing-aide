@@ -2,29 +2,38 @@ import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import Login from "../components/landingPage/Login";
 import About from "../components/landingPage/About";
-import boxes from "../images/boxes.png"
-import luggages from "../images/luggages.png";
+import logo from "../images/pa-logo-transparent.png"
 import Features from "../components/landingPage/Features";
 import ballon from "../images/pa-logo-ballon.png";
 
 export default function Landing(props){
     
     return(
-        <main id="landingPageContainer">
+        <main className="landingPageMain">
             <div className="">
-                <img src={ballon} className="balloon" width="180" />
+                <img src={ballon} className="balloon" width="120" />
+                <img src={ballon} className="balloon-two" width="130" />
             </div>
-            <section id="landingMainSection">
-                <img src={boxes} id="boxImage" width="300" />
-                <Login authenticationUrl={props.authenticationUrl}/>
-                <img src={luggages} id="luggageImage" width="300" />
+            <section className="landingMainSection">
+                <div className="two-column-even-display">
+                    <img src={logo} />
+                    <Login authenticationUrl={props.authenticationUrl}/>
+                    
+                </div>
+                <div className="taglineDiv">
+                    <p className="question">Business Trip?</p>
+                    <p className="question">Upcoming Move?</p>
+                    <p className="tagline">Packing Aide is an all-in-one, inventory, itenerary, to-do-list, to aide your next move or trip.</p>
+                </div>
+
             </section>
-            <section id="aboutContainer">
-                <About />
-            </section>
-            <section id="featuresContainer">
+            <section className="featuresContainer">
                 <Features />
             </section>
+            <section className="aboutContainer">
+                <About />
+            </section>
+
         </main>
     )
 }

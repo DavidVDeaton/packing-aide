@@ -92,7 +92,7 @@ function App() {
          <Route path="/createmove" element={<EventForm event={event} eventType={move} refreshData={refreshData}/>} />
          <Route path="/createvacation" element={<EventForm event={event} eventType={vacation} refreshData={refreshData}/>} />
          <Route path="/event/:id" element={<Event event={event} refreshData={refreshData}/>} />
-         <Route path="/profile" element={<Profile />} />
+         {/* <Route path="/profile" element={<Profile />} /> */}
          <Route path="*" element={<NotFound />} />
        </Routes>
        {/* <Footer /> */}
