@@ -8,18 +8,19 @@ import UserHome from './layout/UserHome';
 import EventForm from './components/EventForm';
 import Event from "./layout/Event";
 import NotFound from "./layout/NotFound";
+import Profile from "./layout/Profile";
 
 function App() {
 
 
-  // const url = "http://3.129.73.57:8080/api";
-  // const authenticationUrl = "http://3.129.73.57:8080/api/authenticate";
+  const url = "http://3.129.73.57:8080/api";
+  const authenticationUrl = "http://3.129.73.57:8080/api/authenticate";
 
-  const url = "http://localhost:8080/api";
-  const authenticationUrl = "http://localhost:8080/api/authenticate";
+  // const url = "http://localhost:8080/api";
+  // const authenticationUrl = "http://localhost:8080/api/authenticate";
 
-  const move = false;
-  const vacation = true;
+  const move = true;
+  const vacation = false;
   const [user, setUser] = useState(null);
   const [event, setEvent] = useState([]);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
@@ -91,7 +92,7 @@ function App() {
          <Route path="/createmove" element={<EventForm event={event} eventType={move} refreshData={refreshData}/>} />
          <Route path="/createvacation" element={<EventForm event={event} eventType={vacation} refreshData={refreshData}/>} />
          <Route path="/event/:id" element={<Event event={event} refreshData={refreshData}/>} />
-         {/* <Route path="/profile" element={<Profile />} /> */}
+         <Route path="/profile" element={<Profile />} />
          <Route path="*" element={<NotFound />} />
        </Routes>
        {/* <Footer /> */}

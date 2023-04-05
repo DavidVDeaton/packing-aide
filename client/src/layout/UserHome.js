@@ -12,16 +12,22 @@ export default function UserHome(props) {
 
     return (
         <main>
+            <section>
+                <div className="two-column-even-display">
+                    <div className="left-align">
+                        <h3>Welcome {user.user.username}</h3>
+                    </div>
+                    
+                    <ItemSearchDiv event={props.event} />
+                </div>
+            </section>
             <section className="left-align">
                 <ExpandingList event={props.event} text="Upcoming Events" past="n" />
             </section>
-            <section className="two-column-even-display">
+            {/* <section className="two-column-even-display">
                 <InternalNavCard text="Plan a New Vacation" cardCSS="vacation-card-special card" eventType="vacation" />
                 <InternalNavCard text="Plan a New Move" cardCSS="move-card-special card" eventType="move" />
-            </section>
-            <section className="left-align">
-                <ItemSearchDiv event={props.event} />
-            </section>
+            </section> */}
             <section className="left-align">
                 <ExpandingList event={props.event} text="Past Events" past="y" />
             </section>
