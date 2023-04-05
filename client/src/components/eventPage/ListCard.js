@@ -4,6 +4,8 @@ import CreateItemForm from "./CreateItemForm";
 import CreateToDoForm from "./CreateToDoForm";
 import { useState, useEffect, useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrash, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 export default function ListCard(props){
 
@@ -59,12 +61,12 @@ useEffect( () => {
     }, []);
 
     return(
-        <div className={props.eventType === true ? "card100 vacation-card" : "card100 move-card move"}>
+        <div className={props.eventType === true ? "card100 vacation-card" : props.listType ==="items" ? "card100 item-card" : "card100 move-card move"}>
             <div className="cardHeader">
                 <h3 className="left-align cardTitle">{props.listType === "containers" ? "Containers" : props.listType === "toDos" ? "ToDos" : props.container.containerName}</h3>
-                <div className="right-align">
+                <div className={props.listType === "items" ? "multipleButtons" : "right-align"}>
                 <button className="cardButton"onClick={() => setAddFormOpen(!addFormOpen)}>{!addFormOpen ? "Add " : "Cancel"}</button>
-                {props.listType === "items" && <button onClick={() => {props.closeListItem(props.container.containerId)}}>close icon</button>}
+                {props.listType === "items" && <FontAwesomeIcon icon={faXmark} className="listItemButton" onClick={() => {props.closeListItem(props.container.containerId)}} />}
                 </div>
             </div>
             {props.listType === "toDos" 
@@ -81,7 +83,7 @@ useEffect( () => {
             &&
             <>
             {addFormOpen && 
-            <div className="formWrapper">
+            <div className="form-wrapper form-wrapper-container">
             <CreateContainerForm eventId={props.eventId} setAddFormOpen={setAddFormOpen} refreshData={refreshData}/>
             </div>
             }
@@ -91,7 +93,7 @@ useEffect( () => {
             &&
             <>
             {addFormOpen && 
-            <div className="formWrapper">
+            <div className="form-wrapper form-wrapper-item">
             <CreateItemForm containerId={props.container.containerId} setAddFormOpen={setAddFormOpen} refreshData={refreshData}/>
             </div>
             }

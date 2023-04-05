@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { useParams } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
+import Errors from "../Errors";
 
 export default function CreateContainerForm(props){
  
@@ -37,12 +38,15 @@ export default function CreateContainerForm(props){
         }
 
     return(
-        <form id="createContainerForm" onSubmit={submitContainer}>
+        <form className="add-form-container" onSubmit={submitContainer}>
+            {errors.length > 0 && <Errors errors={errors} />}
             <div className="inputDiv">
-            <label htmlFor="containerName">Container name</label>
-            <input type="text" id="containerName" value={container.containerName} onChange={(e) => {setContainer({...container, containerName: e.target.value})}} />
+            <label htmlFor="containerName" className="label">Container name</label>
+            <input type="text" className="input" id="containerName" value={container.containerName} onChange={(e) => {setContainer({...container, containerName: e.target.value})}} />
             </div>
-            <input type="submit" className="addItemButton" value="Create container"/>
+            <div className="submitButtonDiv">
+            <button className="submitButton" type="submit">Create</button>
+            </div>
         </form>
     )
 }

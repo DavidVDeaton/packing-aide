@@ -1,7 +1,9 @@
-
 import { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import CreateToDoForm from "./CreateToDoForm";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCheck, faCheckDouble, faMarker, faTrash} from "@fortawesome/free-solid-svg-icons";
+
 
 export default function ToDo(props){
 
@@ -21,8 +23,9 @@ export default function ToDo(props){
     console.log(checked)
     props.toDo.toDoStatus = checked;
     return(
-        <div className="listItemContainer">
+        <div className="listItemWrapper">
             <div className="listItem">
+            <span className="listItemButton checkIcon" onClick={() => setChecked(!checked)}>{!checked ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCheckDouble} />}</span>
                 <div className="listItemText">
                     <div className="listItemTitle">
                     <h4 className="listItemName">{props.toDo.toDoName}</h4>
@@ -30,10 +33,9 @@ export default function ToDo(props){
                     </div>
                     <p className="listItemDescription">{props.toDo.toDoDescription}</p>
                 </div>
-                <div className="toDoButtons">
-                <span className="listItemButton material-symbols-outlined" onClick={() => setChecked(!checked)}>{!checked ? "done" : "done_all"}</span>
-                <span className="listItemButton material-symbols-outlined" onClick={() => setEditMode(!editMode)}> edit_note</span> 
-                <span className="listItemButton material-symbols-outlined" onClick={deletetoDo}>delete</span>
+                <div className="multipleButtons">
+                <FontAwesomeIcon icon={faMarker} className="listItemButton editIcon" onClick={() => setEditMode(!editMode)}/>
+                <FontAwesomeIcon icon={faTrash} className="listItemButton deleteIcon" onClick={deletetoDo}/>
                 </div>
             </div>
             {editMode && <CreateToDoForm toDoToEdit={props.toDo} refreshData={props.refreshData} setEditMode={setEditMode}/>}
