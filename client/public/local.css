@@ -338,8 +338,7 @@ Brown - #825C36
 }
 .add-form{
     display: flex;
-    flex-direction: column;
-    justify-content:flex-end;
+    justify-content:space-evenly;
     border: 1px solid rgb(194,149,92);
     border-radius: 5px;
     padding: .5rem .75rem;
