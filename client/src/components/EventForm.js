@@ -115,6 +115,7 @@ export default function EventForm(props) {
                     <input
                     id = "eventName-input"
                     type = "text"
+                    placeholder="add name"
                     value={formState.eventName}
                     onChange={(event) => {
                         setFormState({ ...formState, eventName: event.target.value })
@@ -151,7 +152,8 @@ export default function EventForm(props) {
             <div id="eventLocation">
                 <div>
                     <label htmlFor = "startLocationId-input">Start Location:</label>
-                    <LocationSearch selectPosition={selectStartPosition} setSelectPosition={setSelectStartPosition} selectStartPosition={selectStartPosition} setFormState={setFormState} formState={formState} locationType = "start"/>
+                    <LocationSearch selectPosition={selectStartPosition} setSelectPosition={setSelectStartPosition} selectStartPosition={selectStartPosition} setFormState={setFormState} formState={formState} locationType = "start"
+                    placeholder = "search"/>
                 </div>
 
                 <div>
