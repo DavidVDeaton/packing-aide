@@ -560,3 +560,84 @@ background: rgb(194,149,92);
     display: flex;
 }
 
+#deleteContainer{
+    z-index: 1;
+}
+.twoOpenContainer{
+    width: 50%;
+    height: 25rem;
+    border: 1px solid black;
+}
+.oneOpenContainer{
+    width: 100%;
+    height: 25rem;
+    border: 1px solid black;
+}
+
+.item{
+    width: 99%;
+    background-color: bisque;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    
+}
+
+.itemText{
+    height: 2rem;
+    width: 75%;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: .5rem;
+    line-height: .8;
+}
+.itemTitle, .toDoTitle{
+    display: flex;
+    align-items:center;
+    margin: 0;
+}
+.itemName, .toDoName{
+    margin: 0;
+    line-height: 0;
+}
+
+.quantity{
+    margin: 0;
+}
+.itemDescription{
+    font-size: x-small;
+}
+
+.toDoContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.toDo{
+    width: 95%;
+    background-color: bisque;
+    border: 1px black solid;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+/* Not Found */
+.notFound{
+    font-size: 2rem;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.notFoundText{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+

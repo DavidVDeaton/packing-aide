@@ -42,9 +42,9 @@ export default function LocationSearch (props) {
                         <div key={location.osm_id} className="hoverMe" onClick={() => {
                             props.setSelectPosition(location)
                             if(props.locationType === "start") {
-                                props.setFormState({...props.formState, startLocationId: location.osm_id})
+                                props.setFormState({...props.formState, startLocationId: location.osm_id, startLocationType: location.display_name})
                             } else {
-                                props.setFormState({...props.formState, endLocationId: location.osm_id})
+                                props.setFormState({...props.formState, endLocationId: location.osm_id, endLocationType: location.display_name})
                             }
                                 setLocationList([])
 

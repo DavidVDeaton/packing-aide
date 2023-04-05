@@ -12,5 +12,3 @@ export default function FeatureCard(props){
     )
 }
 
-// <img src={props.image} class="featureImage"/>
-// <p class="featureDescription">{props.description}</p>
