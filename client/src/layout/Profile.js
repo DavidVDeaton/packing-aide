@@ -5,8 +5,9 @@ import UserContext from '../contexts/UserContext';
 
 export default function Profile() {
 
-    const user = useContext(UserContext.user);
-    const url= useContext(UserContext.url);
+    const context = useContext(UserContext);
+    const user = context.user;
+    const url= context.url;
     const [username, setUsername] = useState("");
     const [passwordNew, setPasswordNew] = useState("");
     const [passwordOld, setPasswordOld] = useState("");
@@ -41,7 +42,7 @@ export default function Profile() {
         <main>
             <section className="left-align card100 three-column-in-card-right">
                 <div className="width100">
-                    <h3 className="left-align">Welcome {user.user.username}</h3>
+                    <h3 className="left-align">Welcome {user.username}</h3>
                 </div>
                 <button>Edit Username or Password</button>
                 <button onClick={handleAccountDeletion}>Delete Account</button>
@@ -53,7 +54,7 @@ export default function Profile() {
                         <input
                             className="loginInput"
                             id="usernameInput"
-                            value={user.user.username}
+                            value={user.username}
                             type="text"
                             onChange={(e) => setUsername(e.target.value)}
                         />
