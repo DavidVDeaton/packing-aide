@@ -20,7 +20,7 @@ export default function Event(props) {
         }
     }
 
-    console.log(editEvent, events);
+    // console.log(editEvent, events);
 
     useEffect(eventToEdit, [events]);
 

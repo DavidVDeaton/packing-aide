@@ -12,9 +12,9 @@ export default function Profile() {
     const [passwordNew, setPasswordNew] = useState("");
     const [passwordOld, setPasswordOld] = useState("");
 
-    console.log(user.url);
+    // console.log(user.url);
     const navigate = useNavigate();
-    console.log(user);
+    // console.log(user);
 
     const handleAccountDeletion = () => {
         fetch(`${url}/delete_account/${user.userId}`, { 

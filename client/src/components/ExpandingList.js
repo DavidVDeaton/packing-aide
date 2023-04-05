@@ -5,7 +5,7 @@ import UserContext from '../contexts/UserContext';
 
 export default function ExpandingList(props) {
 
-    console.log(props.refreshData);
+    //console.log(props.refreshData);
     const past = props.past;
     const date = new Date;
     const [events, setEvents] = useState([props.event]);
@@ -38,7 +38,7 @@ export default function ExpandingList(props) {
     }
 
     const url = useContext(UserContext);
-    console.log(url.url);
+    //console.log(url.url);
 
     const deleteEvent = (eventId) => {
 
