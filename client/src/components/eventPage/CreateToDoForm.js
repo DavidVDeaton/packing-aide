@@ -57,21 +57,23 @@ export default function ToDo(props){
     }
 
     return(
-        <form id="createtoDoForm" onSubmit={submitToDo}>
-            <Errors errors={errors} />
+        <form className="add-form" onSubmit={submitToDo}>
+            {errors.length > 0 && <Errors errors={errors} />}
             <div className="inputDiv">
-            <label htmlFor="toDoName">ToDo name:</label>
-            <input type="text" id="toDoName" value={toDo.toDoName} onChange={(e) => {setToDo({...toDo, toDoName: e.target.value})}} />
+            <label htmlFor="toDoName" className="label">ToDo name:</label>
+            <input type="text" className="input" id="toDoName" value={toDo.toDoName} onChange={(e) => {setToDo({...toDo, toDoName: e.target.value})}} />
             </div>
             <div className="inputDiv">
-            <label htmlFor="toDoDate">Date:</label>
-            <input type="date" id="toDoDate" value={toDo.toDoDate} onChange={(e) => {setToDo({...toDo, toDoDate: e.target.value})}} />
+            <label htmlFor="toDoDate" className="label">Date:</label>
+            <input type="date" className="input"  id="toDoDate" value={toDo.toDoDate} onChange={(e) => {setToDo({...toDo, toDoDate: e.target.value})}} />
             </div>
             <div className="inputDiv">
-            <label htmlFor="description">Description:</label>
-            <input type="text" id="description" value={toDo.toDoDescription} onChange={(e) => {setToDo({...toDo, toDoDescription: e.target.value})}} />
+            <label htmlFor="description" className="label" >Description:</label>
+            <input type="text" className="input" id="description" value={toDo.toDoDescription} onChange={(e) => {setToDo({...toDo, toDoDescription: e.target.value})}} />
             </div>
-            <input type="submit" className="addtoDoButton" value={props.toDoToEdit === undefined ? "Add toDo" : "Update"}/>
+            <div className="submitButtonDiv">
+            <input type="submit" className="submitButton" value={props.toDoToEdit === undefined ? "Create" : "Update"}/>
+            </div>
         </form>
     )
 }

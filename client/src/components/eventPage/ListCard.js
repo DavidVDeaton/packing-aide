@@ -59,11 +59,11 @@ useEffect( () => {
     }, []);
 
     return(
-        <div className="listCard">
-            <div className="listCardHeader">
-                <h3>{props.listType === "containers" ? "Containers" : props.listType === "toDos" ? "ToDos" : props.container.containerName}</h3>
-                <div>
-                <button onClick={() => setAddFormOpen(!addFormOpen)}>{!addFormOpen ? "Add icon" : "Cancel icon"}</button>
+        <div className={props.eventType === true ? "card100 vacation-card" : "card100 move-card move"}>
+            <div className="cardHeader">
+                <h3 className="left-align cardTitle">{props.listType === "containers" ? "Containers" : props.listType === "toDos" ? "ToDos" : props.container.containerName}</h3>
+                <div className="right-align">
+                <button className="cardButton"onClick={() => setAddFormOpen(!addFormOpen)}>{!addFormOpen ? "Add " : "Cancel"}</button>
                 {props.listType === "items" && <button onClick={() => {props.closeListItem(props.container.containerId)}}>close icon</button>}
                 </div>
             </div>
@@ -71,7 +71,7 @@ useEffect( () => {
             &&
             <>
             {addFormOpen && 
-            <div className="formWrapper">
+            <div className="form-wrapper">
             <CreateToDoForm eventId={props.eventId} setAddFormOpen={setAddFormOpen} refreshData={refreshData}/>
             </div>
             }

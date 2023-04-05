@@ -22,7 +22,7 @@ export default function Event(props) {
         }
     }
 
-    // console.log(editEvent, events);
+    console.log(editEvent, events);
 
     useEffect(eventToEdit, [events]);
 
@@ -38,11 +38,11 @@ export default function Event(props) {
                 
             </section>
             <section className="left-align">
-                <ListCard eventId={params.id} listType="toDos"/>
+                <ListCard eventId={params.id} listType="toDos" eventType={eventToEdit.eventType}/>
             </section>
             <section className="left-align" id="listCardSection">
                 <EventItemSearch event={editEvent} item={item} />
-                <ListCard eventId={params.id} listType="containers"/>
+                <ListCard eventId={params.id} listType="containers" eventType={eventToEdit.eventType}/>
             </section>
         </main>
     )

@@ -27,7 +27,7 @@ export default function ListSection(props){
         }
      
     return(
-        <div className={props.listType === "items" ? "smallListSection" : "listSection"}>
+        <div className={props.listType === "items" ? "smallListSection scroll" : props.listType === "containers" ? "containerList scroll" : "toDoList scroll"}>
             <div id="editContainersWrapper">
                 {editContainers !== undefined && 
                 editContainers.map((container) => {
@@ -35,8 +35,6 @@ export default function ListSection(props){
                         <div className={editContainers.length === 2 ? "twoOpenContainers" : "oneOpenContainer"}>
                         <ListCard eventId={props.eventId} container={container} closeListItem={closeListItem} listType="items"/>
                         </div>
-                        
-                        
                     )
                 })}
             </div>

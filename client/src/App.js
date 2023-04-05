@@ -7,7 +7,6 @@ import Nav from './layout/Nav';
 import UserHome from './layout/UserHome';
 import EventForm from './components/EventForm';
 import Event from "./layout/Event";
-import Profile from "./layout/Profile";
 import NotFound from "./layout/NotFound";
 
 function App() {

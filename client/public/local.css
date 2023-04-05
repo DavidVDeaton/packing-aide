@@ -293,41 +293,141 @@ p {
     height: 14rem;
     width: 100%;
 }
+/*Lightest Blue - #D4E8FF
 
-.listCard{
-    background-color: red;
-    width: 100%;
-    min-height: 10rem;
-    max-height: 30rem;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+Light Blue - #77CCF6
+
+Blue - #0D8CD4
+
+Brown - #825C36
+    font-family: 'Raleway', sans-serif;*/
+.move{
+    background-color: #825C36;
 }
-.listCardHeader{
+.cardHeader{
     display: flex;
-    width: 93%;
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
 }
-.formWrapper{
+.cardTitle{
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    color: #D4E8FF;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+.cardButton, .submitButton{
+    background-color: rgb(194,149,92);
+    border: none;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    color: #48331f;
+}
+
+.cardButton:hover, .submitButton:hover{
+    background-color: #48331f;
+    color: rgb(194,149,92);
+    cursor: pointer;
+}
+
+.form-wrapper{
     width: 100%;
     display: flex;
     justify-content:flex-end;
 }
-.listSection{
-    border: 1px solid black;
-    background-color: white;
+.add-form{
     display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
+    flex-direction: column;
+    justify-content:flex-end;
+    border: 1px solid rgb(194,149,92);
+    border-radius: 5px;
+    padding: .5rem .75rem;
+    margin-right: 1rem;
+}
+.inputDiv{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .2rem ;
+}
+.input{
+    width: 10rem;
+    height: 1.3rem;
+    background-color: transparent;
+    border: 1px solid rgb(194,149,92);
+    border-radius: 5px;
+}
+.input:focus{
+    background-color: rgb(194,149,92);
+    outline: none;
+}
+.submitButtonDiv{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.toDoList{
     min-height: 5.5rem;
     max-height: 30rem;
-    overflow:scroll;
-    width: 95%;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border: 1px solid rgb(194,149,92);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+    overflow-y:scroll;
+    overflow-x: hidden;
+}
+.scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.scroll::-webkit-scrollbar-track {
+  background: #825C36;
+}
+
+/* Handle */
+.scroll::-webkit-scrollbar-thumb {
+background: rgb(194,149,92);
+  border-radius: 2px;
+}
+
+.listItemContainer{
+    width: 100%;
+    margin-top: .3rem;
+    margin-left: .5rem;
+    display: flex;
+    flex-direction:column;
+}
+.listItem{
+    width: 85%;
+    height: 5rem;
+    background-color:rgb(194,149,92);
+    border: 3px #48331f solid;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #444444;;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.listItemText{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding: 0;
+}
+.listItemTitle{
+    display: flex;
+    align-items:center;
+}
+.listItemName, .date, .listItemDescription{
+    margin: 0;
+}
+.listItemButton:hover{
+    cursor: pointer;
 }
 #editContainersWrapper{
     width: 100%;
@@ -343,10 +443,7 @@ p {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
-.listSection::-webkit-scrollbar{
-    /*figure out how to show scroll without impacting spacing of containers */
-   display: none;
-}
+
 #createContainerForm{
     display: flex;
     flex-direction: column;
@@ -379,6 +476,58 @@ p {
     padding: 2rem;
     z-index: 0;
 }
+
+#deleteContainer{
+    z-index: 1;
+}
+.twoOpenContainer{
+    width: 50%;
+    height: 25rem;
+    border: 1px solid black;
+}
+.oneOpenContainer{
+    width: 100%;
+    height: 25rem;
+    border: 1px solid black;
+}
+
+.item{
+    width: 99%;
+    background-color: bisque;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    
+}
+
+.itemText{
+    height: 2rem;
+    width: 75%;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: .5rem;
+    line-height: .8;
+}
+.itemTitle, .toDoTitle{
+    display: flex;
+    align-items:center;
+    margin: 0;
+}
+
+.quantity{
+    margin: 0;
+}
+.itemDescription{
+    font-size: x-small;
+}
+
+
+
+
 /* createEvent */
 #eventForm{
     border: 3px solid black;
