@@ -6,12 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMarker } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { format } from "date-fns";
 
 export default function ExpandingList(props) {
 
-    const edit = <FontAwesomeIcon icon={faMarker}/>
-    const plus = <FontAwesomeIcon icon={faPlus} />
-    const trash = <FontAwesomeIcon icon= {faTrash} />
+    const edit = <FontAwesomeIcon icon={faMarker} className="whiteIcon"/>
+    const plus = <FontAwesomeIcon icon={faPlus} className="whiteIcon" />
+    const trash = <FontAwesomeIcon icon= {faTrash} className="whiteIcon" />
     //console.log(props.refreshData);
     const past = props.past;
     const date = new Date;
@@ -21,7 +22,13 @@ export default function ExpandingList(props) {
     let futureEvents = [];
     let displayedEvents = [];
 
+    format (new Date(), 'do MMMM Y');
+
     for (let i = 0; i < events.length; i++) {
+
+        events.sort((a, b) => (new Date(a.startDate)- new Date(b.startDate)));
+
+        console.log(events);
 
         let eventEndDate = new Date(events[i].endDate)
 
@@ -33,9 +40,9 @@ export default function ExpandingList(props) {
     }
 
     if (past === "y") {
-        displayedEvents = pastEvents;
+        displayedEvents = pastEvents
     } else {
-        displayedEvents = futureEvents;
+        displayedEvents = futureEvents
     }
 
     const navigate = useNavigate();
@@ -73,24 +80,26 @@ export default function ExpandingList(props) {
 
     return (
         <div>
-            <h3>{props.text}</h3>
+            <h3 className="section-heading">{props.text}</h3>
             <div>
                 <div className="display-selected-card"> 
                 </div>
                 <div className="card-rows">{displayedEvents.map((event) => {
 
-                        let cardCSS = "move-card card100 three-column-in-card"
+                        let cardCSS = "move-card card100 three-column-in-card-right";
+                        let iconCSS = "icon icon-bg-move";
                         if (event.eventType === false) {
-                            cardCSS = "vacation-card card100 three-column-in-card"
+                            cardCSS = "trip-card card100 three-column-in-card-right";
+                            iconCSS = "icon icon-bg-trip";
                         }
                         return (
                             // onClick Function to take user to event specific page will be inserted into this div
                         <div className={cardCSS} >  
-                            <p class="left-align highlight">{event.eventName}</p>
+                            <p className="left-align highlight">{event.eventName}</p>
                             <p>{event.startDate} - {event.endDate}</p>
                             <div className="right-align">
-                                <button className="icon" onClick={() => {editEvent(event.eventId)}}>{edit}</button>
-                                <button className="icon" onClick={() => {deleteEvent(event.eventId)}}>{trash}</button>
+                                <button className={iconCSS} onClick={() => {editEvent(event.eventId)}}>{edit}</button>
+                                <button className={iconCSS} onClick={() => {deleteEvent(event.eventId)}}>{trash}</button>
                             </div>
                         </div>
                         );

@@ -26,8 +26,8 @@ public class AppUser implements UserDetails {
     }
 
 
-    public AppUser(int appUserId, String username, String password, boolean enabled, List<String> roles) {
-        this(appUserId, username, password, enabled, convertRolesToAuthorities(roles));
+    public AppUser(int appUserId, String username, String password, boolean disabled, List<String> roles) {
+        this(appUserId, username, password, disabled, convertRolesToAuthorities(roles));
     }
 
     private static Collection<GrantedAuthority> convertRolesToAuthorities(List<String> roles) {

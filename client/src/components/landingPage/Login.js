@@ -94,9 +94,9 @@ export default function Login(props){
                             <p>{error}</p>
                         )
                     })}
-                <div id="loginButtons">
+                <div className="loginButtons">
                 <input type="submit" value={createMode ? "Create Account" : "Login"} />
-                <a href="#" id="createLink" onClick={switchCreateMode}>{createMode ? "Login" : "Create an account"}</a>
+                <a href="#" className="createLink" onClick={switchCreateMode}>{createMode ? "Login" : "Create an account"}</a>
                 </div>
             </form>
         </div>
