@@ -9,7 +9,6 @@ export default function EventForm(props) {
     
     const authorities = useContext(UserContext);
     
-
     let formTemplate;
     if(props.eventFormEdit === undefined) {
             formTemplate = {
@@ -50,7 +49,7 @@ export default function EventForm(props) {
         if(props.eventFormEdit !== undefined) {
             url = `${authorities.url}/event/${props.eventFormEdit.eventId}`
             method = "PUT"
-            console.log(props.eventFormEdit.eventId)
+          
         }
         // if(props.event === undefined || props.event.eventId === undefined) {
         //     method = "PUT";
@@ -66,11 +65,6 @@ export default function EventForm(props) {
         //     ...formState,
         //     endLocationId: selectEndPosition.osm_id,
         //   });
-
-
-        //   console.log(selectStartPosition.osm_id)
-        //   console.log(selectEndPosition.osm_id)
-        //   console.log(formState)
     
         const response = await fetch(url, {
             method: method,
@@ -82,34 +76,29 @@ export default function EventForm(props) {
             body: JSON.stringify(formState),
           });
           if (response.status >= 200 && response.status < 300) {
-              let eventFormEdit = undefined;
-            if(props.eventFormEdit === undefined) {
-             let a = await response.json();
-                eventFormEdit = a;
-        } 
-            console.log(eventFormEdit)
             props.refreshData();
             setFormState(formTemplate);
             setSelectStartPosition("");
             setSelectEndPosition("");
             setErrors([]);
             if(props.eventFormEdit === undefined) {
-            navigate(`/event/${eventFormEdit.eventId}`);  
+                const newEditEvent = await response.json();
+                navigate(`/event/${newEditEvent.eventId}`);  
             } else {
                 props.setEditEvent(false);
                 navigate(`/event/${props.eventFormEdit.eventId}`)
             }
           } else {
-            const errors = await response.json();
-            setErrors(errors);
+            const error = await response.json();
+            console.log(error)
+            setErrors(error);
+            
           }
     }
     
-
     return(
         <form id="eventForm" onSubmit = {handleSubmit}>
             <Errors errors = {errors}/>
-            
             <div id="eventName">
                 <label htmlFor = "eventName-input">Event Name:</label>
                     <input
@@ -122,7 +111,6 @@ export default function EventForm(props) {
                     }}
                     />
             </div>
-        
             <div id="eventDates">
                 <div>
                     <label htmlFor = "startDate-input">Start Date:</label>
