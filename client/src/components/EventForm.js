@@ -108,7 +108,7 @@ export default function EventForm(props) {
 
     return(
         <form id="eventForm" onSubmit = {handleSubmit}>
-            {/* <Errors errors = {errors}/> */}
+            <Errors errors = {errors}/>
             
             <div id="eventName">
                 <label htmlFor = "eventName-input">Event Name:</label>
