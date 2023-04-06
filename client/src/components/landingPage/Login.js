@@ -30,9 +30,11 @@ export default function Login(props){
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+        console.log(createMode)
         if(createMode){
-            await createUser();
-        }        
+            createUser();
+        }    
+        console.log(errors)    
         if(errors.length > 0){
             return;
         }
@@ -96,7 +98,7 @@ export default function Login(props){
                     })}
                 <div className="loginButtons">
                 <input type="submit" value={createMode ? "Create Account" : "Login"} />
-                <a href="#" className="createLink" onClick={switchCreateMode}>{createMode ? "Login" : "Create an account"}</a>
+                <a href="#" className="createLink" onClick={() => switchCreateMode()}>{createMode ? "Login" : "Create an account"}</a>
                 </div>
             </form>
         </div>
