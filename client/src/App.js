@@ -9,6 +9,7 @@ import EventForm from './components/EventForm';
 import Event from "./layout/Event";
 import NotFound from "./layout/NotFound";
 import Profile from "./layout/Profile";
+import Footer from "./layout/Footer";
 
 function App() {
 

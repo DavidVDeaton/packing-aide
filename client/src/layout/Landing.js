@@ -4,6 +4,7 @@ import Login from "../components/landingPage/Login";
 import logo from "../images/pa-logo-transparent.png"
 import Features from "../components/landingPage/Features";
 import ballon from "../images/pa-logo-ballon.png";
+import PalmTree from "../components/PalmTree";
 
 export default function Landing(props){
     
@@ -24,13 +25,10 @@ export default function Landing(props){
                     <p className="question center-align">Upcoming Move?</p>
                     <p className="tagline">Packing Aide is an all-in-one, inventory, itenerary, to-do-list, to aide your next move or trip.</p>
                 </div>
-
             </section>
             <section className="featuresContainer">
                 <Features />
             </section>
-
-
         </main>
     )
 }

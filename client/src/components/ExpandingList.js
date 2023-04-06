@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMarker } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { format } from "date-fns";
 
 export default function ExpandingList(props) {
 
@@ -21,8 +20,6 @@ export default function ExpandingList(props) {
     let pastEvents = [];
     let futureEvents = [];
     let displayedEvents = [];
-
-    format (new Date(), 'do MMMM Y');
 
     for (let i = 0; i < events.length; i++) {
 
@@ -88,7 +85,7 @@ export default function ExpandingList(props) {
 
                         let cardCSS = "move-card card100 three-column-in-card-right";
                         let iconCSS = "icon icon-bg-move";
-                        if (event.eventType === false) {
+                        if (event.eventType === true) {
                             cardCSS = "trip-card card100 three-column-in-card-right";
                             iconCSS = "icon icon-bg-trip";
                         }

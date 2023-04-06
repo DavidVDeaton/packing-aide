@@ -3,15 +3,22 @@ body {
     display: grid;
     place-items: center;
     margin: 0;
-    background: linear-gradient(176deg, #D4E8FF80 20%, #D4E8FF 60%);
+    background: linear-gradient(173deg, #D4E8FF80 20%, #f6f6f6 50%, #0d8cd4 50.2%);
     width: 100%;
     font-family: "Rubik", sans-serif;
+    overflow-x: hidden;
 }
 
 main {
     display: grid;
     place-items: center;
-    width: 100%;
+    width: 98vw;
+}
+
+footer {
+    position: relative;
+    top: -300px;
+    z-index: -1;
 }
 
 /* .landingPageMain {
@@ -77,7 +84,15 @@ nav {
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
+    background-color: transparent;
+    border: none;
 }
+
+label {
+    margin-bottom: .2rem;
+}
+
+.
 
 .section-heading {
     font-size: 2rem;
@@ -85,6 +100,14 @@ nav {
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     margin-top: .75rem;
+}
+
+.section-heading-white {
+    font-size: 2rem;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    margin-top: 1.75rem;
 }
 
 .welcome-heading {
@@ -227,7 +250,7 @@ input[type="submit"]:hover {
 .taglineDiv {
     display: grid;
     place-items: center;
-    margin: 3rem 0rem 2rem;
+    margin: 3rem 0rem 0rem;
 }
 
 .highlight {
