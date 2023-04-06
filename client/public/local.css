@@ -631,9 +631,9 @@ Brown - #825C36
     max-height: 30rem;
     width: 100%;
     border-radius: 5px;
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: .4rem;
+    grid-gap: .4rem; */
     overflow-y:scroll;
     padding: .25rem;
 }

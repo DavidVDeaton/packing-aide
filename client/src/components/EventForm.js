@@ -111,7 +111,7 @@ export default function EventForm(props) {
             <section className="formSection">
                 <h3 className="section-heading">{sectionTitle}</h3>
                 <form className="eventForm" onSubmit = {handleSubmit}>
-                    {/* <Errors errors = {errors}/> */}
+                    <Errors errors = {errors}/>
                     
                     <div className="eventName">
                         <label htmlFor = "eventName-input" className="subHeading">Event Name</label>
