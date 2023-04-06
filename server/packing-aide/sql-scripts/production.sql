@@ -105,9 +105,9 @@ insert into app_user_role
     (1, 1),
     (2, 1);
 
-insert into `event` (event_name, event_type, start_date, end_date, app_user_id, start_location_id, end_location_id) values
-		('Springbreak', 1, '2022-04-15', '2022-04-30', 1, 1, 3),
-		('First House', 0, '2023-02-01', '2023-02-01', 2, 2, 1);
+insert into `event` (event_name, event_type, start_date, end_date, app_user_id, start_location_id, start_location_type, end_location_id, end_location_type) values
+		('Springbreak', 1, '2022-04-15', '2022-04-30', 1, 1, 'test', 3, 'test'),
+		('First House', 0, '2023-02-01', '2023-02-01', 2, 2, 'test', 1, 'test');
     
 	insert into container (parent_container_id, container_name, event_id) values
 		(null, 'Kitchen', 2),
@@ -125,4 +125,4 @@ insert into `event` (event_name, event_type, start_date, end_date, app_user_id, 
         ('2022-04-17', 'Sightseeing', 'Head to townsquare to begin tour', 0, 1),
         ('2023-02-01', 'Unload truck', 'Place all boxes in their assigned rooms', 1, 2);
         
-select * from item
+select * from `event`
