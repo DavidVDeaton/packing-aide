@@ -118,7 +118,7 @@ export default function ItemSearch (props) {
 
     return (
         <div>
-            <div className="itemSearchDiv">
+            <div className="searchDiv">
                 <h3 className="subHeading">Item Search</h3>
                 <input className="itemSearchInput" type="text" value={searchText} onChange={(e) => {setSearchText(e.target.value)}}/>
                 <input type="submit" value="Search" onClick={() => {submitSearch(searchText)}}/>
