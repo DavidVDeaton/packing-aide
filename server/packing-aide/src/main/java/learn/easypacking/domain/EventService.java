@@ -5,7 +5,6 @@ import learn.easypacking.models.Event;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class EventService {
@@ -75,12 +74,17 @@ public class EventService {
             result.setMessages("Event cannot be null", ResultType.INVALID);
             return result;
         }
-
+        if(event.getEventName().isEmpty() || event.getEventName().isBlank()){
+            result.setMessages("Event name required", ResultType.INVALID);
+            return result;
+        }
         if (event.getAppUserId() == 0) {
             result.setMessages("App User Id is required", ResultType.INVALID);
         }
-        if(LocalDate.parse(event.getEndDate()).isBefore(LocalDate.parse(event.getStartDate()))) {
-            result.setMessages("Can't set an end date before the start", ResultType.INVALID);
+        if(event.getStartDate() != "" && event.getEndDate() != "") {
+            if (LocalDate.parse(event.getEndDate()).isBefore(LocalDate.parse(event.getStartDate()))) {
+                result.setMessages("Can't set an end date before the start", ResultType.INVALID);
+            }
         }
         return result;
     }
