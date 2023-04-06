@@ -98,7 +98,7 @@ export default function EventForm(props) {
     }
     
     return(
-        <main>
+        <main className="eventFormMain">
             <section>
                 <form id="eventForm" onSubmit = {handleSubmit}>
                     {/* <Errors errors = {errors}/> */}
@@ -158,6 +158,7 @@ export default function EventForm(props) {
                     </div>
                 </form>
             </section>
+            <Footer eventType={props.eventType} />
         </main>
 
     )

@@ -3,8 +3,8 @@
 
 .box {
     position: relative;
-    top: 450px;
-    right: -350px;
+    top: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;

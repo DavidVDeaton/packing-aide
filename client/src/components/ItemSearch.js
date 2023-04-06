@@ -125,22 +125,33 @@ export default function ItemSearch (props) {
             </div>
             <div className="card-rows">
                 {displayObjects.map((item) => {
-                    if (item.parentName === undefined) {
+                    if (item.description === "Item not found. Please refine search.") {
                         return (
                             <div className="three-column-in-card" >  
                                 <p class="left-align highlight">{item.itemName}</p>
                                 <p class="left-align">{item.description}</p>
-                                <p>{item.eventName} <span className="highlight">&gt;</span> {item.containerName}</p>
+                                <p></p>
                             </div>
                         );
-                    } else {
-                        return (
-                            <div className="three-column-in-card" >  
-                                <p class="left-align highlight">{item.itemName}</p>
-                                <p class="left-align">{item.description}</p>
-                                <p>{item.eventName} <span className="highlight">&gt;</span> {item.parentName} <span className="highlight">&gt;</span> {item.containerName}</p>
-                            </div>
-                        );
+                    }
+                    else {
+                        if (item.parentName === undefined) {
+                            return (
+                                <div className="three-column-in-card" >  
+                                    <p class="left-align highlight">{item.itemName}</p>
+                                    <p class="left-align">{item.description}</p>
+                                    <p>{item.eventName} <span className="highlight">&gt;</span> {item.containerName}</p>
+                                </div>
+                            );
+                        } else {
+                            return (
+                                <div className="three-column-in-card" >  
+                                    <p class="left-align highlight">{item.itemName}</p>
+                                    <p class="left-align">{item.description}</p>
+                                    <p>{item.eventName} <span className="highlight">&gt;</span> {item.parentName} <span className="highlight">&gt;</span> {item.containerName}</p>
+                                </div>
+                            );
+                        }
                     }
                 })}
             </div>
