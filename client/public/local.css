@@ -129,6 +129,17 @@ nav {
     background: #0d8cd4;
 }
 
+.confirm-delete{
+    margin: .1rem;
+    border: none;
+    border-radius: 8px;
+    padding: .5rem;
+    height: 28px;
+    text-align: center;
+    background-color: rgb(211, 44, 44);
+    color: white;
+}
+
 .createLink {
     text-decoration: none;
     color: #0d8cd4;

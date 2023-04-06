@@ -5,7 +5,7 @@ import CreateToDoForm from "./CreateToDoForm";
 import { useState, useEffect, useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTrash, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 export default function ListCard(props){
 
