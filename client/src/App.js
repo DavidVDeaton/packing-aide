@@ -13,11 +13,11 @@ import Profile from "./layout/Profile";
 function App() {
 
 
-  const url = "http://3.129.73.57:8080/api";
-  const authenticationUrl = "http://3.129.73.57:8080/api/authenticate";
+  // const url = "http://3.129.73.57:8080/api";
+  // const authenticationUrl = "http://3.129.73.57:8080/api/authenticate";
 
-  // const url = "http://localhost:8080/api";
-  // const authenticationUrl = "http://localhost:8080/api/authenticate";
+  const url = "http://localhost:8080/api";
+  const authenticationUrl = "http://localhost:8080/api/authenticate";
 
   const move = true;
   const vacation = false;
