@@ -27,7 +27,7 @@ export default function Event(props) {
     useEffect(eventToEdit, [events]);
 
     const item = [];
-
+    console.log(editEvent)
     return (
         <main>
             <section>
