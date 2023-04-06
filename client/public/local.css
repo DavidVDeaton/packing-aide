@@ -3,42 +3,20 @@ body {
     display: grid;
     place-items: center;
     margin: 0;
-    background: linear-gradient(173deg, #D4E8FF80 30%, #f6f6f6 65%, #0d8cd4 65.2%);
+    background: linear-gradient(176deg, #D4E8FF80 20%, #D4E8FF 60%);
     width: 100%;
     font-family: "Rubik", sans-serif;
-    overflow-x: hidden;
 }
 
 main {
     display: grid;
     place-items: center;
-    width: 98vw;
+    width: 100%;
 }
 
-.eventFormMain {
-    overflow-y: hidden;
-    overflow-x: hidden;
-    height: calc(100vh - 165px);
-}
-
-input {
-    font-size: 18px;
-}
-
-.palm-footer {
-    position: relative;
-    top: -250px;
-    left: -650px;
-    z-index: 5;
-    transform: rotateZ(-20deg);
-}
-
-.box-footer {
-    position: relative;
-    left: 700px;
-    top: -150px;
-    z-index: 5;
-}
+/* .landingPageMain {
+    background: linear-gradient(176deg, transparent 60%, #0d8cd4 60.2%);
+} */
 
 .step1 {
     margin-top: -60px;
@@ -64,17 +42,7 @@ section {
     width: 62vw;
 }
 
-.eventItemSearchSection {
-    width: 62vw;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
 .homeSearchSection {
-    width: 55vw;
-}
-
-.formSection {
     width: 55vw;
 }
 
@@ -83,8 +51,7 @@ nav {
     grid-template-columns: 1fr auto auto auto auto auto;
     grid-gap: 1rem;
     align-items: center;
-    width: 98vw;
-    overflow-x: hidden;
+    width: 94vw;
 }
 
 .nav-links {
@@ -110,35 +77,19 @@ nav {
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
-    background-color: transparent;
-    border: none;
 }
-
-label {
-    margin-bottom: .2rem;
-}
-
 
 .section-heading {
-    font-size: 2.2rem;
-    color: black;
+    font-size: 2rem;
+    color: #0d8cd4;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     margin-top: .75rem;
-    width: 100%;
-}
-
-.section-heading-white {
-    font-size: 2rem;
-    color: white;
-    font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
-    margin-top: 1.75rem;
 }
 
 .welcome-heading {
     font-size: 2.5rem;
-    color: black;
+    color: #0d8cd4;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     margin:0px;
@@ -151,19 +102,13 @@ label {
     text-transform: uppercase;
 }
 
-.subHeading-black {
-    font-size: 1.25rem;
-    color: black;
-    font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
-}
-
-.icon {
+.whiteIcon {
+    color: white;
     height: 18px;
     width: 18px;
 }
 
-.icon-button {
+.icon {
     margin: .1rem;
     border: none;
     border-radius: 8px;
@@ -172,32 +117,16 @@ label {
     width: 28px;
 }
 
-.icon-move {
-    color: #48331f;
-}
-
-.icon-move:hover {
-    color: white;
-}
-
 .icon-bg-move {
-    background-color: transparent;
-    color: #48331f;
+    background: #48331f;
 }
 
-.icon-bg-move:hover {
+/* .icon-bg-move:hover {
     background-color: #48331f;
-    color: white;
-}
+} */
 
 .icon-bg-trip {
-    background-color: transparent;
-    color: #0d8cd4;
-}
-
-.icon-bg-trip:hover {
     background: #0d8cd4;
-    color: white;
 }
 
 .confirm-delete{
@@ -209,7 +138,6 @@ label {
     text-align: center;
     background-color: rgb(211, 44, 44);
     color: white;
-    text-transform: uppercase;
 }
 
 .createLink {
@@ -233,22 +161,6 @@ input[type="submit"] {
     box-shadow: 2px 2px 4px #444444;
     color: white;
     transition: .15s;
-}
-
-input[type="button"] {
-    padding: .5rem 1rem;
-    font-family: "Rubik", sans-serif;
-    border: none;
-    background-color: #0d8cd4;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    box-shadow: 2px 2px 4px #444444;
-    color: white;
-    transition: .15s;
-}
-
-input[type="button"]:hover {
-    filter: blur(.85px);
 }
 
 input[type="submit"]:hover {
@@ -320,13 +232,13 @@ input[type="submit"]:hover {
 
 .trip-card {
     border: 4px solid #0d8cd4;
-    background-color: white;
+    background: linear-gradient(176deg, transparent 20%, #D4E8FF 60%);
 }
 
 .taglineDiv {
     display: grid;
     place-items: center;
-    margin: 3rem 0rem 0rem;
+    margin: 3rem 0rem 2rem;
 }
 
 .highlight {
@@ -353,33 +265,20 @@ input[type="submit"]:hover {
 
 .move-card {
     border: 4px solid #48331f;
-    background-color: white;
+    /* background-color: #8f643a; */
+    background-image: url(../src/images/cardboard.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: saturate(200%);
 }
 
 /* Grid Column CSS */
-.searchDiv {
+.itemSearchDiv {
     display: grid;
     place-items: center;
     grid-template-columns:auto 1fr auto;
     grid-gap: 1rem;
-}
 
-.locationSearchDiv {
-    display: grid;
-    place-items:center;
-    grid-template-columns: 6fr 1fr;
-    grid-gap: 1rem;
-}
-
-.dateSearchDiv {
-    display: grid;
-    place-items:center;
-    grid-template-columns: 1fr 2.5fr;
-    grid-gap: 1rem;
-}
-
-.date-field {
-    width: 300px;
 }
 
 .two-column-even-display {
@@ -387,13 +286,6 @@ input[type="submit"]:hover {
     place-items: center;
     grid-template-columns: 1fr 1fr;
     grid-gap: 6rem;
-}
-
-.two-column-even-display-sm-gap {
-    display: grid;
-    place-items: center;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
 }
 
 .two-column-uneven-display {
@@ -500,10 +392,6 @@ p {
     height: 14rem;
     width: 100%;
 }
-
-.w675 {
-    min-width: 675px;
-}
 /*Lightest Blue - #D4E8FF
 
 Light Blue - #77CCF6
@@ -519,10 +407,10 @@ Brown - #825C36
 }
 
 .cardHeader{
-    /* display: flex; */
-    align-items: right;
-    /* justify-content: space-between;*/
-    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
 }
 .cardTitle{
     font-family: 'Raleway', sans-serif;
@@ -531,31 +419,19 @@ Brown - #825C36
     font-size: 1.5rem;
     margin: 1rem 0;
 }
-/* .cardButton {
+.cardButton, .submitButton{
     background-color: #48331f;
     border: none;
     border-radius: 5px;
     padding: .5rem 1rem;
     color: rgb(194,149,92);
-} */
-
-.submitButton, .cardButton {
-    background-color: #0d8cd4;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px #444444;
 }
 
-.submitButton:hover, .cardButton:hover {
-    filter: blur(.85px);
-}
-
-/* .cardButton:hover{
+.cardButton:hover, .submitButton:hover{
     background-color: #825C36;
     color: #48331f;
     cursor: pointer;
-} */
+}
 
 .form-wrapper{
     width: 100%;
@@ -606,14 +482,7 @@ Brown - #825C36
     outline: none;
 }
 
-.event-container {
-    background-color: white;
-    border: 4px solid black;
-    border-radius: 10px;
-    padding: 1rem;
-}
-
-/* .listWrapper{
+.listWrapper{
     min-height: 5.5rem;
     max-height: 30rem;
     border: 2px solid #48331f;
@@ -625,77 +494,50 @@ Brown - #825C36
     overflow-y:scroll;
     overflow-x: hidden;
 }
- */
- .containerList{
+.containerList{
     min-height: 5.5rem;
     max-height: 30rem;
+    border: 2px solid #48331f;
     width: 100%;
     border-radius: 5px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: .4rem;
-    overflow-y:scroll;
-    padding: .25rem;
-}
-
-.containerWrapper{
-    background-color:#ca9864;;
-    box-shadow: 1px 1px 1px #444444;;
-    padding: .5rem;
     display: flex;
-    min-height: 120px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    flex-wrap: wrap;
+    overflow-y:scroll;
 }
-
 .scroll::-webkit-scrollbar {
   width: 10px;
 }
 
 /* Track */
 .scroll::-webkit-scrollbar-track {
-  background: #dddddd;
+  background: rgb(194,149,92);
 }
 
 /* Handle */
 .scroll::-webkit-scrollbar-thumb {
-background: #999999;
+background: #48331f;
   border-radius: 2px;
 }
 
-.listItem{
-    width: 100%;
-    background-color: white ;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px #444444;;
-    display: grid;
-    place-items: center;
-    grid-gap:.5rem;
-    grid-template-columns: 1fr 4fr 1fr;
-    margin: .25rem;
-    border: 4px solid black;
-    /* padding: 0 1.5rem;
-    margin-top: .4rem;
-    margin-bottom: .4rem;
-    margin-left: .5rem; */
-} 
-
-.listItemDescription{
-    font-size: 1rem;
-}
-.listItemName, .date, .listItemDescription{
-    margin: 0;
-} 
-
-
-/* .listItemWrapper{
+.listItemWrapper{
     width: 100%;
     display: flex;
     flex-direction:column; 
 }
-
+.listItem{
+    width: 85%;
+    height: 5rem;
+    background-color: #48331f80 ;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #444444;;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
+    margin-left: .5rem;
+}
 
 .listItemText{
     display: flex;
@@ -714,7 +556,12 @@ background: #999999;
     padding-left:.5rem;
     font-size: .8rem;
 }
-*/
+.listItemDescription{
+    font-size: 1rem;
+}
+.listItemName, .date, .listItemDescription{
+    margin: 0;
+}
 
 .multipleButtons{
     width: 5rem;
@@ -732,21 +579,30 @@ background: #999999;
     display: flex;
 }
 
+
+.containerWrapper{
+    background-color: #48331f80 ;
+    box-shadow: 1px 1px 1px #444444;;
+    width: 10rem;
+    min-height: 10rem;
+    padding: 1.5rem;
+    margin: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
 .deleteIconContainer{
     position: absolute;
     top: 30px;
     right: 30px;
 }
 
-.containerName {
-    color: white;
-    text-transform: uppercase;
-}
-
 .containerName:hover{
     cursor: pointer;
-    filter: blur(.85px);
-
+    color: rgb(194,149,92);
 }
 
 .item-card{
@@ -761,8 +617,6 @@ background: #999999;
 .item-card .cardButton, .submitButton{
     padding: .25rem 1rem;
 }
-
-.sub
 
 .item-card .label{
     background-color: #85643e;
@@ -811,49 +665,38 @@ background: #999999;
 
 
 /* createEvent */
-.eventForm{
-    display: grid;
-    place-items: center;
-    grid-gap: 1rem;
-    /* align-items: center;
+#eventForm{
+    align-items: center;
     font-size: 1.5rem;
     margin-top: 10%;
     min-height: 100%;
     border: 4px solid white;
-    border-radius: 25px; */
+    border-radius: 25px;
 }
 
-.eventName {
-    display: grid;
-    place-items: center;
-    grid-gap: 1rem;
-    grid-template-columns: auto 1fr;
-    width: 100%;
-}
-
-/* #eventName, #eventDates, #eventLocation, #eventFormSubmitButton {
+#eventName, #eventDates, #eventLocation, #eventFormSubmitButton {
     width: 100%;
     height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-} */
-/* 
+}
+
 #eventDates, #eventLocation{
     padding-top: 5%;
     justify-content: space-evenly;
     align-items: normal;
     width: 100%;
-} */
+}
 
 
-/* #eventName-input, #startDate-input, #endDate-input {
+#eventName-input, #startDate-input, #endDate-input {
     height: 1.5rem;
     border: none;
     border-bottom: 2px solid black;
     font-size: 1rem;
     background: fixed;
-} */
+}
 
 
 #searchResult {
