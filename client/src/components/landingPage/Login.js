@@ -13,7 +13,8 @@ export default function Login(props){
     const navigate = useNavigate();
     const authorities = useContext(UserContext);
 
-    const createUser = async () => {
+    const createUser = async (event) => {
+        event.preventDefault();
         const response = await fetch(`${authorities.url}/create_account`, {
             method: "POST",
             headers: {
@@ -22,20 +23,19 @@ export default function Login(props){
             },
             body: JSON.stringify({username, password})
         })
-        if(response.status >= 400 && response.status < 500){
+        if(response.status >= 200 && response.status < 300){
+            handleSubmit();
+        } else if(response.status >= 400 && response.status <= 500){
             const error = await response.json();
             setErrors(error);
         }
     }
 
     const handleSubmit = async(e) => {
+        if(createMode === false){
         e.preventDefault();
-        if(createMode){
-            await createUser();
-        }        
-        if(errors.length > 0){
-            return;
         }
+        
         const response = await fetch(`${props.authenticationUrl}`, {
             method: "POST",
             headers: {
@@ -44,19 +44,26 @@ export default function Login(props){
             },
             body: JSON.stringify({username, password}),
         });
-        if(response.status === 403){
-            setErrors(["User not found, try again"]);
-        } else if(response.status === 200){
+       if(response.status >= 200 && response.status < 300){
             const json = await response.json();
             const jwt_token = json.jwt_token;
             authorities.login(jwt_token);
             window.localStorage.setItem("userToken", jwt_token);
             clearFields();
+            setCreateMode(false);
             navigate("/userhome");
+        } else if(response.status === 403){
+            setErrors(["User not found, try again."])
         }
+            else{
+            const error = await response.json();
+            console.log(error)
+            setErrors(error);
+        }  
     };
 
-    const switchCreateMode = () => {
+    const switchCreateMode = (e) => {
+        e.preventDefault();
         setCreateMode(!createMode)
         clearFields();
     }   
@@ -68,7 +75,7 @@ export default function Login(props){
     return(
         <div className="loginCard">
             <h3 className="subHeading">{createMode ? "Create an Account" : "Login"}</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={createMode ? createUser : handleSubmit}>
                 <div className="inputSection">
                     <label htmlFor="usernameInput">Username:</label>
                     <input

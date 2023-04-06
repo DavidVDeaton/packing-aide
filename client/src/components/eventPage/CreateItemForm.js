@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import UserContext from "../../contexts/UserContext"
-import CloseForm from "./CloseForm";
+import CloseForm from "../../functions/CloseForm";
 import Errors from "../Errors";
 export default function CreateItemForm(props){
 
