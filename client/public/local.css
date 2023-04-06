@@ -3,16 +3,27 @@ body {
     display: grid;
     place-items: center;
     margin: 0;
-    background: linear-gradient(173deg, #D4E8FF80 30%, #f6f6f6 65%, #0d8cd4 65.2%);
+    background: linear-gradient(173deg, #D4E8FF80 30%, #f6f6f6 55%, #0d8cd4 55.2%);
     width: 100%;
     font-family: "Rubik", sans-serif;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 main {
     display: grid;
     place-items: center;
     width: 98vw;
+}
+
+.error-warning {
+    color: red;
+    font-size: 18px;
+    list-style: none;
+}
+
+.ul-padding-none {
+    padding: 0;
 }
 
 .eventFormMain {
@@ -326,7 +337,7 @@ input[type="submit"]:hover {
 .taglineDiv {
     display: grid;
     place-items: center;
-    margin: 3rem 0rem 0rem;
+    margin: 5rem 0rem 0rem;
 }
 
 .highlight {
@@ -338,7 +349,7 @@ input[type="submit"]:hover {
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     font-size: 2.25rem;
-    color: #0d8cd4;
+    color: white;
     margin: 0;
 }
 
@@ -432,6 +443,7 @@ p {
 
 .tagline {
     font-size: 1.4rem;
+    color: white;
 }
 
 .width100 {
@@ -454,6 +466,7 @@ p {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 200px;
 }
 
 .loginCard{
@@ -538,6 +551,10 @@ Brown - #825C36
     padding: .5rem 1rem;
     color: rgb(194,149,92);
 } */
+
+.center-heading {
+    text-align: center !important;
+}
 
 .submitButton, .cardButton {
     background-color: #0d8cd4;

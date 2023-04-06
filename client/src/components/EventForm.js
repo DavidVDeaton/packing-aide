@@ -109,9 +109,9 @@ export default function EventForm(props) {
                 <img src={balloon} className="balloon-two" width="130" />
             </div>
             <section className="formSection">
-                <h3 className="section-heading">{sectionTitle}</h3>
+                <h3 className="section-heading center-heading">{sectionTitle}</h3>
                 <form className="eventForm" onSubmit = {handleSubmit}>
-                    {/* <Errors errors = {errors}/> */}
+                    <Errors errors = {errors}/>
                     
                     <div className="eventName">
                         <label htmlFor = "eventName-input" className="subHeading">Event Name</label>
