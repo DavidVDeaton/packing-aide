@@ -26,19 +26,26 @@ export default function ListEvent(props) {
 
     return (
         <div>
-            <div>Event: {props.editEvent.eventName}</div>
-            <div>Start Date: {props.editEvent.startDate}</div>
-            <div>End Date: {props.editEvent.endDate}</div>
-            <div>Start Location: {props.editEvent.startLocationType}</div>
-            <div>End Location: {props.editEvent.endLocationType}</div>
-            <button onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "Edit" : "Cancel Update"}</button>
-            {!deleteEvent 
-            ? <button onClick={() => setDeleteEvent(!deleteEvent)}>Delete</button> 
-            :   <div>
-                    <button onClick={beginDelete}>Confirm Delete</button>
-                    <button onClick={() => setDeleteEvent(false)}>Cancel</button>
-                </div>}
-            {editEvent && <EventForm eventFormEdit={props.editEvent} setEditEvent={setEditEvent} refreshData={props.refreshData} />}
+            <div>
+                <p>Event: {props.editEvent.eventName}</p>
+                <p>{props.editEvent.startDate} - {props.editEvent.endDate}</p>
+            </div>
+            <div>
+                <p>Start Location: {props.editEvent.startLocationType}</p>
+                <p>End Location: {props.editEvent.endLocationType}</p>
+            </div>
+
+            <div>
+                <button onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "Edit" : "Cancel Update"}</button>
+                {!deleteEvent 
+                ? <button onClick={() => setDeleteEvent(!deleteEvent)}>Delete</button> 
+                :   <div>
+                        <button onClick={beginDelete}>Confirm Delete</button>
+                        <button onClick={() => setDeleteEvent(false)}>Cancel</button>
+                    </div>}
+                {editEvent && <EventForm eventFormEdit={props.editEvent} setEditEvent={setEditEvent} refreshData={props.refreshData} />}
+            </div>
+
         </div>
     );
 }
