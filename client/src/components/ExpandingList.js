@@ -6,13 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMarker, faPlus, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 
-
 export default function ExpandingList(props) {
 
-    const edit = <FontAwesomeIcon icon={faMarker} className="whiteIcon"/>
-    const plus = <FontAwesomeIcon icon={faPlus} className="whiteIcon" />
-    const trash = <FontAwesomeIcon icon= {faTrash} className="whiteIcon" />
-    const cancel = <FontAwesomeIcon icon= {faXmark} className="whiteIcon" />
+    const edit = <FontAwesomeIcon icon={faMarker} className="icon"/>
+    const plus = <FontAwesomeIcon icon={faPlus} className="icon"/>
+    const trash = <FontAwesomeIcon icon= {faTrash} className="icon"/>
+    const cancel = <FontAwesomeIcon icon= {faXmark} className="icon"/>
     //console.log(props.refreshData);
     const past = props.past;
     const date = new Date;
@@ -22,7 +21,6 @@ export default function ExpandingList(props) {
     let pastEvents = [];
     let futureEvents = [];
     let displayedEvents = [];
-
 
     for (let i = 0; i < events.length; i++) {
 
@@ -87,11 +85,11 @@ export default function ExpandingList(props) {
                 <div className="card-rows">{displayedEvents.map((event) => {
 
                         let cardCSS = "move-card card100 three-column-in-card-right";
-                        let iconCSS = "icon icon-bg-move";
+                        let iconCSS = "icon-button icon-bg-move";
                         let confirmDeleteCSS = "confirm-delete"
                         if (event.eventType === true) {
                             cardCSS = "trip-card card100 three-column-in-card-right";
-                            iconCSS = "icon icon-bg-trip";
+                            iconCSS = "icon-button icon-bg-trip";
                         }
                         return (
                             // onClick Function to take user to event specific page will be inserted into this div
