@@ -3,7 +3,6 @@ import ExpandingList from "../components/ExpandingList";
 import ItemSearch from "../components/ItemSearch";
 import { useContext } from "react";
 import UserContext from '../contexts/UserContext';
-import EditIcons from "../components/EditIcons";
 
 export default function UserHome(props) {
 
@@ -21,6 +20,7 @@ export default function UserHome(props) {
             </section>
             <section className="left-align homeSection">
                 <ExpandingList event={props.event} text="Upcoming Events" past="n" />
+
             </section>
             {/* <section className="two-column-even-display">
                 <InternalNavCard text="Plan a New Vacation" cardCSS="vacation-card-special card" eventType="vacation" />
@@ -30,5 +30,6 @@ export default function UserHome(props) {
                 <ExpandingList event={props.event} text="Past Events" past="y" />
             </section>
         </main>
+        
     )
 }

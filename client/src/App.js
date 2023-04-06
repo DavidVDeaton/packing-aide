@@ -9,6 +9,7 @@ import EventForm from './components/EventForm';
 import Event from "./layout/Event";
 import NotFound from "./layout/NotFound";
 import Profile from "./layout/Profile";
+import CardboardBox from "./components/CardboardBox"
 
 function App() {
 
@@ -80,7 +81,7 @@ function App() {
   }, []);
 
   if(!restoreLoginAttemptCompleted){
-    return (<div>loading</div>)
+    return (<div><CardboardBox /></div>)
   }
   return (
     <BrowserRouter>
@@ -95,7 +96,6 @@ function App() {
          <Route path="/profile" element={<Profile />} />
          <Route path="*" element={<NotFound />} />
        </Routes>
-       {/* <Footer /> */}
     </UserContext.Provider>
     </BrowserRouter>
   );

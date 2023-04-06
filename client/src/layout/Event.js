@@ -33,16 +33,28 @@ export default function Event(props) {
             <section>
                 <ListEvent editEvent={editEvent} eventId={params.id} refreshData = {props.refreshData}/>
             </section>
-            <section className="two-column-even-display">
-                {/* <ExpandingList events={editEvent} text={editEvent.eventName} /> */}
-                
+            <section>
+                <div className="left-align w100">
+                    <h3 className="section-heading">ToDos</h3>
+                    <div className="event-container">
+                    <ListCard eventId={params.id} listType="toDos" eventType={eventToEdit.eventType}/>
+                    </div>
+
+                </div>
+
             </section>
-            <section className="left-align">
-                <ListCard eventId={params.id} listType="toDos" eventType={eventToEdit.eventType}/>
-            </section>
-            <section className="left-align" id="listCardSection">
+            <section className="eventItemSearchSection">
                 <EventItemSearch event={editEvent} item={item} />
-                <ListCard eventId={params.id} listType="containers" eventType={eventToEdit.eventType}/>
+            </section>
+            <section id="listCardSection">
+                <div className="left-align w100">
+                    <h3 className="section-heading">Containers</h3>
+                    <div className="event-container">
+                    <ListCard eventId={params.id} listType="containers" eventType={eventToEdit.eventType}/>
+                    </div>
+
+                </div>
+                
             </section>
         </main>
     )
