@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Container from "./Container"
 import ToDo from "./ToDo";
 import ListCard from "./ListCard";
@@ -6,25 +6,25 @@ import Item from "./Item";
 
 export default function ListSection(props){
 
-        const [editContainers, setEditContainers] = useState([]);
+    const [editContainers, setEditContainers] = useState([]);
 
-        const addToEditList = (container) => {
-            const tempArray= [...editContainers]
-            if(tempArray.includes(container)){
-                return;
-            }
-            tempArray.push(container)
-            if(tempArray.length === 3){
-                tempArray.shift();
-            }
-            setEditContainers(tempArray);
+    const addToEditList = (container) => {
+        const tempArray= [...editContainers]
+        if(tempArray.includes(container)){
+            return;
         }
+        tempArray.push(container)
+        if(tempArray.length === 3){
+            tempArray.shift();
+        }
+        setEditContainers(tempArray);
+    }
     
-        const closeListItem = (id) => {
-            const tempArray= [...editContainers]
-            const arrayToSave = tempArray.filter((container) => container.containerId !== id)
-            setEditContainers(arrayToSave);
-        }
+    const closeListItem = (id) => {
+        const tempArray= [...editContainers] 
+        const arrayToSave = tempArray.filter((container) => container.containerId !== id)
+        setEditContainers(arrayToSave);
+    }
      
     return(
         <div className={props.listType === "containers" ? "containerList scroll" :  "listWrapper scroll"}>
@@ -43,7 +43,7 @@ export default function ListSection(props){
             props.listItems.sort((a, b) => (new Date(a.toDoDate)-new Date(b.toDoDate)))
             .map((toDo) => {
                 return(
-                    <ToDo toDo={toDo} key={toDo.toDoId} refreshData={props.refreshData} />
+                <ToDo toDo={toDo} key={toDo.toDoId} refreshData={props.refreshData} />
                 )
             })}
             {props.listType === "containers" 

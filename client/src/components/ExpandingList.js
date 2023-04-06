@@ -3,9 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from '../contexts/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMarker } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faMarker, faPlus, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
+
 
 
 export default function ExpandingList(props) {
@@ -13,10 +12,12 @@ export default function ExpandingList(props) {
     const edit = <FontAwesomeIcon icon={faMarker} className="whiteIcon"/>
     const plus = <FontAwesomeIcon icon={faPlus} className="whiteIcon" />
     const trash = <FontAwesomeIcon icon= {faTrash} className="whiteIcon" />
+    const cancel = <FontAwesomeIcon icon= {faXmark} className="whiteIcon" />
     //console.log(props.refreshData);
     const past = props.past;
     const date = new Date;
     const [events, setEvents] = useState([props.event]);
+    const [confirmDelete, setConfirmDelete] = useState(false);
 
     let pastEvents = [];
     let futureEvents = [];
@@ -87,6 +88,7 @@ export default function ExpandingList(props) {
 
                         let cardCSS = "move-card card100 three-column-in-card-right";
                         let iconCSS = "icon icon-bg-move";
+                        let confirmDeleteCSS = "confirm-delete"
                         if (event.eventType === true) {
                             cardCSS = "trip-card card100 three-column-in-card-right";
                             iconCSS = "icon icon-bg-trip";
@@ -98,7 +100,15 @@ export default function ExpandingList(props) {
                             <p>{event.startDate} - {event.endDate}</p>
                             <div className="right-align">
                                 <button className={iconCSS} onClick={() => {editEvent(event.eventId)}}>{edit}</button>
-                                <button className={iconCSS} onClick={() => {deleteEvent(event.eventId)}}>{trash}</button>
+                                {!confirmDelete 
+                                ? 
+                                <button className={iconCSS} onClick={() => {setConfirmDelete(!confirmDelete)}} >{trash}</button> 
+                                :
+                                <>
+                                <button className={confirmDeleteCSS} onClick={() => {deleteEvent(event.eventId)}} >Confirm Delete</button>
+                                <button className={iconCSS} onClick={() => {setConfirmDelete(!confirmDelete)}}>{cancel}</button> 
+                                </>
+                                }
                             </div>
                         </div>
                         );

@@ -32,7 +32,9 @@ export default function ListEvent(props) {
             <div>Start Location: {props.editEvent.startLocationType}</div>
             <div>End Location: {props.editEvent.endLocationType}</div>
             <button onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "Edit" : "Cancel Update"}</button>
-            {!deleteEvent ? <button onClick={() => setDeleteEvent(!deleteEvent)}>Delete</button> : <div>
+            {!deleteEvent 
+            ? <button onClick={() => setDeleteEvent(!deleteEvent)}>Delete</button> 
+            :   <div>
                     <button onClick={beginDelete}>Confirm Delete</button>
                     <button onClick={() => setDeleteEvent(false)}>Cancel</button>
                 </div>}
