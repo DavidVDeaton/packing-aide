@@ -627,17 +627,6 @@ background: #48331f;
     justify-content: center;
 }
 
-.item{
-    width: 99%;
-    background-color: bisque;
-    height: 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    
-}
-
 .itemText{
     height: 2rem;
     width: 75%;

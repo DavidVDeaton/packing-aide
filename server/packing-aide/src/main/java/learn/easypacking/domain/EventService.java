@@ -4,6 +4,7 @@ import learn.easypacking.data.EventRepository;
 import learn.easypacking.models.Event;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class EventService {
@@ -78,6 +79,9 @@ public class EventService {
             result.setMessages("App User Id is required", ResultType.INVALID);
         }
 
+//        if(LocalDateTime.parse(event.getEndDate()).isBefore(LocalDateTime.parse(event.getStartDate()))) {
+//            result.setMessages("Can't set an end date after the start", ResultType.INVALID);
+//        }
         return result;
     }
 }
