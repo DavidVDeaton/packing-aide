@@ -25,23 +25,23 @@ export default function ListEvent(props) {
     };
 
     return (
-        <div>
+        <div className="center-align">
             <div>
-                <p>Event: {props.editEvent.eventName}</p>
-                <p>{props.editEvent.startDate} - {props.editEvent.endDate}</p>
+                <h3 className="welcome-heading">{props.editEvent.eventName}</h3>
+                <p><span className="subHeading-black">Date:</span> {props.editEvent.startDate} -&gt; {props.editEvent.endDate}</p>
             </div>
             <div>
-                <p>Start Location: {props.editEvent.startLocationType}</p>
-                <p>End Location: {props.editEvent.endLocationType}</p>
+                <p><span className="subHeading-black">Start Location:</span> {props.editEvent.startLocationType}</p>
+                <p><span className="subHeading-black">End Location:</span> {props.editEvent.endLocationType}</p>
             </div>
 
             <div>
-                <button onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "Edit" : "Cancel Update"}</button>
+                <button className="blueSearchButton margin-right-10" onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "Edit" : "Cancel Update"}</button>
                 {!deleteEvent 
-                ? <button onClick={() => setDeleteEvent(!deleteEvent)}>Delete</button> 
+                ? <button className="blueSearchButton" onClick={() => setDeleteEvent(!deleteEvent)}>Delete</button> 
                 :   <div>
-                        <button onClick={beginDelete}>Confirm Delete</button>
-                        <button onClick={() => setDeleteEvent(false)}>Cancel</button>
+                        <button className="redSearchButton" onClick={beginDelete}>Confirm Delete</button>
+                        <button className="graySearchButton" onClick={() => setDeleteEvent(false)}>Cancel</button>
                     </div>}
                 {editEvent && <EventForm eventFormEdit={props.editEvent} setEditEvent={setEditEvent} refreshData={props.refreshData} />}
             </div>
