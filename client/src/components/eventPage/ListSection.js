@@ -27,16 +27,18 @@ export default function ListSection(props){
     }
      
     return(
-        <div className={props.listType === "containers" ? "containerList scroll" :  "listWrapper scroll"}>
+        <div className={props.listType === "containers" ? "containerList scroll" : "listWrapper scroll"}>
+            <div>
             <div className="editContainerWrapper">
                 {editContainers !== undefined && 
                 editContainers.map((container) => {
                     return(
-                        <div className={editContainers.length === 2 ? "twoOpenContainers" : "oneOpenContainer"}>
+                        <div className={"oneOpenContainer"}>
                         <ListCard eventId={props.eventId} container={container} closeListItem={closeListItem} listType="items"/>
                         </div>
                     )
                 })}
+            </div>
             </div>
             {props.listType === "toDos" 
             &&
@@ -61,6 +63,7 @@ export default function ListSection(props){
                 )
             })
             }
+       
         </div>
     )
 }
