@@ -3,11 +3,17 @@ import Errors from "./Errors";
 import LocationSearch from "./LocationSearch";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
-
+import Footer from "../layout/Footer";
+import balloon from "../images/pa-logo-balloon.png";
 
 export default function EventForm(props) {
     
     const authorities = useContext(UserContext);
+    let sectionTitle="Plan a Trip";
+
+    if (props.eventType===false) {
+        sectionTitle="Plan a Move";
+    }
     
     let formTemplate;
     if(props.eventFormEdit === undefined) {
@@ -97,62 +103,76 @@ export default function EventForm(props) {
     }
     
     return(
-        <form id="eventForm" onSubmit = {handleSubmit}>
-            <Errors errors = {errors}/>
-            <div id="eventName">
-                <label htmlFor = "eventName-input">Event Name:</label>
-                    <input
-                    id = "eventName-input"
-                    type = "text"
-                    placeholder="add name"
-                    value={formState.eventName}
-                    onChange={(event) => {
-                        setFormState({ ...formState, eventName: event.target.value })
-                    }}
-                    />
+        <main className="eventFormMain">
+            <div className="balloonDiv">
+                <img src={balloon} className="balloon" width="120" />
+                <img src={balloon} className="balloon-two" width="130" />
             </div>
-            <div id="eventDates">
-                <div>
-                    <label htmlFor = "startDate-input">Start Date:</label>
-                    <input
-                    id = "startDate-input"
-                    type = "date"
-                    value={formState.startDate.toString()}
-                    onChange={(event) => {
-                        setFormState({ ...formState, startDate: event.target.value })
-                    }}
-                    />
-                </div>
+            <section className="formSection">
+                <h3 className="section-heading-black">{sectionTitle}</h3>
+                <form className="eventForm" onSubmit = {handleSubmit}>
+                    <Errors errors = {errors}/>
+                    <div id="eventFormSubmitButton">
+                        <input type = "submit" value = {props.eventFormEdit === undefined ? "Add Event" : "Update"}/>
+                    </div>
+                    <div className="eventName">
+                        <label htmlFor = "eventName-input" className="subHeading-black">Event Name</label>
+                            <input
+                            id = "eventName-input"
+                            className="itemSearchInput"
+                            type = "text"
+                            value={formState.eventName}
+                            onChange={(event) => {
+                                setFormState({ ...formState, eventName: event.target.value })
+                            }}
+                            />
+                    </div>
+                
+                    <div className="two-column-even-display-sm-gap">
+                        <div className="dateSearchDiv">
+                            <label htmlFor = "startDate-input" className="subHeading-black">Start Date</label>
+                            <input
+                            id = "startDate-input"
+                            className="itemSearchInput date-field"
+                            type = "date"
+                            value={formState.startDate.toString()}
+                            onChange={(event) => {
+                                setFormState({ ...formState, startDate: event.target.value })
+                            }}
+                            />
+                        </div>
 
-                <div>
-                    <label htmlFor = "endDate-input">End Date:</label>
-                    <input
-                    id = "endDate-input"
-                    type = "date"
-                    value={formState.endDate.toString()}
-                    onChange={(event) => {
-                        setFormState({ ...formState, endDate: event.target.value })
-                    }}
-                    />
-                </div>
-            </div>
-                    
-            <div id="eventLocation">
-                <div>
-                    <label htmlFor = "startLocationId-input">Start Location:</label>
-                    <LocationSearch selectPosition={selectStartPosition} setSelectPosition={setSelectStartPosition} selectStartPosition={selectStartPosition} setFormState={setFormState} formState={formState} locationType = "start"
-                    placeholder = "search"/>
-                </div>
+                        <div className="dateSearchDiv">
+                            <label htmlFor = "endDate-input" className="subHeading-black">End Date</label>
+                            <input
+                            id = "endDate-input"
+                            className="itemSearchInput date-field"
+                            type = "date"
+                            value={formState.endDate.toString()}
+                            onChange={(event) => {
+                                setFormState({ ...formState, endDate: event.target.value })
+                            }}
+                            />
+                        </div>
+                    </div>
+                            
+                    <div className="eventLocation">
+                        <div className="locationSearchDisplay">
+                            <label htmlFor = "startLocationId-input" className="subHeading-black padding-top-15">Start Location</label>
+                            <LocationSearch selectPosition={selectStartPosition} setSelectPosition={setSelectStartPosition} selectStartPosition={selectStartPosition} setFormState={setFormState} formState={formState} locationType = "start"/>
+                        </div>
 
-                <div>
-                    <label htmlFor = "endLocationId-input">End Location:</label>
-                    <LocationSearch selectPosition={selectEndPosition} setSelectPosition={setSelectEndPosition} selectEndPosition={selectEndPosition} setFormState={setFormState} formState={formState} locationType = "end"/>
-                </div>
-            </div>
+                        <div className="locationSearchDisplay">
+                            <label htmlFor = "endLocationId-input" className="subHeading-black padding-top-15">End Location</label>
+                            <LocationSearch selectPosition={selectEndPosition} setSelectPosition={setSelectEndPosition} selectEndPosition={selectEndPosition} setFormState={setFormState} formState={formState} locationType = "end"/>
+                        </div>
+                    </div>
 
-            <div id="eventFormSubmitButton">
-                <input type = "submit" value = {props.eventFormEdit === undefined ? "AddEvent" : "Update"}/>
-            </div>
-        </form>
+
+                </form>
+            </section>
+            <Footer eventType={props.eventType} />
+        </main>
+
     )
 }

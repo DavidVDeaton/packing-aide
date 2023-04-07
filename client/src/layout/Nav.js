@@ -25,13 +25,13 @@ export default function Nav(){
             </>
             :
             <>
-            <Link to="/" className="navButtonDisabled" >Home</Link>
+            <button disabled className="navButtonDisabled" >Home</button>
 
-            <Link to="/" className="navButtonDisabled">Plan a Move</Link>
+            <button disabled className="navButtonDisabled">Plan a Move</button>
 
-            <Link to="/" className="navButtonDisabled">Plan a Trip</Link>
+            <button disabled className="navButtonDisabled">Plan a Trip</button>
             {/* <Link to="/profile" className="navButton">Profile</Link> */}
-            <Link to="/" className="navButtonDisabled">Log Out</Link>
+            <button disabled className="navButtonDisabled">Log Out</button>
             </>
             }
         </nav>
