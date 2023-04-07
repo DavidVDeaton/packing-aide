@@ -25,20 +25,27 @@ export default function ListEvent(props) {
     };
 
     return (
-        <div>
-            <div>Event: {props.editEvent.eventName}</div>
-            <div>Start Date: {props.editEvent.startDate}</div>
-            <div>End Date: {props.editEvent.endDate}</div>
-            <div>Start Location: {props.editEvent.startLocationType}</div>
-            <div>End Location: {props.editEvent.endLocationType}</div>
-            <button onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "Edit" : "Cancel Update"}</button>
-            {!deleteEvent 
-            ? <button onClick={() => setDeleteEvent(!deleteEvent)}>Delete</button> 
-            :   <div>
-                    <button onClick={beginDelete}>Confirm Delete</button>
-                    <button onClick={() => setDeleteEvent(false)}>Cancel</button>
-                </div>}
-            {editEvent && <EventForm eventFormEdit={props.editEvent} setEditEvent={setEditEvent} refreshData={props.refreshData} />}
+        <div className="center-align">
+            <div>
+                <h3 className="welcome-heading">{props.editEvent.eventName}</h3>
+                <p><span className="subHeading-black">Date:</span> {props.editEvent.startDate} -&gt; {props.editEvent.endDate}</p>
+            </div>
+            <div>
+                <p><span className="subHeading-black">Start Location:</span> {props.editEvent.startLocationType}</p>
+                <p><span className="subHeading-black">End Location:</span> {props.editEvent.endLocationType}</p>
+            </div>
+
+            <div>
+                <button className="blueSearchButton margin-right-10" onClick={() => setEditEvent(!editEvent)}>{!editEvent ? "Edit" : "Cancel Update"}</button>
+                {!deleteEvent 
+                ? <button className="blueSearchButton" onClick={() => setDeleteEvent(!deleteEvent)}>Delete</button> 
+                :   <div>
+                        <button className="redSearchButton" onClick={beginDelete}>Confirm Delete</button>
+                        <button className="graySearchButton" onClick={() => setDeleteEvent(false)}>Cancel</button>
+                    </div>}
+                {editEvent && <EventForm eventFormEdit={props.editEvent} setEditEvent={setEditEvent} refreshData={props.refreshData} />}
+            </div>
+
         </div>
     );
 }

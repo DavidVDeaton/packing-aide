@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import UserContext from './contexts/UserContext';
 import Landing from './layout/Landing';
@@ -9,9 +9,9 @@ import EventForm from './components/EventForm';
 import Event from "./layout/Event";
 import NotFound from "./layout/NotFound";
 import Profile from "./layout/Profile";
+import CardboardBox from "./components/CardboardBox";
 
 function App() {
-
 
   // const url = "http://3.129.73.57:8080/api";
   // const authenticationUrl = "http://3.129.73.57:8080/api/authenticate";
@@ -80,7 +80,7 @@ function App() {
   }, []);
 
   if(!restoreLoginAttemptCompleted){
-    return (<div>loading</div>)
+    return (<div><CardboardBox /></div>)
   }
   return (
     <BrowserRouter>
