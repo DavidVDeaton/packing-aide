@@ -1,0 +1,98 @@
+/* Found this CSS from the following Youtube Video */
+/* https://www.youtube.com/watch?v=aWmGL2erZG4 */
+
+.box {
+    position: relative;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg);
+    animation: anim 90s linear infinite;
+    z-index: -1;
+}
+
+@keyframes anim {
+    to {
+        transform: rotateX(-20deg) rotateY(360deg);
+    }
+}
+
+.face {
+    background: #ca9864;
+    width: 10em;
+    height: 10em;
+    position: absolute;
+    overflow: hidden;
+}
+
+.front {
+    transform: translateZ(5em);
+    background: #ca9864;
+}
+
+.back {
+    transform: translateZ(-5em);
+    background: #ca9864;
+}
+
+.left {
+    transform: translateX(-5em) rotateY(90deg);
+    background: #d8aa77;
+}
+
+.right {
+    transform: translateX(5em) rotateY(90deg);
+    background: #d8aa77;
+}
+
+.top {
+    transform: translateY(-5em) rotateX(90deg);
+    background: #e8bb84;
+}
+
+.bottom {
+    transform: translateY(5em) rotateX(90deg);
+}
+
+.front span,
+.back span,
+.top span {
+    position: absolute;
+    background: #bd8c58;
+}
+.top span {
+    height: 100%;
+    width: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.front span {
+    height: 60px;
+    width: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.back span {
+    width: 25px;
+    height: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.front span::before,
+.back span::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: #ca9864;
+    left: 0;
+    bottom: -5px;
+    transform: rotate(45deg);
+}
+.left, .right, .front, .back {
+    -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+}

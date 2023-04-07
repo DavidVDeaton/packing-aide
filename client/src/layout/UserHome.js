@@ -3,7 +3,7 @@ import ExpandingList from "../components/ExpandingList";
 import ItemSearch from "../components/ItemSearch";
 import { useContext } from "react";
 import UserContext from '../contexts/UserContext';
-import EditIcons from "../components/EditIcons";
+// import EditIcons from "../components/EditIcons";
 
 export default function UserHome(props) {
 

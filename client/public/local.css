@@ -3,9 +3,11 @@ body {
     display: grid;
     place-items: center;
     margin: 0;
-    background: linear-gradient(176deg, #D4E8FF80 20%, #D4E8FF 60%);
+    background: linear-gradient(173deg, #D4E8FF80 30%, #f6f6f6 55%, #0d8cd4 55.2%);
     width: 100%;
     font-family: "Rubik", sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 main {
@@ -14,9 +16,56 @@ main {
     width: 100%;
 }
 
-/* .landingPageMain {
-    background: linear-gradient(176deg, transparent 60%, #0d8cd4 60.2%);
-} */
+.error-warning {
+    color: red;
+    font-size: 18px;
+    list-style: none;
+}
+
+.ul-padding-none {
+    padding: 0;
+}
+
+.error-warning {
+    color: red;
+    font-size: 18px;
+    list-style: none;
+}
+
+.formSection {
+    max-width: 1000px;
+}
+
+.ul-padding-none {
+    padding: 0;
+}
+
+.eventFormMain {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: calc(100vh - 165px);
+}
+
+input {
+    font-size: 18px;
+}
+
+.palm-footer {
+    position: relative;
+    top: -250px;
+    left: -650px;
+    z-index: -5;
+    transform: rotateZ(-20deg);
+}
+
+.box-footer {
+    position: absolute;
+    left: 1650px;
+    top: 450px;
+    transform: translateY(300px);
+    z-index: 5;
+    font-size: 15px;
+}
 
 .step1 {
     margin-top: -60px;
@@ -61,7 +110,7 @@ nav {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.navButton{
+.navButton {
     font-size: 1.25rem;
     transition: .15s;
     text-decoration: none;
@@ -70,18 +119,28 @@ nav {
     text-transform: uppercase;
 }
 
-.navButtonDisabled{
+.navButtonDisabled {
     font-size: 1.25rem;
     transition: .15s;
     color: #777777;
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
+    background-color: transparent;
+    border: none;
 }
 
 .section-heading {
-    font-size: 2rem;
+    font-size: 2.25rem;
     color: #0d8cd4;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    margin-top: .75rem;
+}
+
+.section-heading-black {
+    color: black;
+    font-size: 2.25rem;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     margin-top: .75rem;
@@ -98,6 +157,13 @@ nav {
 .subHeading {
     font-size: 1.25rem;
     color: #0d8cd4;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+}
+
+.subHeading-black {
+    font-size: 1.25rem;
+    color: black;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
 }
@@ -213,7 +279,7 @@ input[type="submit"]:hover {
     box-shadow: 2px 2px 5px #444444;
 }
 
-.card100 {
+.cardMagic {
     padding: .5rem 1rem;
     box-shadow: 2px 2px 5px #444444;
     border-radius: 10px;
@@ -238,7 +304,7 @@ input[type="submit"]:hover {
 .taglineDiv {
     display: grid;
     place-items: center;
-    margin: 3rem 0rem 2rem;
+    margin: 3rem 0rem 0rem;
 }
 
 .highlight {
@@ -250,7 +316,7 @@ input[type="submit"]:hover {
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     font-size: 2.25rem;
-    color: #0d8cd4;
+    color: white;
     margin: 0;
 }
 
@@ -273,7 +339,7 @@ input[type="submit"]:hover {
 }
 
 /* Grid Column CSS */
-.itemSearchDiv {
+.searchDiv {
     display: grid;
     place-items: center;
     grid-template-columns:auto 1fr auto;
@@ -286,6 +352,14 @@ input[type="submit"]:hover {
     place-items: center;
     grid-template-columns: 1fr 1fr;
     grid-gap: 6rem;
+}
+
+.two-column-even-display-sm-gap {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: .75rem;
+    width: 100%;
 }
 
 .two-column-uneven-display {
@@ -324,6 +398,7 @@ p {
 
 .tagline {
     font-size: 1.4rem;
+    color: white;
 }
 
 .width100 {
@@ -346,6 +421,7 @@ p {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 200px;
 }
 
 .loginCard{
@@ -425,6 +501,18 @@ Brown - #825C36
     border-radius: 5px;
     padding: .5rem 1rem;
     color: rgb(194,149,92);
+} */
+
+.center-heading {
+    text-align: center !important;
+}
+
+.submitButton, .cardButton {
+    background-color: #0d8cd4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #444444;
 }
 
 .cardButton:hover, .submitButton:hover{
@@ -573,12 +661,12 @@ background: #48331f;
 .listItemButton:hover{
     cursor: pointer;
 }
+
 .editContainerWrapper{
     width: 100%;
     max-height: 25rem;
     display: flex;
 }
-
 
 .containerWrapper{
     background-color: #48331f80 ;
@@ -661,26 +749,68 @@ background: #48331f;
     font-size: x-small;
 }
 
-
-
-
-/* createEvent */
-#eventForm{
-    align-items: center;
-    font-size: 1.5rem;
-    margin-top: 10%;
-    min-height: 100%;
-    border: 4px solid white;
-    border-radius: 25px;
+.blueSearchButton {
+    padding: .5rem 1rem;
+    font-family: "Rubik", sans-serif;
+    border: none;
+    background-color: #0d8cd4;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    box-shadow: 2px 2px 4px #444444;
+    color: white;
+    transition: .15s;
 }
 
+.blueSearchButton:hover {
+    filter: blur(.85px)
+}
+
+/* createEvent */
+.eventLocation {
+    display: grid;
+    place-items: center;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+}
+
+.locationSearchDisplay {
+    display: grid; 
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 1rem;
+}
+
+.locationSearchDiv {
+    display: grid; 
+    place-items: center;
+    grid-template-columns: 8fr 1fr;
+    grid-gap: 1rem;
+}
+
+.padding-top-15 {
+    padding-top: 15px;
+}
+
+.dateSearchDiv {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr auto;
+    grid-gap: 1rem;
+}
+
+.eventForm{
+    display: grid;
+    place-items: center;
+    min-width: 905px;
+    grid-gap: .75rem;
+}
+/* 
 #eventName, #eventDates, #eventLocation, #eventFormSubmitButton {
     width: 100%;
     height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 #eventDates, #eventLocation{
     padding-top: 5%;
@@ -689,14 +819,25 @@ background: #48331f;
     width: 100%;
 }
 
+.date-field {
+    width: 330px !important;
+}
 
-#eventName-input, #startDate-input, #endDate-input {
+.eventName {
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto 1fr;
+    grid-gap: .75rem;
+    width: 100%;
+}
+
+/* #eventName-input, #startDate-input, #endDate-input {
     height: 1.5rem;
     border: none;
     border-bottom: 2px solid black;
     font-size: 1rem;
     background: fixed;
-}
+} */
 
 
 #searchResult {
@@ -716,14 +857,22 @@ background: #48331f;
 }
 
 .hoverMe {
-    border: 2px solid lightgray;
-    width: 37%;
+    border: 2px solid #444444;
+    margin: 0;
     font-size: 1rem;
+    background-color: white;
+    width: 100%;
 }
 
 .locationPopUp{
-    padding: 0%;
-    margin-top: 1%;
+    margin-top: .2rem;
+    width: 100%;
+    padding: 0;
+    height: 60px;
+    overflow-y:auto;
+    overflow-x: hidden;
+    z-index: 2;
+    /* background-color: white; */
 }
 
 #hoverMe:hover{

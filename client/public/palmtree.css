@@ -1,0 +1,13 @@
+/* body { width: 100%; height: 100vh; margin: 0; padding: 0; background-size: cover; background-position: center center; background-image: url('http://www.drodd.com/images10/beach-wallpaper26.jpg'); background-repeat: no-repeat; } */
+.animation { float: left; width: auto; transform: rotate(21deg); z-index: -1;}
+.palm, .palm-body { animation: animateOne 10s .5s ease infinite; z-index: -1; }
+.palm { fill: #b4c06a; z-index: -1; }
+.palm-body { fill: #a39274; z-index: -1; }
+
+@keyframes animateOne {
+	0% { transform: translateZ(0px) translateY(0) translateX(0) skewY(0deg); }
+	25% { transform: translateZ(5px) translateY(5px) translateX(5px) skewY(5deg); }
+	50% { transform: translateZ(-5px) translateY(-5px) translateX(-5px) skewY(5deg); }
+	75% { transform: translateZ(5px) translateY(5px) translateX(5px) skewY(5deg); }
+	100% { transform: translateZ(0px) translateY(0px) translateX(0px) skewY(0deg); }
+} 
