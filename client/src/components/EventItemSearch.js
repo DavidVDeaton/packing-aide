@@ -137,11 +137,9 @@ export default function ItemSearch (props) {
 
     return (
         <div>
-            <div className="searchDiv">
-                <h3 className="subHeading-black">Item Search</h3>
-                <input type="text" className="itemSearchInput w675" value={searchText} onChange={(e) => {refreshSearch(e.target.value)}}/>
-                <input value="Search" type="submit" onClick={() => {submitSearch(searchText)}} />
-            </div>
+            <h3>Item Search</h3>
+            <input type="text" value={searchText} onChange={(e) => {refreshSearch(e.target.value)}}/>
+            <button value="search" onClick={() => {submitSearch(searchText)}}>Search</button>
             <div className="card-rows">
                 {displayObjects.map((item) => {
                     if (item.description === "Item not found. Please refine search.") {

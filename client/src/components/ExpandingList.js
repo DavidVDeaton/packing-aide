@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMarker, faPlus, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 
+
 export default function ExpandingList(props) {
 
     const edit = <FontAwesomeIcon icon={faMarker} className="icon"/>
@@ -21,6 +22,7 @@ export default function ExpandingList(props) {
     let pastEvents = [];
     let futureEvents = [];
     let displayedEvents = [];
+
 
     for (let i = 0; i < events.length; i++) {
 
@@ -78,17 +80,17 @@ export default function ExpandingList(props) {
 
     return (
         <div>
-            <h3 className="section-heading">{props.text}</h3>
+            <h3 className="section-heading-black">{props.text}</h3>
             <div>
                 <div className="display-selected-card"> 
                 </div>
                 <div className="card-rows">{displayedEvents.map((event) => {
 
-                        let cardCSS = "move-card card100 three-column-in-card-right";
+                        let cardCSS = "move-card cardMagic three-column-in-card-right";
                         let iconCSS = "icon-button icon-bg-move";
                         let confirmDeleteCSS = "confirm-delete"
                         if (event.eventType === true) {
-                            cardCSS = "trip-card card100 three-column-in-card-right";
+                            cardCSS = "trip-card cardMagic three-column-in-card-right";
                             iconCSS = "icon-button icon-bg-trip";
                         }
                         return (

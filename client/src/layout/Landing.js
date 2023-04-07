@@ -2,12 +2,10 @@ import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import Login from "../components/landingPage/Login";
 import logo from "../images/pa-logo-transparent.png"
-import Footer from "../layout/Footer";
+import Features from "../components/landingPage/Features";
 import balloon from "../images/pa-logo-balloon.png";
 
 export default function Landing(props){
-
-    const eventType=false;
     
     return(
         <main className="landingPageMain">
@@ -24,13 +22,12 @@ export default function Landing(props){
                 <div className="taglineDiv">
                     <p className="question center-align">Business Trip?</p>
                     <p className="question center-align">Upcoming Move?</p>
-                    <p className="tagline">Packing Aide is an all-in-one, inventory, itinerary, to-do-list, to aide your next move or trip.</p>
+                    <p className="tagline">Packing Aide is an all-in-one, inventory, itenerary, to-do-list, to aide your next move or trip.</p>
                 </div>
             </section>
-            {/* <section className="featuresContainer">
+            <section className="featuresContainer">
                 <Features />
-            </section> */}
-            {/* <Footer eventType={eventType} /> */}
+            </section>
         </main>
     )
 }

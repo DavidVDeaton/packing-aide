@@ -104,17 +104,19 @@ export default function EventForm(props) {
     
     return(
         <main className="eventFormMain">
-            <div>
+            <div className="balloonDiv">
                 <img src={balloon} className="balloon" width="120" />
                 <img src={balloon} className="balloon-two" width="130" />
             </div>
             <section className="formSection">
-                <h3 className="section-heading center-heading">{sectionTitle}</h3>
+                <h3 className="section-heading-black">{sectionTitle}</h3>
                 <form className="eventForm" onSubmit = {handleSubmit}>
                     <Errors errors = {errors}/>
-                    
+                    <div id="eventFormSubmitButton">
+                        <input type = "submit" value = {props.eventFormEdit === undefined ? "Add Event" : "Update"}/>
+                    </div>
                     <div className="eventName">
-                        <label htmlFor = "eventName-input" className="subHeading">Event Name</label>
+                        <label htmlFor = "eventName-input" className="subHeading-black">Event Name</label>
                             <input
                             id = "eventName-input"
                             className="itemSearchInput"
@@ -128,7 +130,7 @@ export default function EventForm(props) {
                 
                     <div className="two-column-even-display-sm-gap">
                         <div className="dateSearchDiv">
-                            <label htmlFor = "startDate-input" className="subHeading">Start Date</label>
+                            <label htmlFor = "startDate-input" className="subHeading-black">Start Date</label>
                             <input
                             id = "startDate-input"
                             className="itemSearchInput date-field"
@@ -141,7 +143,7 @@ export default function EventForm(props) {
                         </div>
 
                         <div className="dateSearchDiv">
-                            <label htmlFor = "endDate-input" className="subHeading">End Date</label>
+                            <label htmlFor = "endDate-input" className="subHeading-black">End Date</label>
                             <input
                             id = "endDate-input"
                             className="itemSearchInput date-field"
@@ -154,21 +156,19 @@ export default function EventForm(props) {
                         </div>
                     </div>
                             
-                    <div id="eventLocation">
-                        <div className="two-column-uneven-display">
-                            <label htmlFor = "startLocationId-input" className="subHeading">Start Location</label>
+                    <div className="eventLocation">
+                        <div className="locationSearchDisplay">
+                            <label htmlFor = "startLocationId-input" className="subHeading-black padding-top-15">Start Location</label>
                             <LocationSearch selectPosition={selectStartPosition} setSelectPosition={setSelectStartPosition} selectStartPosition={selectStartPosition} setFormState={setFormState} formState={formState} locationType = "start"/>
                         </div>
 
-                        <div className="two-column-uneven-display">
-                            <label htmlFor = "endLocationId-input" className="subHeading">End Location</label>
+                        <div className="locationSearchDisplay">
+                            <label htmlFor = "endLocationId-input" className="subHeading-black padding-top-15">End Location</label>
                             <LocationSearch selectPosition={selectEndPosition} setSelectPosition={setSelectEndPosition} selectEndPosition={selectEndPosition} setFormState={setFormState} formState={formState} locationType = "end"/>
                         </div>
                     </div>
 
-                    <div id="eventFormSubmitButton">
-                        <input type = "submit" value = {props.eventFormEdit === undefined ? "Add Event" : "Update"}/>
-                    </div>
+
                 </form>
             </section>
             <Footer eventType={props.eventType} />
