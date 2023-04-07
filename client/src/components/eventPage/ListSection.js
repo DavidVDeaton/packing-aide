@@ -27,7 +27,7 @@ export default function ListSection(props){
     }
      
     return(
-        <div className={props.listType === "containers" ? "containerList scroll" :  "listWrapper scroll"}>
+        <div className={props.listType === "containers" ? "containerList scroll" : "listWrapper scroll"}>
             <div className="editContainerWrapper">
                 {editContainers !== undefined && 
                 editContainers.map((container) => {
@@ -61,6 +61,7 @@ export default function ListSection(props){
                 )
             })
             }
+       
         </div>
     )
 }
