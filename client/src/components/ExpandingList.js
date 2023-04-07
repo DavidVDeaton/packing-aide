@@ -97,10 +97,18 @@ export default function ExpandingList(props) {
                             // onClick Function to take user to event specific page will be inserted into this div
                         <div className={cardCSS} >  
                             <p className="left-align highlight">{event.eventName}</p>
-                            <p>{event.startDate} -&gt; {event.endDate}</p>
+                            <p>{event.startDate} - {event.endDate}</p>
                             <div className="right-align">
                                 <button className={iconCSS} onClick={() => {editEvent(event.eventId)}}>{edit}</button>
-                                <button className={iconCSS} onClick={() => {deleteEvent(event.eventId)}} >{trash}</button> 
+                                {!confirmDelete 
+                                ? 
+                                <button className={iconCSS} onClick={() => {setConfirmDelete(!confirmDelete)}} >{trash}</button> 
+                                :
+                                <>
+                                <button className={confirmDeleteCSS} onClick={() => {deleteEvent(event.eventId)}} >Confirm Delete</button>
+                                <button className={iconCSS} onClick={() => {setConfirmDelete(!confirmDelete)}}>{cancel}</button> 
+                                </>
+                                }
                             </div>
                         </div>
                         );

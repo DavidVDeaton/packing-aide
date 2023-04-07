@@ -104,6 +104,10 @@ export default function EventForm(props) {
     
     return(
         <main className="eventFormMain">
+            <div className="balloonDiv">
+                <img src={balloon} className="balloon" width="120" />
+                <img src={balloon} className="balloon-two" width="130" />
+            </div>
             <section className="formSection">
                 <h3 className="section-heading-black">{sectionTitle}</h3>
                 <form className="eventForm" onSubmit = {handleSubmit}>
@@ -166,10 +170,6 @@ export default function EventForm(props) {
 
 
                 </form>
-                    <div className="balloonDiv">
-                        <img src={balloon} className="balloon" width="120" />
-                        <img src={balloon} className="balloon-two" width="130" />
-                    </div>
             </section>
             <Footer eventType={props.eventType} />
         </main>
