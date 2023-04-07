@@ -174,6 +174,12 @@ nav {
     width: 18px;
 }
 
+.icon-button {
+    background-color: transparent;
+    color: black;
+    border:none;
+}
+
 .icon {
     margin: .1rem;
     border: none;
@@ -183,17 +189,17 @@ nav {
     width: 28px;
 }
 
-.icon-bg-move {
+/* .icon-bg-move {
     background: #48331f;
-}
+} */
 
 /* .icon-bg-move:hover {
     background-color: #48331f;
 } */
 
-.icon-bg-trip {
+/* .icon-bg-trip {
     background: #0d8cd4;
-}
+} */
 
 .confirm-delete{
     margin: .1rem;

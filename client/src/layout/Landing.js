@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import UserContext from "../contexts/UserContext";
+// import { useContext } from "react";
+// import UserContext from "../contexts/UserContext";
 import Login from "../components/landingPage/Login";
 import logo from "../images/pa-logo-transparent.png"
-import Features from "../components/landingPage/Features";
+// import Features from "../components/landingPage/Features";
 import balloon from "../images/pa-logo-balloon.png";
-
+import Footer from "../layout/Footer";
 export default function Landing(props){
     
     return(
@@ -20,14 +20,15 @@ export default function Landing(props){
                     
                 </div>
                 <div className="taglineDiv">
-                    <p className="question center-align">Business Trip?</p>
-                    <p className="question center-align">Upcoming Move?</p>
+                    <p className="section-heading-black center-align">Business Trip?</p>
+                    <p className="section-heading-black center-align">Upcoming Move?</p>
                     <p className="tagline">Packing Aide is an all-in-one, inventory, itenerary, to-do-list, to aide your next move or trip.</p>
                 </div>
             </section>
-            <section className="featuresContainer">
+            {/* <section className="featuresContainer">
                 <Features />
-            </section>
+            </section> */}
+            {/* <Footer eventType={true}/> */}
         </main>
     )
 }
